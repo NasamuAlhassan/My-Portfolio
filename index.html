@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  </head>
+  <body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <a href="#" class="logo">Portfolio</a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <div class="nav-toggle-wrapper">
+        <nav class="navbar">
+          <a href="#home">Home</a>
+          <a href="#skills">Skills</a>
+          <a href="#portfolio">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="theme-buttons">
+          <button id="theme-toggle">🌙 Night</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Home / Hero Section -->
+    <section class="home" id="home">
+      <div class="home-content">
+        <h3>Hello, It's Me</h3>
+        <h1>Prince Alhassan</h1>
+        <h3>I'm an <span class="multiple-text"></span></h3>
+        <p>
+          Aspiring Data Scientist building interactive analytics and ML
+          projects.
+        </p>
+
+        <div class="social-media">
+          <a href="https://github.com/NasamuAlhassan"
+            ><i class="bx bxl-github"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/alhassan-prince-12a795298"
+            ><i class="bx bxl-linkedin"></i
+          ></a>
+          <a href="https://x.com/PrinceAlha50083"
+            ><i class="bx bxl-twitter"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/prince_melanin?igsh=NXQ0YzZxOG5qYTRh"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+          <a href="https://t.me/AlhassanNasamu"
+            ><i class="bx bxl-telegram"></i
+          ></a>
+        </div>
+      </div>
+
+      <div class="home-img">
+        <img src="home.jpg" alt="Profile Image" />
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <h2 class="heading">My Skills</h2>
+      <div class="skills-container">
+        <div
+          class="skills-box"
+          data-title="Python"
+          data-description="Python for data analysis, ML, scripting."
+          data-link="https://github.com/username/python-projects"
+        >
+          <i class="bx bxl-python"></i>
+          <h3>Python</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="SQL"
+          data-description="Querying databases and building reports."
+          data-link="https://github.com/username/sql-samples"
+        >
+          <i class="bx bx-database"></i>
+          <h3>SQL</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="Excel"
+          data-description="Pivot tables, charts, Power Query."
+          data-link="https://drive.google.com/file/d/yourfile"
+        >
+          <i class="bx bx-spreadsheet"></i>
+          <h3>Excel</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="Machine Learning"
+          data-description="Regression, classification, clustering."
+          data-link="https://github.com/username/ml-projects"
+        >
+          <i class="bx bx-brain"></i>
+          <h3>ML</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="Pandas"
+          data-description="Data cleaning and manipulation."
+          data-link="https://github.com/username/pandas-samples"
+        >
+          <i class="bx bx-table"></i>
+          <h3>Pandas</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="NumPy"
+          data-description="Numerical computations and analytics."
+          data-link="https://github.com/username/numpy-samples"
+        >
+          <i class="bx bx-calculator"></i>
+          <h3>NumPy</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="Data Visualization"
+          data-description="Matplotlib, Seaborn, Plotly charts."
+          data-link="https://github.com/username/dataviz-projects"
+        >
+          <i class="bx bx-line-chart"></i>
+          <h3>Data Viz</h3>
+        </div>
+        <div
+          class="skills-box"
+          data-title="Statistics"
+          data-description="Descriptive & inferential statistics."
+          data-link="https://github.com/username/statistics-examples"
+        >
+          <i class="bx bx-stats"></i>
+          <h3>Statistics</h3>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="skill-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <a href="#" target="_blank" id="modal-link">View Sample</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="portfolio" id="portfolio">
+      <h2 class="heading">My Projects</h2>
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <img src="project1.jpg" alt="Project 1" />
+          <div class="portfolio-layer">
+            <h4>Weather App</h4>
+            <p>HTML, CSS, JS, OpenWeather API</p>
+            <a href="https://github.com/username/weather-app" target="_blank"
+              ><i class="bx bx-link-external"></i> View Repo</a
+            >
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="project2.jpg" alt="Project 2" />
+          <div class="portfolio-layer">
+            <h4>ML Model</h4>
+            <p>Python, Pandas, Scikit-Learn</p>
+            <a href="https://github.com/username/ml-project" target="_blank"
+              ><i class="bx bx-link-external"></i> View Repo</a
+            >
+          </div>
+        </div>
+        <div class="portfolio-box">
+          <img src="project3.jpg" alt="Project 3" />
+          <div class="portfolio-layer">
+            <h4>Dashboard</h4>
+            <p>Power BI, Excel, Data Visualization</p>
+            <a href="https://github.com/username/dashboard" target="_blank"
+              ><i class="bx bx-link-external"></i> View Repo</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2 class="heading">Contact Me</h2>
+      <form>
+        <input type="text" placeholder="Full Name" />
+        <input type="email" placeholder="Email" />
+        <textarea placeholder="Message"></textarea>
+        <input type="submit" value="Send Message" class="btn" />
+      </form>
+    </section>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
