@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prince Alhassan — Data Scientist</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Libraries -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+  </head>
+  <body>
+    <!-- Ambient Atmosphere -->
+    <div class="noise-overlay"></div>
+    <div class="grid-overlay"></div>
+    <div id="particles-js"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="header" id="header">
+      <a href="#" class="logo">
+        <span class="logo-bracket">&lt;</span>PA<span class="logo-bracket"
+          >/&gt;</span
+        >
+      </a>
+
+      <i class="bx bx-menu" id="menu-icon"></i>
+
+      <div class="nav-toggle-wrapper" id="nav-wrapper">
+        <nav class="navbar">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#portfolio" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+        <div class="theme-buttons">
+          <button id="theme-toggle">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-label">Light</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="home" id="home">
+      <div class="home-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for opportunities
+        </div>
+
+        <p class="hello-text">Hello, I'm</p>
+        <h1 class="hero-name">
+          Prince<br /><span class="name-accent">Alhassan</span>
+        </h1>
+
+        <div class="typing-wrapper">
+          <span class="typing-prefix">Building as a</span>
+          <span class="multiple-text"></span>
+        </div>
+
+        <p class="hero-desc">
+          Aspiring Data Scientist from Ghana — crafting interactive analytics,
+          ML models, and data-driven tools that solve real-world problems.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+        </div>
+
+        <div class="social-media">
+          <a
+            href="https://github.com/NasamuAlhassan"
+            target="_blank"
+            class="social-link"
+            data-label="GitHub"
+            ><i class="bx bxl-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/alhassan-prince-12a795298"
+            target="_blank"
+            class="social-link"
+            data-label="LinkedIn"
+            ><i class="bx bxl-linkedin"></i
+          ></a>
+          <a
+            href="https://x.com/PrinceAlha50083"
+            target="_blank"
+            class="social-link"
+            data-label="Twitter"
+            ><i class="bx bxl-twitter"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/prince_melanin?igsh=NXQ0YzZxOG5qYTRh"
+            target="_blank"
+            class="social-link"
+            data-label="Instagram"
+            ><i class="bx bxl-instagram"></i
+          ></a>
+          <a
+            href="https://t.me/AlhassanNasamu"
+            target="_blank"
+            class="social-link"
+            data-label="Telegram"
+            ><i class="bx bxl-telegram"></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Profile Image Area -->
+      <div class="home-img-wrapper">
+        <div class="home-img-container">
+          <div class="img-ring img-ring-1"></div>
+          <div class="img-ring img-ring-2"></div>
+          <div class="img-ring img-ring-3"></div>
+          <div class="home-img">
+            <img src="home.jpg" alt="Prince Alhassan" />
+          </div>
+          <!-- Floating stat chips -->
+          <div class="float-card float-card-1">
+            <i class="bx bx-code-alt"></i>
+            <div>
+              <span class="float-num">3+</span>
+              <span class="float-label">Years Coding</span>
+            </div>
+          </div>
+          <div class="float-card float-card-2">
+            <i class="bx bx-trophy"></i>
+            <div>
+              <span class="float-num">1st</span>
+              <span class="float-label">Class Rank</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ===================== SKILLS ===================== -->
+    <section class="skills" id="skills">
+      <div class="section-header">
+        <span class="section-tag">// expertise</span>
+        <h2 class="heading">My <span class="accent">Skills</span></h2>
+        <p class="section-sub">Tools and technologies I work with daily</p>
+      </div>
+
+      <div class="skills-container">
+        <div
+          class="skills-box"
+          data-title="Python"
+          data-description="Python for data analysis, ML, scripting, and automation. Comfortable with OOP, functional patterns, and data science libraries."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bxl-python"
+          data-width="85"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bxl-python"></i></div>
+          <h3>Python</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="SQL"
+          data-description="Querying relational databases, writing complex joins, aggregations, and building analytical reports."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-server"
+          data-width="75"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-server"></i></div>
+          <h3>SQL</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="Excel"
+          data-description="Pivot tables, dynamic charts, Power Query, and advanced formulas for professional data analysis and reporting."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-spreadsheet"
+          data-width="80"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-spreadsheet"></i></div>
+          <h3>Excel</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="Machine Learning"
+          data-description="Supervised & unsupervised learning — regression, classification, clustering with Scikit-Learn and related frameworks."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-brain"
+          data-width="70"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-brain"></i></div>
+          <h3>ML</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="Pandas"
+          data-description="Data wrangling, cleaning, transformation, and exploratory analysis using the Pandas ecosystem."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-table"
+          data-width="82"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-table"></i></div>
+          <h3>Pandas</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="NumPy"
+          data-description="Numerical computing, array operations, and linear algebra supporting efficient data science pipelines."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-calculator"
+          data-width="78"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-calculator"></i></div>
+          <h3>NumPy</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="Data Visualization"
+          data-description="Crafting clear, compelling charts and dashboards with Matplotlib, Seaborn, and Plotly for data storytelling."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-line-chart"
+          data-width="80"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-line-chart"></i></div>
+          <h3>Data Viz</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+
+        <div
+          class="skills-box"
+          data-title="Statistics"
+          data-description="Descriptive & inferential statistics — probability theory, hypothesis testing, and regression analysis."
+          data-link="https://github.com/NasamuAlhassan"
+          data-icon="bx-stats"
+          data-width="85"
+        >
+          <div class="skill-glow"></div>
+          <div class="skill-icon"><i class="bx bx-stats"></i></div>
+          <h3>Statistics</h3>
+          <div class="skill-level"><div class="skill-bar"></div></div>
+        </div>
+      </div>
+
+      <!-- Skill Modal -->
+      <div id="skill-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+          <button class="close" id="modal-close-btn">
+            <i class="bx bx-x"></i>
+          </button>
+          <div class="modal-icon-wrap">
+            <i id="modal-icon" class="bx bxl-python"></i>
+          </div>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <a href="#" target="_blank" id="modal-link" class="btn btn-primary">
+            <i class="bx bxl-github"></i> View on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="portfolio" id="portfolio">
+      <div class="section-header">
+        <span class="section-tag">// projects</span>
+        <h2 class="heading">My <span class="accent">Projects</span></h2>
+        <p class="section-sub">Selected work from my data science journey</p>
+      </div>
+
+      <div class="portfolio-container">
+        <div class="portfolio-box">
+          <div class="portfolio-glow"></div>
+          <div class="portfolio-img-wrap">
+            <img src="Weather.jpg" alt="Weather App" />
+            <div class="portfolio-badge">Web Dev</div>
+          </div>
+          <div class="portfolio-layer">
+            <div class="portfolio-tech">
+              <span>HTML</span><span>CSS</span><span>JS</span><span>API</span>
+            </div>
+            <h4>Weather App</h4>
+            <p>
+              Real-time weather dashboard powered by the OpenWeather API with a
+              clean, responsive UI.
+            </p>
+            <a
+              href="https://github.com/NasamuAlhassan/weather-app"
+              target="_blank"
+              class="portfolio-link"
+            >
+              <i class="bx bxl-github"></i> View Repo
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <div class="portfolio-glow"></div>
+          <div class="portfolio-img-wrap">
+            <img src="ML.png" alt="ML Model" />
+            <div class="portfolio-badge">ML</div>
+          </div>
+          <div class="portfolio-layer">
+            <div class="portfolio-tech">
+              <span>Python</span><span>Pandas</span><span>Sklearn</span>
+            </div>
+            <h4>ML Model</h4>
+            <p>
+              Predictive analytics model for classification tasks achieving 90%+
+              accuracy on test data.
+            </p>
+            <a
+              href="https://github.com/NasamuAlhassan/ml-project"
+              target="_blank"
+              class="portfolio-link"
+            >
+              <i class="bx bxl-github"></i> View Repo
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="portfolio-box">
+          <div class="portfolio-glow"></div>
+          <div class="portfolio-img-wrap">
+            <img src="BI-Dash.png" alt="Dashboard" />
+            <div class="portfolio-badge">Analytics</div>
+          </div>
+          <div class="portfolio-layer">
+            <div class="portfolio-tech">
+              <span>Power BI</span><span>Excel</span><span>DataViz</span>
+            </div>
+            <h4>BI Dashboard</h4>
+            <p>
+              Interactive business intelligence dashboard with live KPI tracking
+              and drill-down charts.
+            </p>
+            <a
+              href="https://github.com/NasamuAlhassan/dashboard"
+              target="_blank"
+              class="portfolio-link"
+            >
+              <i class="bx bxl-github"></i> View Repo
+              <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="contact" id="contact">
+      <div class="section-header">
+        <span class="section-tag">// contact</span>
+        <h2 class="heading">Get In <span class="accent">Touch</span></h2>
+        <p class="section-sub">
+          Have a project in mind? Let's build something great.
+        </p>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <div class="contact-card">
+            <i class="bx bx-envelope"></i>
+            <div>
+              <span>Email</span>
+              <p>pnalhassan@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="bx bx-map"></i>
+            <div>
+              <span>Location</span>
+              <p>Accra, Ghana</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="bx bx-time-five"></i>
+            <div>
+              <span>Timezone</span>
+              <p>GMT (West Africa)</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <i class="bx bx-check-circle"></i>
+            <div>
+              <span>Status</span>
+              <p>Open to remote roles</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="name" placeholder=" " required />
+              <label for="name">Full Name</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder=" " required />
+              <label for="email">Email Address</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea id="message" placeholder=" " rows="5" required></textarea>
+            <label for="message">Your Message</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span class="btn-text">Send Message</span>
+            <i class="bx bx-send"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <p>
+        Designed &amp; built with <span class="accent">♥</span> by
+        <span class="accent">Prince Alhassan</span>
+      </p>
+      <p class="footer-sub">
+        © 2025 — Data Scientist in the making · University of Ghana
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
