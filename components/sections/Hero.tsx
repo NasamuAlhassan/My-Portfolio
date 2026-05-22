@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Github, Linkedin, Twitter, Instagram, Send, ArrowDown } from 'lucide-react'
+import { Github, Linkedin, Twitter, Instagram, Send } from 'lucide-react'
 import { personalInfo, socialLinks, stats } from '@/lib/data'
 
 const iconMap = {
@@ -165,19 +165,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.a
-        href="#about"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.3 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-400 hover:text-violet-600 transition-colors"
-      >
-        <span className="text-[10px] tracking-[0.25em] uppercase font-medium">scroll</span>
-        <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.7, ease: 'easeInOut' }}>
-          <ArrowDown size={13} />
-        </motion.div>
-      </motion.a>
     </section>
   )
 }
