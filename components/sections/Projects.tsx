@@ -7,10 +7,10 @@ import { Github, ExternalLink, Clock } from 'lucide-react'
 import { projects } from '@/lib/data'
 
 const badgeStyle: Record<string, string> = {
-  'Full-Stack': 'text-violet-400 bg-violet-500/10 border-violet-500/30',
-  'Web Dev': 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-  Analytics: 'text-amber-400 bg-amber-500/10 border-amber-500/30',
-  'Coming Soon': 'text-slate-500 bg-white/[0.03] border-white/[0.08]',
+  'Full-Stack': 'text-violet-700 bg-violet-100/70 border-violet-300/60',
+  'Web Dev': 'text-blue-700 bg-blue-100/70 border-blue-300/60',
+  Analytics: 'text-amber-700 bg-amber-100/70 border-amber-300/60',
+  'Coming Soon': 'text-slate-500 bg-slate-100/50 border-slate-300/40',
 }
 
 type Project = (typeof projects)[0]
@@ -22,47 +22,49 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 28 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className={`bg-[#0e1018] border border-white/[0.06] rounded-2xl overflow-hidden group hover:border-indigo-500/20 transition-all duration-300 flex flex-col ${
+      transition={{ duration: 0.52, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
+      className={`glass glass-shine rounded-3xl overflow-hidden flex flex-col ${
         project.featured ? 'lg:col-span-2' : ''
       }`}
+      whileHover={{ y: -6, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      style={{ transition: undefined }}
     >
       {/* Thumbnail */}
       {project.image ? (
-        <div className={`relative overflow-hidden ${project.featured ? 'h-56' : 'h-44'}`}>
+        <div className={`relative overflow-hidden ${project.featured ? 'h-52' : 'h-44'}`}>
           <Image
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0e1018] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
         </div>
       ) : (
         <div
-          className={`flex items-center justify-center bg-[#0a0b12] ${
-            project.featured ? 'h-56' : 'h-44'
+          className={`flex items-center justify-center bg-white/20 ${
+            project.featured ? 'h-52' : 'h-44'
           }`}
         >
           {project.comingSoon ? (
-            <div className="flex flex-col items-center gap-3 text-slate-700">
+            <div className="flex flex-col items-center gap-3 text-slate-400">
               <Clock size={28} />
-              <span className="text-xs">Coming Soon</span>
+              <span className="text-xs font-medium">Coming Soon</span>
             </div>
           ) : (
-            <span className="text-6xl font-black text-white/[0.04]">{project.title[0]}</span>
+            <span className="text-6xl font-black text-violet-200">{project.title[0]}</span>
           )}
         </div>
       )}
 
-      {/* Body */}
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-3">
-          <h3 className="text-white font-bold text-lg leading-tight">{project.title}</h3>
+          <h3 className="text-slate-800 font-bold text-lg leading-tight">{project.title}</h3>
           <span
-            className={`text-[11px] font-semibold px-2.5 py-1 rounded-full border shrink-0 ${
+            className={`text-[11px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
               badgeStyle[project.badge] ?? badgeStyle['Coming Soon']
             }`}
           >
@@ -70,14 +72,14 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           </span>
         </div>
 
-        <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
+        <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
 
         {project.tags.length > 0 && (
           <div className="flex flex-wrap gap-1.5 mb-4">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] text-slate-500 bg-white/[0.04] border border-white/[0.06] px-2.5 py-1 rounded-md"
+                className="text-[11px] text-slate-500 bg-white/40 border border-white/60 px-2.5 py-1 rounded-lg font-medium backdrop-blur-sm"
               >
                 {tag}
               </span>
@@ -92,7 +94,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+                className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-violet-700 transition-colors font-medium"
               >
                 <Github size={13} />
                 GitHub
@@ -103,7 +105,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-indigo-400 hover:text-indigo-300 transition-colors"
+                className="flex items-center gap-1.5 text-xs text-violet-600 hover:text-violet-800 transition-colors font-medium"
               >
                 <ExternalLink size={13} />
                 Live Demo
@@ -127,10 +129,10 @@ export default function Projects() {
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14"
         >
-          <p className="text-indigo-400 text-xs font-semibold uppercase tracking-[0.2em] mb-3">Work</p>
+          <p className="text-violet-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Work</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold gradient-text">Projects</h2>
         </motion.div>
 

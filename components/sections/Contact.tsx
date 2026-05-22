@@ -17,6 +17,9 @@ const socials = [
   { icon: Twitter, label: 'Twitter', href: 'https://twitter.com/PrinceAlha50083' },
 ]
 
+const inputClass =
+  'w-full bg-white/30 backdrop-blur-sm border border-white/55 rounded-2xl px-4 py-3 text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:border-violet-400/60 focus:bg-white/45 transition-all duration-200'
+
 export default function Contact() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
@@ -39,136 +42,126 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-6 bg-[#0a0b12]">
+    <section id="contact" className="py-24 px-6">
       <div className="max-w-6xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14"
         >
-          <p className="text-indigo-400 text-xs font-semibold uppercase tracking-[0.2em] mb-3">Contact</p>
+          <p className="text-violet-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Contact</p>
           <h2 className="text-4xl sm:text-5xl font-extrabold gradient-text">Get in Touch</h2>
-          <p className="text-slate-400 mt-3 max-w-md text-sm leading-relaxed">
+          <p className="text-slate-500 mt-3 max-w-md text-sm leading-relaxed">
             Have a project, opportunity, or just want to say hi? My inbox is always open.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[2fr_3fr] gap-10">
-          {/* Left: info */}
+        <div className="grid lg:grid-cols-[2fr_3fr] gap-8">
+          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.52, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-3"
           >
             {contactInfo.map(({ icon: Icon, label, value, href }) => (
-              <div
+              <motion.div
                 key={label}
-                className="flex items-center gap-4 bg-[#0e1018] border border-white/[0.06] rounded-xl p-4"
+                className="glass glass-shine flex items-center gap-4 rounded-2xl p-4"
+                whileHover={{ y: -3, scale: 1.01 }}
+                transition={{ type: 'spring', stiffness: 480, damping: 38 }}
               >
-                <div className="w-9 h-9 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center shrink-0">
-                  <Icon size={14} className="text-indigo-400" />
+                <div className="w-9 h-9 rounded-xl bg-violet-100/70 border border-violet-300/60 flex items-center justify-center shrink-0 backdrop-blur-sm">
+                  <Icon size={14} className="text-violet-700" />
                 </div>
                 <div>
-                  <p className="text-slate-500 text-[11px] font-medium uppercase tracking-wider">{label}</p>
+                  <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider">{label}</p>
                   {href ? (
-                    <a href={href} className="text-slate-200 text-sm hover:text-indigo-400 transition-colors">
+                    <a href={href} className="text-slate-700 text-sm font-semibold hover:text-violet-700 transition-colors">
                       {value}
                     </a>
                   ) : (
-                    <p className="text-slate-200 text-sm">{value}</p>
+                    <p className="text-slate-700 text-sm font-semibold">{value}</p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             <div className="flex gap-2.5 pt-1">
               {socials.map(({ icon: Icon, label, href }) => (
-                <a
+                <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg border border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-200"
+                  className="w-9 h-9 glass rounded-xl flex items-center justify-center text-slate-500 hover:text-violet-700 transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 >
                   <Icon size={15} />
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Right: form */}
+          {/* Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.52, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
             {sent ? (
-              <div className="bg-[#0e1018] border border-emerald-500/30 rounded-2xl p-10 flex flex-col items-center text-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
-                  <CheckCircle2 size={22} className="text-emerald-400" />
+              <div className="glass glass-shine rounded-3xl p-10 flex flex-col items-center text-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-100/70 border border-emerald-300/60 flex items-center justify-center">
+                  <CheckCircle2 size={22} className="text-emerald-600" />
                 </div>
                 <div>
-                  <h3 className="text-white font-bold text-lg">Message Sent!</h3>
-                  <p className="text-slate-400 text-sm mt-1">
+                  <h3 className="text-slate-800 font-bold text-lg">Message Sent!</h3>
+                  <p className="text-slate-500 text-sm mt-1">
                     Thanks for reaching out. I&apos;ll get back to you soon.
                   </p>
                 </div>
               </div>
             ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="bg-[#0e1018] border border-white/[0.06] rounded-2xl p-6 space-y-4"
-              >
+              <form onSubmit={handleSubmit} className="glass glass-shine rounded-3xl p-6 space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-slate-400 text-xs font-medium block mb-2">Name</label>
-                    <input
-                      name="name"
-                      required
-                      placeholder="Your name"
-                      className="w-full bg-[#131521] border border-white/[0.07] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-colors"
-                    />
+                    <label className="text-slate-500 text-xs font-bold block mb-2">Name</label>
+                    <input name="name" required placeholder="Your name" className={inputClass} />
                   </div>
                   <div>
-                    <label className="text-slate-400 text-xs font-medium block mb-2">Email</label>
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="your@email.com"
-                      className="w-full bg-[#131521] border border-white/[0.07] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-colors"
-                    />
+                    <label className="text-slate-500 text-xs font-bold block mb-2">Email</label>
+                    <input name="email" type="email" required placeholder="your@email.com" className={inputClass} />
                   </div>
                 </div>
                 <div>
-                  <label className="text-slate-400 text-xs font-medium block mb-2">Subject</label>
-                  <input
-                    name="subject"
-                    placeholder="What's this about?"
-                    className="w-full bg-[#131521] border border-white/[0.07] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-colors"
-                  />
+                  <label className="text-slate-500 text-xs font-bold block mb-2">Subject</label>
+                  <input name="subject" placeholder="What's this about?" className={inputClass} />
                 </div>
                 <div>
-                  <label className="text-slate-400 text-xs font-medium block mb-2">Message</label>
+                  <label className="text-slate-500 text-xs font-bold block mb-2">Message</label>
                   <textarea
                     name="message"
                     required
                     rows={5}
                     placeholder="Tell me about your project, opportunity, or just say hi..."
-                    className="w-full bg-[#131521] border border-white/[0.07] rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/50 transition-colors resize-none"
+                    className={`${inputClass} resize-none`}
                   />
                 </div>
-                <button
+                <motion.button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-indigo-600/20"
+                  className="w-full glass-btn flex items-center justify-center gap-2 py-3 rounded-2xl font-bold text-sm disabled:opacity-60"
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 >
                   <Send size={14} />
                   {loading ? 'Opening...' : 'Send Message'}
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>

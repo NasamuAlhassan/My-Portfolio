@@ -13,131 +13,168 @@ const iconMap = {
   send: Send,
 }
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+const fade = (delay = 0) => ({
+  initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
 })
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-700/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-indigo-900/10 rounded-full blur-[100px]" />
-      </div>
+    <section id="hero" className="min-h-screen flex items-center pt-28 pb-20 px-6">
+      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
 
-      <div className="max-w-6xl mx-auto px-6 py-24 w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
-        {/* Left: Text */}
+        {/* ── Left: Text ── */}
         <div>
-          <motion.div {...fadeUp(0)}>
-            <p className="text-slate-400 text-base font-medium mb-2">Hi, I&apos;m</p>
-            <h1 className="text-5xl sm:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.02] tracking-tight">
+          <motion.div {...fade(0.05)}>
+            <p className="text-slate-500 text-base font-medium mb-3">Hi, I&apos;m</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.0] tracking-tight">
               <span className="gradient-text">{personalInfo.firstName}</span>
               <br />
               <span className="gradient-text">{personalInfo.lastName}</span>
             </h1>
           </motion.div>
 
-          <motion.p {...fadeUp(0.16)} className="text-indigo-400 text-xl font-semibold mt-5">
+          <motion.p {...fade(0.14)} className="text-violet-700 font-bold text-xl mt-5">
             {personalInfo.title}
           </motion.p>
 
-          <motion.p {...fadeUp(0.22)} className="text-slate-400 mt-3 max-w-lg leading-relaxed text-sm">
+          <motion.p {...fade(0.2)} className="text-slate-600 mt-3 max-w-md leading-relaxed text-sm">
             {personalInfo.degree} &middot; {personalInfo.university}
           </motion.p>
 
-          <motion.p {...fadeUp(0.26)} className="text-slate-500 mt-2 max-w-md leading-relaxed text-sm italic">
+          <motion.p {...fade(0.24)} className="text-slate-500 mt-2 max-w-md leading-relaxed text-sm italic">
             &ldquo;{personalInfo.tagline}&rdquo;
           </motion.p>
 
-          <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 mt-8">
-            <a
+          {/* CTAs */}
+          <motion.div {...fade(0.3)} className="flex flex-wrap gap-3 mt-9">
+            <motion.a
               href="#projects"
-              className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-indigo-600/20"
+              className="glass-btn px-7 py-3 rounded-full text-sm font-bold"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 35 }}
             >
               View My Work
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href="#contact"
-              className="px-6 py-3 rounded-xl border border-white/[0.1] hover:border-indigo-500/40 hover:bg-indigo-500/10 text-slate-300 hover:text-white font-semibold text-sm transition-all duration-200"
+              className="glass-btn-outline px-7 py-3 rounded-full text-sm font-bold text-slate-700 hover:text-violet-700 transition-colors"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: 'spring', stiffness: 500, damping: 35 }}
             >
               Get in Touch
-            </a>
+            </motion.a>
           </motion.div>
 
-          <motion.div {...fadeUp(0.4)} className="flex items-center gap-3 mt-10">
+          {/* Socials */}
+          <motion.div {...fade(0.38)} className="flex items-center gap-2.5 mt-9">
             {socialLinks.map((link) => {
               const Icon = iconMap[link.icon as keyof typeof iconMap]
               if (!Icon) return null
               return (
-                <a
+                <motion.a
                   key={link.name}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.name}
-                  className="w-9 h-9 rounded-lg border border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-white hover:border-indigo-500/40 hover:bg-indigo-500/10 transition-all duration-200"
+                  className="w-9 h-9 rounded-xl glass flex items-center justify-center text-slate-500 hover:text-violet-700 transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                 >
                   <Icon size={15} />
-                </a>
+                </motion.a>
               )
             })}
           </motion.div>
         </div>
 
-        {/* Right: Photo */}
+        {/* ── Right: Photo ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.92, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
         >
           <div className="relative">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-indigo-600/30 to-transparent blur-xl" />
-            <div className="relative w-72 h-72 sm:w-[320px] sm:h-[320px] rounded-2xl overflow-hidden border border-white/[0.1]">
-              <Image
-                src="/home.jpg"
-                alt="Prince Nasamu Alhassan"
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-            <div className="absolute -bottom-5 -left-5 bg-[#131521] border border-white/[0.08] px-4 py-3 rounded-xl shadow-xl">
-              <div className="text-2xl font-bold text-white">{personalInfo.gpa}</div>
-              <div className="text-xs text-slate-500 mt-0.5">GPA</div>
-            </div>
-            <div className="absolute -top-5 -right-5 bg-[#131521] border border-white/[0.08] px-4 py-3 rounded-xl shadow-xl">
-              <div className="text-2xl font-bold text-white">{personalInfo.yearsOfCoding}</div>
-              <div className="text-xs text-slate-500 mt-0.5">Years Coding</div>
-            </div>
+            {/* Outer glow */}
+            <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-violet-400/20 via-fuchsia-300/15 to-pink-400/20 blur-2xl" />
+
+            {/* Glass photo frame */}
+            <motion.div
+              className="relative glass glass-shine rounded-[2rem] p-2.5"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            >
+              <div className="w-64 h-64 sm:w-[300px] sm:h-[300px] rounded-[1.5rem] overflow-hidden">
+                <Image
+                  src="/home.jpg"
+                  alt="Prince Nasamu Alhassan"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </motion.div>
+
+            {/* Floating chip — GPA */}
+            <motion.div
+              className="absolute -bottom-5 -left-6 glass glass-shine rounded-2xl px-4 py-3"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -3 }}
+            >
+              <div className="text-2xl font-extrabold gradient-text-subtle">{personalInfo.gpa}</div>
+              <div className="text-[11px] text-slate-500 mt-0.5 font-medium">GPA</div>
+            </motion.div>
+
+            {/* Floating chip — Years */}
+            <motion.div
+              className="absolute -top-5 -right-6 glass glass-shine rounded-2xl px-4 py-3"
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.6, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -3 }}
+            >
+              <div className="text-2xl font-extrabold gradient-text-subtle">{personalInfo.yearsOfCoding}</div>
+              <div className="text-[11px] text-slate-500 mt-0.5 font-medium">Years Coding</div>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-4 gap-3 mt-14 w-full max-w-[340px]">
-            {stats.map((stat) => (
-              <div
+          {/* Stats row */}
+          <div className="grid grid-cols-4 gap-2.5 mt-14 w-full max-w-[340px]">
+            {stats.map((stat, i) => (
+              <motion.div
                 key={stat.label}
-                className="bg-[#0e1018] border border-white/[0.06] rounded-xl p-3 text-center"
+                className="glass glass-shine rounded-2xl p-3 text-center"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 + i * 0.07, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -3, scale: 1.04 }}
               >
-                <div className="text-base font-bold text-white">{stat.value}</div>
-                <div className="text-[10px] text-slate-500 mt-0.5 leading-tight">{stat.label}</div>
-              </div>
+                <div className="text-base font-extrabold gradient-text-subtle">{stat.value}</div>
+                <div className="text-[10px] text-slate-500 mt-0.5 leading-tight font-medium">{stat.label}</div>
+              </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
 
+      {/* Scroll indicator */}
       <motion.a
         href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-600 hover:text-slate-400 transition-colors"
+        transition={{ delay: 1.3 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-400 hover:text-violet-600 transition-colors"
       >
-        <span className="text-[11px] tracking-widest uppercase">scroll</span>
-        <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.6 }}>
+        <span className="text-[10px] tracking-[0.25em] uppercase font-medium">scroll</span>
+        <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.7, ease: 'easeInOut' }}>
           <ArrowDown size={13} />
         </motion.div>
       </motion.a>
