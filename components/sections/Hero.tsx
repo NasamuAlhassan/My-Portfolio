@@ -32,13 +32,6 @@ export default function Hero() {
         {/* Left: Text */}
         <div>
           <motion.div {...fadeUp(0)}>
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm mb-8">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              Available for opportunities
-            </div>
-          </motion.div>
-
-          <motion.div {...fadeUp(0.08)}>
             <p className="text-slate-400 text-base font-medium mb-2">Hi, I&apos;m</p>
             <h1 className="text-5xl sm:text-6xl lg:text-[4.25rem] font-extrabold leading-[1.02] tracking-tight">
               <span className="gradient-text">{personalInfo.firstName}</span>
