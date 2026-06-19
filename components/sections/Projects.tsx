@@ -1,144 +1,250 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
-import { Github, ExternalLink, Clock } from 'lucide-react'
-import { projects } from '@/lib/data'
+import { ArrowUpRight, Star, Clock } from 'lucide-react'
+import { projects, type Project } from '@/lib/data'
 
-const badgeStyle: Record<string, string> = {
-  'Full-Stack': 'text-violet-700 bg-violet-100/70 border-violet-300/60',
-  'Web Dev': 'text-blue-700 bg-blue-100/70 border-blue-300/60',
-  Analytics: 'text-amber-700 bg-amber-100/70 border-amber-300/60',
-  'Coming Soon': 'text-slate-500 bg-slate-100/50 border-slate-300/40',
+type RepoMeta = { stars: number; updatedAt: string } | null
+
+const fetchRepoData = async (repo: string): Promise<RepoMeta> => {
+  try {
+    const res = await fetch(`https://api.github.com/repos/NasamuAlhassan/${repo}`)
+    if (!res.ok) return null
+    const data = await res.json()
+    return {
+      stars: data.stargazers_count,
+      updatedAt: new Date(data.updated_at).toLocaleDateString('en-GB', {
+        month: 'short',
+        year: 'numeric',
+      }),
+    }
+  } catch {
+    return null
+  }
 }
 
-type Project = (typeof projects)[0]
+function TagList({ tags }: { tags: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {tags.map((tag) => (
+        <span key={tag} className="tag">
+          {tag}
+        </span>
+      ))}
+    </div>
+  )
+}
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-60px' })
+function LinkRow({ links }: { links: Project['links'] }) {
+  if (!links.length) return null
+  return (
+    <div className="flex flex-wrap gap-4 mt-auto pt-4">
+      {links.map((link) => (
+        <a
+          key={link.label}
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 font-sans text-xs font-medium text-forest
+                     hover:underline underline-offset-4 transition-colors"
+        >
+          {link.label}
+          <ArrowUpRight size={12} />
+        </a>
+      ))}
+    </div>
+  )
+}
 
+function BleuCallout({ forward, backward }: { forward: number; backward: number }) {
+  return (
+    <div className="flex flex-wrap gap-2 mt-3">
+      <span className="font-mono text-[11px] border border-stone bg-paper px-2.5 py-1 rounded-sm text-forest">
+        BLEU {forward} ↑ (ks→en)
+      </span>
+      <span className="font-mono text-[11px] border border-stone bg-paper px-2.5 py-1 rounded-sm text-ink-muted">
+        BLEU {backward} ↓ (en→ks)
+      </span>
+    </div>
+  )
+}
+
+function RepoMeta({ meta }: { meta: RepoMeta }) {
+  if (!meta) return null
+  return (
+    <div className="flex items-center gap-4 mt-3 pt-3 border-t border-stone">
+      <span className="inline-flex items-center gap-1 font-mono text-[11px] text-ink-muted">
+        <Star size={11} />
+        {meta.stars}
+      </span>
+      <span className="inline-flex items-center gap-1 font-mono text-[11px] text-ink-muted">
+        <Clock size={11} />
+        {meta.updatedAt}
+      </span>
+    </div>
+  )
+}
+
+function FeaturedCard({
+  project,
+  meta,
+  index,
+  isInView,
+}: {
+  project: Project
+  meta: RepoMeta
+  index: number
+  isInView: boolean
+}) {
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.52, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-      className={`glass glass-shine rounded-3xl overflow-hidden flex flex-col ${
-        project.featured ? 'lg:col-span-2' : ''
-      }`}
-      whileHover={{ y: -6, scale: 1.01 }}
-      whileTap={{ scale: 0.99 }}
-      style={{ transition: undefined }}
+      transition={{ duration: 0.52, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="card p-7 flex flex-col h-full"
     >
-      {/* Thumbnail */}
-      {project.image ? (
-        <div className={`relative overflow-hidden ${project.featured ? 'h-52' : 'h-44'}`}>
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-transparent" />
-        </div>
-      ) : (
-        <div
-          className={`flex items-center justify-center bg-white/20 ${
-            project.featured ? 'h-52' : 'h-44'
-          }`}
-        >
-          {project.comingSoon ? (
-            <div className="flex flex-col items-center gap-3 text-slate-400">
-              <Clock size={28} />
-              <span className="text-xs font-medium">Coming Soon</span>
-            </div>
-          ) : (
-            <span className="text-6xl font-black text-violet-200">{project.title[0]}</span>
-          )}
-        </div>
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <span className="font-mono text-[10px] uppercase tracking-widest text-forest">
+          Featured
+        </span>
+      </div>
+
+      <h3 className="font-serif text-2xl text-ink leading-snug mb-3">
+        {project.title}
+      </h3>
+
+      <p className="font-sans text-sm leading-[1.75] text-ink-muted mb-4 flex-1">
+        {project.description}
+      </p>
+
+      {project.bleu && (
+        <BleuCallout forward={project.bleu.forward} backward={project.bleu.backward} />
       )}
 
-      <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <h3 className="text-slate-800 font-bold text-lg leading-tight">{project.title}</h3>
-          <span
-            className={`text-[11px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${
-              badgeStyle[project.badge] ?? badgeStyle['Coming Soon']
-            }`}
-          >
-            {project.badge}
-          </span>
-        </div>
+      {project.githubRepo && <RepoMeta meta={meta} />}
 
-        <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
-
-        {project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-4">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] text-slate-500 bg-white/40 border border-white/60 px-2.5 py-1 rounded-lg font-medium backdrop-blur-sm"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-
-        {!project.comingSoon && (
-          <div className="flex items-center gap-4 pt-1">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-violet-700 transition-colors font-medium"
-              >
-                <Github size={13} />
-                GitHub
-              </a>
-            )}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs text-violet-600 hover:text-violet-800 transition-colors font-medium"
-              >
-                <ExternalLink size={13} />
-                Live Demo
-              </a>
-            )}
-          </div>
-        )}
+      <div className="mt-4">
+        <TagList tags={project.tags} />
       </div>
+
+      <LinkRow links={project.links} />
+    </motion.div>
+  )
+}
+
+function OtherCard({
+  project,
+  meta,
+  index,
+  isInView,
+}: {
+  project: Project
+  meta: RepoMeta
+  index: number
+  isInView: boolean
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 + index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+      className="card p-5 flex flex-col h-full"
+    >
+      <h3 className="font-sans text-base font-semibold text-ink mb-2 leading-snug">
+        {project.title}
+      </h3>
+
+      <p className="font-sans text-sm leading-[1.7] text-ink-muted mb-3 flex-1">
+        {project.description}
+      </p>
+
+      {project.githubRepo && <RepoMeta meta={meta} />}
+
+      <div className="mt-3">
+        <TagList tags={project.tags} />
+      </div>
+
+      <LinkRow links={project.links} />
     </motion.div>
   )
 }
 
 export default function Projects() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.05 })
+  const [repoMeta, setRepoMeta] = useState<Record<string, RepoMeta>>({})
+
+  useEffect(() => {
+    const reposToFetch = projects
+      .filter((p) => p.githubRepo)
+      .map((p) => p.githubRepo as string)
+
+    Promise.all(
+      reposToFetch.map(async (repo) => {
+        const data = await fetchRepoData(repo)
+        return { repo, data }
+      })
+    ).then((results) => {
+      const map: Record<string, RepoMeta> = {}
+      results.forEach(({ repo, data }) => {
+        map[repo] = data
+      })
+      setRepoMeta(map)
+    })
+  }, [])
+
+  const featured = projects.filter((p) => p.featured)
+  const others = projects.filter((p) => !p.featured)
 
   return (
-    <section id="projects" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-24 md:py-32 px-6 border-t border-stone">
+      <div className="max-w-content mx-auto" ref={ref}>
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
+          className="mb-12"
         >
-          <p className="text-violet-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Work</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold gradient-text">Projects</h2>
+          <p className="section-label">Work</p>
+          <h2 className="section-heading">Projects</h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-5">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        {/* Featured — 3 equal columns on desktop */}
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
+          {featured.map((project, i) => (
+            <FeaturedCard
+              key={project.id}
+              project={project}
+              meta={project.githubRepo ? repoMeta[project.githubRepo] ?? null : null}
+              index={i}
+              isInView={isInView}
+            />
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="divider my-10" />
+
+        {/* Other projects */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.35, ease: 'easeOut' }}
+          className="font-mono text-[11px] uppercase tracking-widest text-ink-muted mb-6"
+        >
+          More projects
+        </motion.p>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          {others.map((project, i) => (
+            <OtherCard
+              key={project.id}
+              project={project}
+              meta={project.githubRepo ? repoMeta[project.githubRepo] ?? null : null}
+              index={i}
+              isInView={isInView}
+            />
           ))}
         </div>
       </div>

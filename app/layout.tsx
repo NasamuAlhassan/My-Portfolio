@@ -1,23 +1,38 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans } from 'next/font/google'
+import { DM_Serif_Display, Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const plusJakarta = Plus_Jakarta_Sans({
+const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
-  variable: '--font-plus-jakarta',
-  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-dm-serif',
+  weight: '400',
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const jetbrains = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+  weight: ['400', '500'],
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'Prince Nasamu Alhassan — Data Scientist & Developer',
+  title: 'Prince Nasamu Alhassan — AI Researcher · Low-Resource NLP',
   description:
-    'Portfolio of Prince Nasamu Alhassan — Mathematical Sciences & CS student at University of Ghana, building data tools for problems that matter.',
-  keywords: ['data science', 'python developer', 'university of ghana', 'portfolio', 'machine learning'],
+    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building language technology for Africa's most ignored languages.",
+  keywords: ['AI research', 'NLP', 'Kusaal', 'machine translation', 'African languages', 'low-resource MT'],
   authors: [{ name: 'Prince Nasamu Alhassan' }],
   openGraph: {
-    title: 'Prince Nasamu Alhassan',
-    description: 'Data Scientist & Python Developer — University of Ghana',
+    title: 'Prince Nasamu Alhassan — AI Researcher',
+    description: "Building language technology for Africa's most ignored languages.",
     type: 'website',
   },
 }
@@ -25,7 +40,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${plusJakarta.variable} font-sans text-slate-800 antialiased`}>
+      <body
+        className={`${dmSerif.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased bg-paper text-ink`}
+      >
         {children}
       </body>
     </html>

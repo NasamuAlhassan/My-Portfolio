@@ -9,21 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-plus-jakarta)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-dm-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-outfit)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-jetbrains)', 'Menlo', 'monospace'],
       },
       colors: {
-        base: '#08090e',
-        elevated: '#0e1018',
-        card: '#131521',
+        paper: '#F8F8F6',
+        ink: '#0F0F0F',
+        'ink-muted': '#4A4A4A',
+        forest: '#1D4A2F',
+        stone: '#E2E2DE',
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
+      maxWidth: {
+        content: '1100px',
       },
     },
   },

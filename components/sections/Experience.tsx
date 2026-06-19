@@ -2,85 +2,63 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { GraduationCap, Briefcase, Star } from 'lucide-react'
-import { timeline } from '@/lib/data'
-
-const typeConfig = {
-  education: {
-    icon: GraduationCap,
-    color: 'text-violet-700',
-    bg: 'bg-violet-100/70 border-violet-300/60',
-  },
-  work: {
-    icon: Briefcase,
-    color: 'text-emerald-700',
-    bg: 'bg-emerald-100/70 border-emerald-300/60',
-  },
-  milestone: {
-    icon: Star,
-    color: 'text-amber-700',
-    bg: 'bg-amber-100/70 border-amber-300/60',
-  },
-}
+import { experience } from '@/lib/data'
 
 export default function Experience() {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section id="experience" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section id="experience" className="py-24 md:py-32 px-6 border-t border-stone">
+      <div className="max-w-content mx-auto" ref={ref}>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
+          className="mb-12"
         >
-          <p className="text-violet-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Journey</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold gradient-text">Experience</h2>
+          <p className="section-label">Journey</p>
+          <h2 className="section-heading">Experience</h2>
         </motion.div>
 
+        {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
-          <div className="absolute left-6 top-5 bottom-5 w-px bg-violet-200/50 hidden sm:block" />
+          <div className="absolute left-0 top-2 bottom-2 w-px bg-stone hidden sm:block" />
 
-          <div className="space-y-4">
-            {timeline.map((item, index) => {
-              const config = typeConfig[item.type as keyof typeof typeConfig]
-              const Icon = config.icon
+          <div className="space-y-8 sm:pl-8">
+            {experience.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 14 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.08 + index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="relative"
+              >
+                {/* Dot */}
+                <div
+                  className={`hidden sm:block absolute -left-[2.35rem] top-[5px] w-2.5 h-2.5 rounded-full border-2
+                    ${item.current
+                      ? 'bg-forest border-forest'
+                      : 'bg-white border-stone'
+                    }`}
+                />
 
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.48, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="sm:pl-16 relative"
-                >
-                  {/* Icon dot */}
-                  <div
-                    className={`hidden sm:flex absolute left-0 top-5 w-12 h-12 rounded-2xl border items-center justify-center backdrop-blur-sm ${config.bg}`}
-                  >
-                    <Icon size={18} className={config.color} />
-                  </div>
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 mb-1.5">
+                  <h3 className="font-sans font-semibold text-base text-ink leading-snug">
+                    {item.role}
+                    {item.org && (
+                      <span className="font-normal text-forest"> — {item.org}</span>
+                    )}
+                  </h3>
+                  <span className="font-mono text-[11px] text-ink-muted shrink-0">{item.period}</span>
+                </div>
 
-                  <motion.div
-                    className="glass glass-shine rounded-3xl p-6"
-                    whileHover={{ y: -4, scale: 1.01 }}
-                    transition={{ type: 'spring', stiffness: 480, damping: 38 }}
-                  >
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                      <div>
-                        <h3 className="text-slate-800 font-bold">{item.title}</h3>
-                        <p className="text-violet-600 text-sm mt-0.5 font-semibold">{item.org}</p>
-                      </div>
-                      <span className="text-slate-400 text-xs shrink-0 font-mono font-medium">{item.year}</span>
-                    </div>
-                    <p className="text-slate-600 text-sm leading-relaxed mt-2">{item.description}</p>
-                  </motion.div>
-                </motion.div>
-              )
-            })}
+                <p className="font-sans text-sm leading-[1.75] text-ink-muted max-w-prose">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

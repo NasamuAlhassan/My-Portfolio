@@ -1,53 +1,121 @@
-'use client'
-
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { Award, Clock } from 'lucide-react'
+import fs from 'fs'
+import path from 'path'
 import { certifications } from '@/lib/data'
+import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
+
+const knownTitles: Record<string, string> = {
+  'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
+  'Claude 101': 'Claude 101 — Anthropic',
+  'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
+  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
+}
+
+function cleanTitle(baseName: string): string {
+  if (knownTitles[baseName]) return knownTitles[baseName]
+  return baseName
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase())
+    .trim()
+}
+
+function getImageBase(filename: string): string {
+  return filename
+    .replace(/\.[^.]+$/, '')
+    .replace(/ conv \d+$/i, '')
+    .trim()
+}
+
+function getCerts(): CertCard[] {
+  const certsDir = path.join(process.cwd(), 'public', 'certificates')
+  let files: string[] = []
+  try {
+    files = fs.readdirSync(certsDir)
+  } catch {
+    return []
+  }
+
+  const imageFiles = files.filter((f) => /\.(jpg|jpeg|png|gif|webp)$/i.test(f))
+  const pdfFiles = files.filter((f) => /\.pdf$/i.test(f))
+
+  // Map PDF base name → filename
+  const pdfByBase = new Map<string, string>()
+  for (const pdf of pdfFiles) {
+    const base = pdf.replace(/\.pdf$/i, '').trim()
+    pdfByBase.set(base, pdf)
+  }
+
+  const pairedPdfs = new Set<string>()
+  const cards: CertCard[] = []
+
+  for (const img of imageFiles) {
+    const base = getImageBase(img)
+    const matchedPdf = pdfByBase.get(base)
+
+    const card: CertCard = {
+      title: cleanTitle(base),
+      image: { filename: img, path: `/certificates/${encodeURIComponent(img)}` },
+    }
+
+    if (matchedPdf) {
+      card.pdf = { filename: matchedPdf, path: `/certificates/${encodeURIComponent(matchedPdf)}` }
+      pairedPdfs.add(matchedPdf)
+    }
+
+    cards.push(card)
+  }
+
+  // Add any PDFs that had no matching image
+  for (const pdf of pdfFiles) {
+    if (!pairedPdfs.has(pdf)) {
+      const base = pdf.replace(/\.pdf$/i, '').trim()
+      cards.push({
+        title: cleanTitle(base),
+        pdf: { filename: pdf, path: `/certificates/${encodeURIComponent(pdf)}` },
+      })
+    }
+  }
+
+  return cards
+}
 
 export default function Certifications() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const cards = getCerts()
 
   return (
-    <section id="certifications" className="py-24 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
-        >
-          <p className="text-violet-600 text-xs font-bold uppercase tracking-[0.22em] mb-3">Credentials</p>
-          <h2 className="text-4xl sm:text-5xl font-extrabold gradient-text">Certifications</h2>
-          <p className="text-slate-500 mt-3 text-sm font-medium">Actively pursuing these credentials.</p>
-        </motion.div>
+    <section id="certifications" className="py-24 md:py-32 px-6 border-t border-stone">
+      <div className="max-w-content mx-auto">
+        <div className="mb-12">
+          <p className="section-label">Credentials</p>
+          <h2 className="section-heading">Certifications & Recognition</h2>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {certifications.map((cert, index) => (
-            <motion.div
+        {/* Recognition list */}
+        <div className="mb-14 space-y-0 max-w-2xl">
+          {certifications.map((cert) => (
+            <div
               key={cert.title}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.48, delay: index * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="glass glass-shine rounded-3xl p-5 flex flex-col gap-4 border-dashed"
-              whileHover={{ y: -5, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-3 border-b border-stone last:border-0"
             >
-              <div className="w-11 h-11 rounded-2xl bg-amber-100/70 border border-amber-300/60 flex items-center justify-center backdrop-blur-sm">
-                <Award size={18} className="text-amber-700" />
-              </div>
               <div className="flex-1">
-                <h3 className="text-slate-800 font-bold text-sm leading-snug">{cert.title}</h3>
-                <p className="text-slate-500 text-xs mt-1.5 font-medium">{cert.issuer}</p>
+                <p className="font-sans text-sm font-medium text-ink">{cert.title}</p>
+                <p className="font-sans text-xs text-ink-muted mt-0.5">{cert.issuer}</p>
               </div>
-              <div className="flex items-center gap-1.5 text-xs text-slate-400 font-medium">
-                <Clock size={11} />
-                <span>In progress</span>
-              </div>
-            </motion.div>
+              {cert.date && (
+                <span className="font-mono text-[11px] text-ink-muted shrink-0">{cert.date}</span>
+              )}
+            </div>
           ))}
         </div>
+
+        {/* Certificate gallery */}
+        {cards.length > 0 && (
+          <>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-muted mb-6">
+              Certificate gallery
+            </p>
+            <CertificateGallery cards={cards} />
+          </>
+        )}
       </div>
     </section>
   )

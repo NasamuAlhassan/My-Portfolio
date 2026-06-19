@@ -1,159 +1,238 @@
 export const personalInfo = {
   name: 'Prince Nasamu Alhassan',
-  firstName: 'Prince Nasamu',
-  lastName: 'Alhassan',
-  title: 'Data Scientist & Python Developer',
-  tagline: 'Building tools for languages that matter.',
+  shortName: 'P.N. Alhassan',
+  title: 'AI Researcher · Low-Resource NLP · African Language Technologies',
+  tagline: "Building language technology for Africa's most ignored languages.",
   email: 'pnalhassan@gmail.com',
-  location: 'Accra, Ghana',
-  hometown: 'Bawku, Northern Ghana',
+  github: 'https://github.com/NasamuAlhassan',
+  huggingface: 'https://huggingface.co/PrinceAlhassanNasamu',
+  linkedin: 'https://linkedin.com/in/alhassan-prince',
   university: 'University of Ghana, Legon',
   degree: 'BSc Mathematical Sciences with Computer Science',
   graduationYear: '2029',
   gpa: '4.0',
-  yearsOfCoding: '3+',
-  bio: [
-    "I'm Prince Nasamu Alhassan. I study Mathematical Sciences with Computer Science at the University of Ghana, Legon — currently holding a 4.0.",
-    "What pulls me toward data science isn't the dashboards or the buzzwords. It's that you can take a language like Kusaal — the one I grew up speaking in Bawku, the one most models can't read a sentence of — and turn it into training data, into translation tools, into something that doesn't quietly disappear. Math and code stop feeling abstract the moment you aim them at a problem no one big enough is paying attention to.",
-    "Outside of that: I drum and run sound for my church choir. I believe good ideas should travel — that's partly why I build in public.",
-  ],
+  affiliations: ['GhanaNLP', 'Kusaal Wikimedia Community', 'COMPSSA'],
 }
 
-export const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/NasamuAlhassan', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/alhassan-prince', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/PrinceAlha50083', icon: 'twitter' },
-  { name: 'Instagram', url: 'https://instagram.com/prince_melanin', icon: 'instagram' },
-  { name: 'Telegram', url: 'https://t.me/AlhassanNasamu', icon: 'send' },
-]
+export const about =
+  "Prince Nasamu Alhassan is an 18-year-old AI researcher and software engineer at the University of Ghana, Legon, maintaining a 4.0 CGPA. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he independently designed, trained, and publicly released the first standalone Kusaal-English machine translation system — building the 32,000-pair parallel corpus that underlies it from scratch. His work has been presented at a GhanaNLP community session, where GhanaNLP co-founder Paul Azunre publicly engaged and requested access to the dataset. He builds full-stack products used by real students, contributes to the Kusaal Wikimedia Community, and taught himself programming during COVID-19 lockdowns before any formal CS instruction."
 
-export const skills = {
-  Languages: [
-    { name: 'Python', level: 'Advanced' },
-    { name: 'SQL', level: 'Intermediate' },
-    { name: 'JavaScript', level: 'Intermediate' },
-    { name: 'HTML & CSS', level: 'Intermediate' },
-    { name: 'TypeScript', level: 'Beginner' },
-  ],
-  'Data Science': [
-    { name: 'Pandas', level: 'Advanced' },
-    { name: 'NumPy', level: 'Advanced' },
-    { name: 'Scikit-learn', level: 'Intermediate' },
-    { name: 'Matplotlib', level: 'Intermediate' },
-    { name: 'Seaborn', level: 'Intermediate' },
-    { name: 'Statistics', level: 'Advanced' },
-    { name: 'Machine Learning', level: 'Intermediate' },
-  ],
-  'Tools & Platforms': [
-    { name: 'Power BI', level: 'Intermediate' },
-    { name: 'Excel', level: 'Advanced' },
-    { name: 'Git & GitHub', level: 'Intermediate' },
-    { name: 'Next.js', level: 'Intermediate' },
-    { name: 'Supabase', level: 'Beginner' },
-    { name: 'VS Code', level: 'Advanced' },
-  ],
+export const skills: Record<string, string[]> = {
+  'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14'],
+  'ML / NLP': ['PyTorch', 'HuggingFace Transformers', 'NLLB-200', 'Whisper', 'scikit-learn', 'RAG Systems', 'BLEU Evaluation'],
+  'Infrastructure & Data': ['Supabase', 'Vercel', 'Git/GitHub', 'Kaggle', 'Jupyter', 'SQL', 'REST APIs', 'pandas'],
+  'Research': ['Low-resource MT', 'Parallel Corpus Curation', 'Data Augmentation (Back-translation)', 'ASR Fine-tuning', 'Multilingual NLP'],
+  'Human Languages': ['Kusaal (native)', 'English (professional)'],
 }
 
-export const projects = [
+export type ProjectLink = { label: string; href: string }
+export type BleuScores = { forward: number; backward: number }
+
+export interface Project {
+  id: number
+  title: string
+  description: string
+  tags: string[]
+  links: ProjectLink[]
+  featured: boolean
+  bleu?: BleuScores
+  githubRepo?: string
+}
+
+export const projects: Project[] = [
   {
     id: 1,
-    title: 'CampusLink',
+    title: 'Kusaal-English Machine Translation',
     description:
-      'A full-stack platform built specifically for students at the University of Ghana — connecting students, organizing campus resources, and streamlining communication across the community.',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
-    github: 'https://github.com/NasamuAlhassan/campuslink',
-    live: null as string | null,
-    image: null as string | null,
-    badge: 'Full-Stack',
+      "The first open-source standalone Kusaal-English machine translation system. Fine-tuned Meta's NLLB-200-distilled-600M on a 32,589-pair parallel corpus — the largest structured Kusaal linguistic dataset in existence.",
+    tags: ['NLP', 'HuggingFace', 'Low-resource MT', 'PyTorch', 'NLLB-200'],
+    links: [
+      { label: 'Model', href: 'https://huggingface.co/PrinceAlhassanNasamu/kusaal-nllb-600M' },
+      { label: 'Dataset', href: 'https://huggingface.co/datasets/PrinceAlhassanNasamu/kusaal-english-parallel-corpus' },
+    ],
     featured: true,
-    comingSoon: false,
+    bleu: { forward: 23.31, backward: 13.03 },
   },
   {
     id: 2,
-    title: 'Weather App',
+    title: 'Forge — AI-Powered Academic Productivity Tool',
     description:
-      'A real-time weather application that fetches live data from an open weather API, displaying current conditions, forecasts, and location-based results with a clean, responsive UI.',
-    tags: ['HTML', 'CSS', 'JavaScript', 'REST API'],
-    github: 'https://github.com/NasamuAlhassan',
-    live: null as string | null,
-    image: '/Weather.jpg',
-    badge: 'Web Dev',
-    featured: false,
-    comingSoon: false,
+      'Voice-driven study scheduler with Pomodoro focus sessions and usage analytics. Built and shipped within 48 hours at the DesignPxD Student AI Hackathon, UG Legon.',
+    tags: ['React', 'Vite', 'AI', 'Vercel', 'Hackathon'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/NasamuAlhassan/Forge_study' },
+      { label: 'Live Demo', href: 'https://forge-study-theta.vercel.app' },
+    ],
+    featured: true,
+    githubRepo: 'Forge_study',
   },
   {
     id: 3,
-    title: 'Internship Projects',
+    title: 'CampusLink — Verified Student Connection Platform',
     description:
-      'Data analysis and business intelligence work from internship experience — including data cleaning pipelines, interactive dashboards, and reports that drove real decisions.',
-    tags: ['Python', 'Power BI', 'Excel', 'Pandas'],
-    github: 'https://github.com/NasamuAlhassan',
-    live: null as string | null,
-    image: '/BI-Dash.png',
-    badge: 'Analytics',
-    featured: false,
-    comingSoon: false,
+      'Full-stack platform with two-stage student identity verification, real-time messaging, and an interactive campus map. Built for UG Legon students. Also in development as CampusLink Pay for Moolre Startup Cup 2026.',
+    tags: ['Next.js 14', 'Supabase', 'Gemini API', 'Full-stack'],
+    links: [{ label: 'Live Demo', href: 'https://campus-link-sigma.vercel.app' }],
+    featured: true,
   },
   {
     id: 4,
-    title: 'Forge',
+    title: 'Kusaal ASR — Whisper Fine-tune',
     description:
-      'Something in the works. Details coming soon.',
-    tags: [],
-    github: 'https://github.com/NasamuAlhassan',
-    live: null as string | null,
-    image: null as string | null,
-    badge: 'Coming Soon',
+      'Fine-tuned OpenAI Whisper on approximately 81 hours of Kusaal Bible audio, producing the first publicly available Kusaal automatic speech recognition model.',
+    tags: ['ASR', 'Whisper', 'HuggingFace', 'Low-resource'],
+    links: [{ label: 'HuggingFace', href: 'https://huggingface.co/PrinceAlhassanNasamu' }],
     featured: false,
-    comingSoon: true,
+  },
+  {
+    id: 5,
+    title: 'FieldMind — RAG Document Intelligence',
+    description:
+      'Retrieval-augmented generation tool for enterprise document search, built with Google Gemini API. Submitted to LabLab.ai hackathon.',
+    tags: ['RAG', 'Gemini', 'LangChain', 'Hackathon'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 6,
+    title: 'ShieldNet AI',
+    description:
+      'Multi-tier cybersecurity SaaS with AI-powered threat intelligence engine, mobile money payment integration, and emergency SMS infrastructure. Built with a team for Moolre Startup Cup 2026.',
+    tags: ['AI', 'Cybersecurity', 'SaaS', 'In Development'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 7,
+    title: 'HyperFlow Risk Agent',
+    description:
+      'Multi-agent trade risk analysis system. Contributed to a team for the AMD Developer Cloud AI Agents hackathon track on Devpost.',
+    tags: ['AI Agents', 'Risk Intelligence', 'AMD'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 8,
+    title: 'WhatsApp & Telegram AI Agents',
+    description:
+      'AI agent that monitors WhatsApp and delivers summarized digests via Telegram. Separate Telegram AI agent using Telethon and Ollama for locally-hosted conversational responses.',
+    tags: ['Telethon', 'Ollama', 'Automation', 'Python'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 9,
+    title: 'DecodeLabs Climate Data Pipeline',
+    description:
+      'End-to-end climate data pipeline ingesting meteorological time-series from the Open-Meteo API across five Ghanaian cities. Built during internship at Decodelabs.',
+    tags: ['Data Engineering', 'Python', 'Open-Meteo', 'Internship'],
+    links: [{ label: 'GitHub', href: 'https://github.com/NasamuAlhassan/DecodeLabs-Internship' }],
+    featured: false,
+    githubRepo: 'DecodeLabs-Internship',
+  },
+  {
+    id: 10,
+    title: 'VerifiQ',
+    description: 'QR-based student attendance system.',
+    tags: ['QR', 'Attendance', 'Web'],
+    links: [],
+    featured: false,
   },
 ]
 
-export const timeline = [
+export const experience = [
   {
-    year: '2026 — Present',
-    title: 'BSc Mathematical Sciences with Computer Science',
-    org: 'University of Ghana, Legon',
+    role: 'Independent NLP Researcher',
+    org: null as string | null,
+    period: '2024 – Present',
     description:
-      'Currently holding a 4.0 GPA. Focused on mathematical modelling, algorithms, data structures, and applied computing. First Class standing.',
-    type: 'education',
+      'Designed and released the first Kusaal-English MT system and ASR model. Presented at GhanaNLP. Published model and 32K-pair corpus on HuggingFace. Engineering back-translation pipeline to scale corpus to 100K+ pairs.',
+    current: true,
   },
   {
-    year: '2024 — 2025',
-    title: 'Data & Analytics Internship',
-    org: 'Industry Experience',
-    description:
-      'Worked on real-world data projects — cleaning datasets, building Power BI dashboards, and delivering actionable insights to stakeholders.',
-    type: 'work',
+    role: 'Data Science Intern',
+    org: 'Decodelabs' as string | null,
+    period: 'April – May 2026',
+    description: 'Built an end-to-end climate data pipeline across five Ghanaian cities using the Open-Meteo API.',
+    current: false,
   },
   {
-    year: '2024',
-    title: 'Built CampusLink',
-    org: 'Personal Project',
+    role: 'Data Science Intern',
+    org: 'Codveda Technologies' as string | null,
+    period: '2025',
     description:
-      'Developed a full-stack platform for UG students using Next.js, TypeScript, and Supabase — from idea to deployed product.',
-    type: 'milestone',
+      'Web-scraped 1,000+ records, built regression/classification models, applied ARIMA forecasting, developed NLP text classification systems.',
+    current: false,
   },
   {
-    year: '2023',
-    title: 'Started Building in Public',
-    org: 'Self-directed',
-    description:
-      'Began learning Python, data analysis, and web development. Built first projects and started sharing work on GitHub.',
-    type: 'milestone',
+    role: 'DesignPxD Student AI Hackathon',
+    org: null as string | null,
+    period: '2025',
+    description: 'Built and shipped FieldMind (RAG document intelligence) and Forge (AI study scheduler) in separate hackathon sprints.',
+    current: false,
+  },
+  {
+    role: 'AMD Developer Cloud Hackathon',
+    org: null as string | null,
+    period: '2025',
+    description: 'Contributed to HyperFlow Risk Agent — multi-agent trade risk system, AI Agents track on Devpost.',
+    current: false,
+  },
+]
+
+export const education = [
+  {
+    institution: 'University of Ghana, Legon',
+    degree: 'BSc Mathematical Sciences with Computer Science',
+    period: '2025 – 2029 (Expected)',
+    grade: 'CGPA: 4.0 / 4.0',
+    details:
+      'Relevant coursework: Calculus, Linear Algebra, Probability & Statistics, Discrete Mathematics, Algorithms, Data Structures, Numerical Analysis',
+    highlights: [] as string[],
+  },
+  {
+    institution: 'Osei Tutu Senior High School, Akropong',
+    degree: 'WASSCE',
+    period: 'Completed 2025',
+    grade: '6 A1s, 2 B3s',
+    details: null as string | null,
+    highlights: [
+      'Ranked 1st in class, 5th school-wide',
+      'NSMQ national semi-finalist; team leader and primary organiser for school\'s national campaign',
+      'Best Student award; top performance in Mathematics, Physics, Chemistry, and Biology',
+    ],
   },
 ]
 
 export const certifications = [
-  { title: 'Google Data Analytics', issuer: 'Google / Coursera', status: 'planned' },
-  { title: 'IBM Data Science Professional', issuer: 'IBM / Coursera', status: 'planned' },
-  { title: 'Machine Learning Specialization', issuer: 'DeepLearning.AI', status: 'planned' },
-  { title: 'Python for Everybody', issuer: 'University of Michigan', status: 'planned' },
-]
-
-export const stats = [
-  { value: '4.0', label: 'GPA' },
-  { value: '3+', label: 'Years Coding' },
-  { value: '4+', label: 'Projects' },
-  { value: '2029', label: 'Graduating' },
+  {
+    title: 'Prompt Engineering & Programming with OpenAI',
+    issuer: 'Columbia University (Columbia+)',
+    date: 'April 2026',
+  },
+  {
+    title: 'TechCrush Data Science Program',
+    issuer: '12-week applied data science curriculum',
+    date: null as string | null,
+  },
+  {
+    title: 'Google Research Africa Monthly Student Tech-Talk',
+    issuer: 'Speaker Application — Kusaal-English MT research',
+    date: null as string | null,
+  },
+  {
+    title: 'SYNC Mentorship Program',
+    issuer: 'CKODON, undergraduate track — Accepted',
+    date: null as string | null,
+  },
+  {
+    title: 'Pan African AI & Innovation Summit 2026',
+    issuer: 'Registered Attendee',
+    date: 'September 2026, Accra',
+  },
+  {
+    title: 'Moonshot Awards',
+    issuer: 'Submitted — Kusaal NLP + CampusLink',
+    date: null as string | null,
+  },
 ]
