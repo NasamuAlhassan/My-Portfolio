@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import { DM_Serif_Display, Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import ScrollProgress from '@/components/ScrollProgress'
+import SectionDots from '@/components/SectionDots'
+import Cursor from '@/components/motion/Cursor'
+import Aurora from '@/components/Aurora'
 
 const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
@@ -25,9 +31,12 @@ const jetbrains = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Prince Nasamu Alhassan — AI Researcher · Low-Resource NLP',
+  title: {
+    default: 'Prince Nasamu Alhassan — AI Researcher · Low-Resource NLP',
+    template: '%s — Prince Nasamu Alhassan',
+  },
   description:
-    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building language technology for Africa's most ignored languages.",
+    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building the first machine translation and speech recognition systems for Kusaal.",
   keywords: ['AI research', 'NLP', 'Kusaal', 'machine translation', 'African languages', 'low-resource MT'],
   authors: [{ name: 'Prince Nasamu Alhassan' }],
   openGraph: {
@@ -41,9 +50,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${dmSerif.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased bg-paper text-ink`}
+        className={`${dmSerif.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased text-ink`}
       >
-        {children}
+        <Aurora />
+        <ScrollProgress />
+        <Cursor />
+        <Header />
+        <SectionDots />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   )

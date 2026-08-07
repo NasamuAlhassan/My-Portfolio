@@ -1,13 +1,15 @@
-import fs from 'fs'
+﻿import fs from 'fs'
 import path from 'path'
 import { certifications } from '@/lib/data'
 import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
+import Reveal from '@/components/motion/Reveal'
+import TextReveal from '@/components/motion/TextReveal'
 
 const knownTitles: Record<string, string> = {
-  'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
-  'Claude 101': 'Claude 101 — Anthropic',
-  'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
-  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
+  'Columbia +': 'Prompt Engineering & Programming with OpenAI â€” Columbia+',
+  'Claude 101': 'Claude 101 â€” Anthropic',
+  'Coursera': 'Foundations: Data, Data, Everywhere â€” Google / Coursera',
+  'DecodeLabs Cert': 'DecodeLabs Virtual Internship â€” Data Science',
 }
 
 function cleanTitle(baseName: string): string {
@@ -37,7 +39,6 @@ function getCerts(): CertCard[] {
   const imageFiles = files.filter((f) => /\.(jpg|jpeg|png|gif|webp)$/i.test(f))
   const pdfFiles = files.filter((f) => /\.pdf$/i.test(f))
 
-  // Map PDF base name → filename
   const pdfByBase = new Map<string, string>()
   for (const pdf of pdfFiles) {
     const base = pdf.replace(/\.pdf$/i, '').trim()
@@ -64,7 +65,6 @@ function getCerts(): CertCard[] {
     cards.push(card)
   }
 
-  // Add any PDFs that had no matching image
   for (const pdf of pdfFiles) {
     if (!pairedPdfs.has(pdf)) {
       const base = pdf.replace(/\.pdf$/i, '').trim()
@@ -80,39 +80,39 @@ function getCerts(): CertCard[] {
 
 export default function Certifications() {
   const cards = getCerts()
+  const certs = certifications.filter((c) => c.type === 'certification')
 
   return (
-    <section id="certifications" className="py-24 md:py-32 px-6 border-t border-stone">
-      <div className="max-w-content mx-auto">
-        <div className="mb-12">
+    <section className="rule">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
+        <Reveal>
           <p className="section-label">Credentials</p>
-          <h2 className="section-heading">Certifications & Recognition</h2>
-        </div>
+        </Reveal>
+        <TextReveal text="Certifications." as="h2" className="section-heading mt-5 mb-14" />
 
-        {/* Recognition list */}
-        <div className="mb-14 space-y-0 max-w-2xl">
-          {certifications.map((cert) => (
-            <div
-              key={cert.title}
-              className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6 py-3 border-b border-stone last:border-0"
-            >
-              <div className="flex-1">
-                <p className="font-sans text-sm font-medium text-ink">{cert.title}</p>
-                <p className="font-sans text-xs text-ink-muted mt-0.5">{cert.issuer}</p>
+        <div className="space-y-px bg-stone mb-20">
+          {certs.map((cert, i) => (
+            <Reveal key={cert.title} delay={i * 0.06}>
+              <div className="row flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-8">
+                <div className="flex-1">
+                  <p className="font-sans text-[15px] font-medium text-ink">{cert.title}</p>
+                  <p className="font-sans text-xs text-ink-muted mt-1">{cert.issuer}</p>
+                </div>
+                {cert.date && (
+                  <span className="font-mono text-[11px] text-ink-faint shrink-0">{cert.date}</span>
+                )}
               </div>
-              {cert.date && (
-                <span className="font-mono text-[11px] text-ink-muted shrink-0">{cert.date}</span>
-              )}
-            </div>
+            </Reveal>
           ))}
         </div>
 
-        {/* Certificate gallery */}
         {cards.length > 0 && (
           <>
-            <p className="font-mono text-[11px] uppercase tracking-widest text-ink-muted mb-6">
-              Certificate gallery
-            </p>
+            <Reveal>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint mb-7">
+                Certificate gallery
+              </p>
+            </Reveal>
             <CertificateGallery cards={cards} />
           </>
         )}
@@ -120,3 +120,5 @@ export default function Certifications() {
     </section>
   )
 }
+
+

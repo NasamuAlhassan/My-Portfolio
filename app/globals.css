@@ -8,21 +8,19 @@
   html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
-    scrollbar-color: #E2E2DE transparent;
+    scrollbar-color: #D6D5CC transparent;
   }
 
-  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb {
-    background: #E2E2DE;
-    border-radius: 4px;
-  }
+  ::-webkit-scrollbar-thumb { background: #D6D5CC; border-radius: 4px; }
 
   body {
-    background-color: #F8F8F6;
-    color: #0F0F0F;
+    background-color: #FAFAF7;
+    color: #0B0C0B;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   :focus-visible {
@@ -30,37 +28,321 @@
     outline-offset: 3px;
     border-radius: 2px;
   }
+
+  ::selection { background: #4FD18B; color: #0B0C0B; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @layer utilities {
+  /* ---- Typography ---- */
+  .display-xl {
+    @apply font-serif leading-[0.95] tracking-tightest;
+    font-size: clamp(2.5rem, 8.5vw, 8rem);
+  }
+
+  .display-lg {
+    @apply font-serif leading-[1] tracking-tightest;
+    font-size: clamp(2rem, 6vw, 5rem);
+  }
+
   .section-label {
-    @apply font-sans text-xs font-semibold tracking-[0.18em] uppercase text-forest mb-2;
+    @apply font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.22em] uppercase text-forest;
+  }
+
+  .section-label-dark {
+    @apply font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.22em] uppercase text-signal;
   }
 
   .section-heading {
-    @apply font-serif text-4xl sm:text-5xl text-ink leading-tight;
+    @apply font-serif text-3xl sm:text-5xl md:text-6xl text-ink leading-[1.04] tracking-tightest;
   }
 
-  .tag {
-    @apply font-mono text-[11px] border border-stone px-2.5 py-1 rounded-sm text-ink-muted
-           transition-colors duration-150 hover:border-forest hover:text-forest cursor-default select-none;
+  .lede {
+    @apply font-sans text-base sm:text-lg md:text-xl leading-[1.6] text-ink-muted;
   }
 
+  /* ================================================================
+     LIQUID GLASS — painted, not filtered.
+
+     The earlier version stacked two backdrop-filter passes on every
+     panel, which is what tanked the frame rate: each pass forces the
+     compositor to re-read and blur everything behind the element, every
+     frame. Here the material is built from gradients and inset rim
+     highlights instead, which cost one ordinary paint.
+
+     Real backdrop blur survives only on `.glass-blur`, used on the few
+     elements where it genuinely reads — the nav bar and the metric
+     tiles — and it is switched off entirely on small screens.
+     ================================================================ */
+
+  .glass, .card {
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(
+      152deg,
+      rgba(255, 255, 255, 0.88) 0%,
+      rgba(255, 255, 255, 0.66) 48%,
+      rgba(255, 255, 255, 0.8) 100%
+    );
+    box-shadow:
+      0 16px 34px -24px rgba(11, 12, 11, 0.3),
+      0 1px 2px rgba(11, 12, 11, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.55),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Rim lensing, faked with gradients — bright crown, cool bounce.
+     No filter, so this is a flat paint rather than a backdrop pass. */
+  .glass::before, .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background:
+      radial-gradient(150% 120% at 50% -12%, rgba(255, 255, 255, 0.9), transparent 44%),
+      radial-gradient(120% 100% at 0% 100%, rgba(79, 209, 139, 0.13), transparent 56%);
+  }
+
+  /* Specular sweep. Position comes from --mx/--my, set on pointer move. */
+  .glass::after, .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--spec, 0);
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      300px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(255, 255, 255, 0.55),
+      transparent 58%
+    );
+  }
+
+  .glass:hover, .card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 26px 48px -26px rgba(11, 12, 11, 0.36),
+      0 1px 2px rgba(11, 12, 11, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.6),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.62);
+  }
+
+  .glass-dark, .card-dark {
+    position: relative;
+    border-radius: 20px;
+    background: linear-gradient(
+      152deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.035) 48%,
+      rgba(255, 255, 255, 0.07) 100%
+    );
+    box-shadow:
+      0 18px 40px -26px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.07),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .glass-dark::before, .card-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(150% 120% at 50% -12%, rgba(255, 255, 255, 0.16), transparent 46%);
+  }
+
+  .glass-dark::after, .card-dark::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: var(--spec, 0);
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      280px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(79, 209, 139, 0.22),
+      transparent 60%
+    );
+  }
+
+  .glass-dark:hover, .card-dark:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 28px 52px -26px rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  }
+
+  /* Opt-in real blur — desktop only, and only a handful of elements. */
+  .glass-blur {
+    backdrop-filter: blur(16px) saturate(165%);
+    -webkit-backdrop-filter: blur(16px) saturate(165%);
+  }
+
+  .glass-bar {
+    background: linear-gradient(180deg, rgba(250, 250, 247, 0.9), rgba(250, 250, 247, 0.78));
+    backdrop-filter: blur(14px) saturate(170%);
+    -webkit-backdrop-filter: blur(14px) saturate(170%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(11, 12, 11, 0.07),
+      0 6px 20px -16px rgba(11, 12, 11, 0.3);
+  }
+
+  .glass-inset {
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow:
+      inset 0 1px 2px rgba(11, 12, 11, 0.05),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+  }
+
+  /* Plain translucent rows — no filter. */
+  .row { background: rgba(255, 255, 255, 0.62); }
+  .row-dark { background: rgba(12, 15, 13, 0.5); }
+
+  .veil { background: rgba(255, 255, 255, 0.42); }
+  .veil-warm { background: rgba(242, 241, 234, 0.55); }
+  .veil-night { background: rgba(10, 13, 11, 0.9); }
+
+  /* ---- Controls ---- */
   .btn-primary {
-    @apply inline-flex items-center gap-2 bg-forest text-white font-sans font-medium text-sm
-           px-5 py-2.5 rounded-sm transition-all duration-150 hover:bg-[#163d26];
+    @apply relative inline-flex items-center gap-2 bg-ink text-paper font-sans font-medium text-sm
+           px-5 py-3 sm:px-6 rounded-full overflow-hidden;
+    transition: color 0.35s ease;
   }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-forest -z-0;
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .btn-primary:hover::after { transform: translateY(0); }
+  .btn-primary > * { @apply relative z-10; }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 border border-ink text-ink font-sans font-medium text-sm
-           px-5 py-2.5 rounded-sm transition-all duration-150 hover:border-forest hover:text-forest;
+    @apply relative inline-flex items-center gap-2 border border-ink/20 bg-white/55 text-ink font-sans
+           font-medium text-sm px-5 py-3 sm:px-6 rounded-full;
+    transition: border-color 0.35s ease, color 0.35s ease, background-color 0.35s ease;
   }
 
-  .card {
-    @apply bg-white border border-stone;
+  .btn-outline:hover { @apply border-forest/50 text-forest bg-white/80; }
+
+  .tag {
+    @apply font-mono text-[10px] sm:text-[10.5px] uppercase tracking-wider border border-ink/10 bg-white/45
+           px-2.5 py-1 rounded-full text-ink-muted select-none;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
   }
 
-  .divider {
-    @apply border-t border-stone;
+  .tag:hover { @apply border-forest/40 text-forest bg-white/75; }
+
+  .tag-dark {
+    @apply font-mono text-[10px] sm:text-[10.5px] uppercase tracking-wider border border-white/15
+           px-2.5 py-1 rounded-full text-white/55 select-none;
+    transition: border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .tag-dark:hover { @apply border-signal/50 text-signal; }
+
+  /* ---- Links ---- */
+  .link-underline {
+    @apply relative inline-flex items-center gap-1;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .link-underline:hover { background-size: 100% 1px; }
+
+  /* ---- Rules & texture ---- */
+  .rule { @apply border-t border-ink/[0.07]; }
+  .rule-dark { @apply border-t border-white/10; }
+
+  .bloom {
+    background: radial-gradient(60% 60% at 50% 40%, rgba(79, 209, 139, 0.14) 0%, transparent 70%);
+  }
+
+  .hairline-grid {
+    background-image:
+      linear-gradient(to right, rgba(11, 12, 11, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 12, 11, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .hairline-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* ================================================================
+     Small screens: drop every remaining backdrop-filter and soften the
+     shadow work. Mobile GPUs choke on backdrop blur more than desktop.
+     ================================================================ */
+  @media (max-width: 900px) {
+    .glass-blur,
+    .glass-bar {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .glass-bar { background: rgba(250, 250, 247, 0.95); }
+
+    .glass, .card {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow:
+        0 10px 22px -18px rgba(11, 12, 11, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+    }
+
+    .glass-dark, .card-dark {
+      border-radius: 16px;
+      box-shadow:
+        0 12px 26px -20px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.26),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    /* No pointer on touch, so the specular layer is dead weight. */
+    .glass::after, .card::after,
+    .glass-dark::after, .card-dark::after { display: none; }
+
+    .glass:hover, .card:hover,
+    .glass-dark:hover, .card-dark:hover { transform: none; }
   }
 }
