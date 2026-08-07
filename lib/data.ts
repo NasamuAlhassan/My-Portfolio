@@ -91,9 +91,8 @@ export const projects: Project[] = [
       "Speech recognition across 42 Ghanaian language subsets, trained in a 48-hour H200 window at the GhanaNLP TTS/ASR Hackathon. w2v-BERT 2.0 with a CTC head in bf16, building on GhanaNLP's DONDO baseline. Found narrator leakage in the Asante Twi Bible audio and rebuilt the splits to be source-disjoint, publishing a leaked-versus-honest WER comparison so the numbers mean something.",
     tags: ['ASR', 'w2v-BERT 2.0', 'CTC', 'ONNX'],
     links: [
-      // TODO: replace with the Gradio Space URL before deploy
-      { label: 'Demo', href: '#' },
-      { label: 'Models', href: 'https://huggingface.co/ghananlpcommunity' },
+      { label: 'Model', href: 'https://huggingface.co/PrinceAlhassanNasamu/kasa42-asr' },
+      { label: 'GhanaNLP org', href: 'https://huggingface.co/ghananlpcommunity' },
     ],
     featured: true,
   },
@@ -247,19 +246,18 @@ export const experience = [
     current: true,
   },
   {
+    role: 'Technology & Digital Systems Intern',
+    org: 'EGA Mentorship International' as string | null,
+    period: '2026 – Present',
+    description:
+      "Ran a technical audit of the organisation's web properties and presented the findings and remediation plan to the team.",
+    current: true,
+  },
+  {
     role: 'Data Science Intern',
     org: 'Decodelabs' as string | null,
     period: 'April – May 2026',
     description: 'Built an end-to-end climate data pipeline across five Ghanaian cities using the Open-Meteo API.',
-    current: false,
-  },
-  {
-    role: 'Technology & Digital Systems Intern',
-    org: 'EGA Mentorship International' as string | null,
-    // TODO: confirm actual start and end dates — this placeholder renders on the live page
-    period: '2025',
-    description:
-      "Ran a technical audit of the organisation's web properties and presented the findings and remediation plan to the team.",
     current: false,
   },
   {
