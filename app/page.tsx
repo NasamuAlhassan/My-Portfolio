@@ -1,4 +1,4 @@
-﻿import Hero from '@/components/home/Hero'
+import Hero from '@/components/home/Hero'
 import About from '@/components/home/About'
 import Skills from '@/components/home/Skills'
 import Research from '@/components/home/Research'
@@ -80,7 +80,7 @@ export default function Home() {
           <TextReveal text="Running in production right now." as="h2" className="section-heading mt-5 mb-6" />
           <Reveal delay={0.12}>
             <p className="mb-14 max-w-reading font-sans text-base leading-[1.7] text-ink-muted">
-              These are the real sites, embedded as they are at this moment â€” not screenshots.
+              These are the real sites, embedded as they are at this moment — not screenshots.
             </p>
           </Reveal>
 

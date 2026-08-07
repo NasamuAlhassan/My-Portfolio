@@ -101,7 +101,7 @@ export const projects: Project[] = [
     title: 'Forge — AI-Powered Academic Productivity Tool',
     summary: 'A voice-driven study scheduler, designed and shipped in 48 hours.',
     kind: 'product',
-    year: '2025',
+    year: '2026',
     preview: 'https://forge-study-theta.vercel.app',
     description:
       'Voice-driven study scheduler with Pomodoro focus sessions and usage analytics. Built and shipped within 48 hours at the DesignPxD Student AI Hackathon, UG Legon.',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     title: 'CampusLink — Verified Student Connection Platform',
     summary: 'Verified student identity, real-time messaging and campus mapping for UG Legon.',
     kind: 'product',
-    year: '2025 – present',
+    year: '2026 – present',
     preview: 'https://campus-link-sigma.vercel.app',
     description:
       'Full-stack platform with two-stage student identity verification, real-time messaging, and an interactive campus map. Built for UG Legon students. Also in development as CampusLink Pay for Moolre Startup Cup 2026.',
@@ -151,7 +151,7 @@ export const projects: Project[] = [
     title: 'FieldMind — RAG Document Intelligence',
     summary: 'Retrieval-augmented search over enterprise document collections.',
     kind: 'product',
-    year: '2025',
+    year: '2026',
     description:
       'Retrieval-augmented generation tool for enterprise document search, built with Google Gemini API. Submitted to LabLab.ai hackathon.',
     tags: ['RAG', 'Gemini', 'LangChain', 'Hackathon'],
@@ -175,7 +175,7 @@ export const projects: Project[] = [
     title: 'HyperFlow Risk Agent',
     summary: 'Multi-agent risk analysis for live trading decisions.',
     kind: 'engineering',
-    year: '2025',
+    year: '2026',
     description:
       'Multi-agent trade risk analysis system. Contributed to a team for the AMD Developer Cloud AI Agents hackathon track on Devpost.',
     tags: ['AI Agents', 'Risk Intelligence', 'AMD'],
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     title: 'WhatsApp & Telegram AI Agents',
     summary: 'Locally-hosted agents that summarise WhatsApp and answer on Telegram.',
     kind: 'engineering',
-    year: '2025',
+    year: '2026',
     description:
       'AI agent that monitors WhatsApp and delivers summarized digests via Telegram. Separate Telegram AI agent using Telethon and Ollama for locally-hosted conversational responses.',
     tags: ['Telethon', 'Ollama', 'Automation', 'Python'],
@@ -212,7 +212,7 @@ export const projects: Project[] = [
     title: 'VerifiQ',
     summary: 'QR attendance tracking for lecture halls.',
     kind: 'engineering',
-    year: '2025',
+    year: '2026',
     description: 'QR-based student attendance system.',
     tags: ['QR', 'Attendance', 'Web'],
     links: [],
@@ -224,7 +224,7 @@ export const experience = [
   {
     role: 'Independent NLP Researcher',
     org: null as string | null,
-    period: '2024 – Present',
+    period: '2025 – Present',
     description:
       'Designed and released the first Kusaal-English MT system and ASR model, publishing both alongside a 34K-pair corpus on HuggingFace. Contributing corpora and models for low-resource Ghanaian languages with GhanaNLP, and presenting the work at their community sessions. Engineering a back-translation pipeline to scale the corpus to 100K+ pairs.',
     current: true,
@@ -263,7 +263,7 @@ export const experience = [
   {
     role: 'Data Science Intern',
     org: 'Codveda Technologies' as string | null,
-    period: '2025',
+    period: '2026',
     description:
       'Web-scraped 1,000+ records, built regression/classification models, applied ARIMA forecasting, developed NLP text classification systems.',
     current: false,
@@ -271,14 +271,14 @@ export const experience = [
   {
     role: 'DesignPxD Student AI Hackathon',
     org: null as string | null,
-    period: '2025',
+    period: '2026',
     description: 'Built and shipped FieldMind (RAG document intelligence) and Forge (AI study scheduler) in separate hackathon sprints.',
     current: false,
   },
   {
     role: 'AMD Developer Cloud Hackathon',
     org: null as string | null,
-    period: '2025',
+    period: '2026',
     description: 'Contributed to HyperFlow Risk Agent — multi-agent trade risk system, AI Agents track on Devpost.',
     current: false,
   },

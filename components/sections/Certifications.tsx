@@ -1,4 +1,4 @@
-﻿import fs from 'fs'
+import fs from 'fs'
 import path from 'path'
 import { certifications } from '@/lib/data'
 import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
@@ -6,10 +6,10 @@ import Reveal from '@/components/motion/Reveal'
 import TextReveal from '@/components/motion/TextReveal'
 
 const knownTitles: Record<string, string> = {
-  'Columbia +': 'Prompt Engineering & Programming with OpenAI â€” Columbia+',
-  'Claude 101': 'Claude 101 â€” Anthropic',
-  'Coursera': 'Foundations: Data, Data, Everywhere â€” Google / Coursera',
-  'DecodeLabs Cert': 'DecodeLabs Virtual Internship â€” Data Science',
+  'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
+  'Claude 101': 'Claude 101 — Anthropic',
+  'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
+  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
 }
 
 function cleanTitle(baseName: string): string {

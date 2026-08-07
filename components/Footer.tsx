@@ -1,4 +1,4 @@
-﻿import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { personalInfo, navLinks } from '@/lib/data'
 
 const socials = [
@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="font-mono text-[11px] text-white/35">
-            {personalInfo.name} Â· {personalInfo.university}
+            {personalInfo.name} · {personalInfo.university}
           </p>
           <p className="font-mono text-[11px] text-white/35">Built with Next.js</p>
         </div>

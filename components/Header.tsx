@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
@@ -27,7 +27,7 @@ function ResumeModal({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <span className="font-mono text-[11px] uppercase tracking-widest text-ink-muted">
-          Resume â€” Prince Nasamu Alhassan
+          Resume — Prince Nasamu Alhassan
         </span>
         <div className="flex items-center gap-3">
           <a

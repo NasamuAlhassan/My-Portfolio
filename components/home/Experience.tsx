@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
@@ -44,7 +44,7 @@ export default function Experience() {
                   <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8">
                     <h3 className="font-serif text-xl leading-snug text-paper sm:text-2xl">
                       {item.role}
-                      {item.org && <span className="text-signal"> â€” {item.org}</span>}
+                      {item.org && <span className="text-signal"> — {item.org}</span>}
                     </h3>
                     <span className="shrink-0 font-mono text-[11px] text-white/40">{item.period}</span>
                   </div>

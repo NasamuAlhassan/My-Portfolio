@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import Reveal from '@/components/motion/Reveal'
 import TextReveal from '@/components/motion/TextReveal'
@@ -39,7 +39,7 @@ export default function Education() {
                       {entry.highlights.map((h) => (
                         <li key={h} className="flex gap-3 font-sans text-sm text-ink-muted">
                           <span className="mt-0.5 shrink-0 text-forest" aria-hidden>
-                            â€”
+                            —
                           </span>
                           {h}
                         </li>
