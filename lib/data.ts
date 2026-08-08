@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: 'Prince Nasamu Alhassan',
   shortName: 'P.N. Alhassan',
-  title: 'AI Researcher · Low-Resource NLP · Northern Ghana Language Technologies',
+  title: 'AI Researcher · Low-Resource NLP · African Language Technologies, starting with Northern Ghana',
   tagline: "Building language technology for Africa's most ignored languages.",
   email: 'pnalhassan@gmail.com',
   github: 'https://github.com/NasamuAlhassan',

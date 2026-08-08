@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: '%s — Prince Nasamu Alhassan',
   },
   description:
-    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building open machine translation and speech recognition for the languages of Northern Ghana.",
+    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building open machine translation and speech recognition for African languages, starting with Northern Ghana.",
   keywords: ['AI research', 'NLP', 'Kusaal', 'machine translation', 'African languages', 'low-resource MT'],
   authors: [{ name: 'Prince Nasamu Alhassan' }],
   openGraph: {
