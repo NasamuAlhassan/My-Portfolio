@@ -45,9 +45,9 @@ export default function Research() {
         <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <p className="font-sans text-base leading-[1.75] text-ink-muted">
-              The corpus behind the translation system did not exist until it was assembled, pair by
-              pair, from five separate sources. It is now the largest structured Kusaal linguistic
-              dataset in existence, published under CC BY 4.0.
+              The corpus behind the translation system was assembled pair by pair from five separate
+              sources, then extended with a back-translation pipeline. All 34,568 pairs are published
+              under CC BY 4.0.
             </p>
             <p className="mt-5 font-sans text-base leading-[1.75] text-ink-muted">
               The speech corpus is separate: 30,820 verse-level clips totalling 81.71 hours at 16kHz

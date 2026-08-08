@@ -15,7 +15,7 @@ export const personalInfo = {
 }
 
 export const about =
-  "Prince Nasamu Alhassan is an 18-year-old AI researcher and software engineer at the University of Ghana, Legon, maintaining a 4.0 CGPA. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he independently designed, trained, and publicly released the first standalone Kusaal-English machine translation system — building the 34,568-pair parallel corpus that underlies it from scratch. His work has been presented at a GhanaNLP community session, where GhanaNLP co-founder Paul Azunre publicly engaged and requested access to the dataset. He builds full-stack products used by real students, contributes to the Kusaal Wikimedia Community, and taught himself programming during COVID-19 lockdowns before any formal CS instruction."
+  "Prince Nasamu Alhassan is an 18-year-old AI researcher and software engineer at the University of Ghana, Legon, maintaining a 4.0 CGPA. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he independently designed, trained, and publicly released an open-source Kusaal-English machine translation system — building the 34,568-pair parallel corpus that underlies it from scratch. His work has been presented at a GhanaNLP community session, where GhanaNLP co-founder Paul Azunre publicly engaged and requested access to the dataset. He builds full-stack products used by real students, contributes to the Kusaal Wikimedia Community, and taught himself programming during COVID-19 lockdowns before any formal CS instruction."
 
 export const skills: Record<string, string[]> = {
   'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14'],
@@ -56,7 +56,7 @@ export const projects: Project[] = [
   {
     id: 1,
     title: 'Kusaal-English Machine Translation',
-    summary: 'The first machine translation system for a language of one million speakers.',
+    summary: 'Open-source machine translation for a language of one million speakers.',
     kind: 'research',
     year: '2025 – present',
     metrics: [
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       { label: 'Parallel pairs', value: '34,568' },
     ],
     description:
-      "The first open-source machine translation system for Kusaal, a Mabia language spoken by roughly a million people in northern Ghana and southern Burkina Faso. Fine-tuned NLLB-200-distilled-600M with the kus_Latn token seeded from Dagbani rather than randomly, on a 34,568-pair corpus built from Bible text, the English-Kusaal Index, Lexique Pro, Wikipedia and a back-translation pipeline. Released under CC BY 4.0.",
+      "An open-source machine translation system for Kusaal, a Mabia language spoken by roughly a million people in northern Ghana and southern Burkina Faso. Fine-tuned NLLB-200-distilled-600M with the kus_Latn token seeded from Dagbani rather than randomly, on a 34,568-pair corpus built from Bible text, the English-Kusaal Index, Lexique Pro, Wikipedia and a back-translation pipeline. Released under CC BY 4.0.",
     tags: ['NLP', 'HuggingFace', 'Low-resource MT', 'PyTorch', 'NLLB-200'],
     links: [
       { label: 'Code', href: 'https://github.com/NasamuAlhassan/kusaal-mt' },
@@ -129,7 +129,7 @@ export const projects: Project[] = [
   {
     id: 4,
     title: 'Kusaal ASR — Whisper Fine-tune',
-    summary: 'Eighty-one hours of audio, assembled by hand, into the first Kusaal speech recogniser.',
+    summary: 'Eighty-one hours of audio, assembled by hand, into a Kusaal speech recogniser.',
     kind: 'research',
     year: '2026',
     metrics: [
@@ -138,7 +138,7 @@ export const projects: Project[] = [
       { label: 'Verse-level clips', value: '30,820' },
     ],
     description:
-      'The first ASR baseline for Kusaal, trained on a corpus assembled and cleaned from scratch: 30,820 verse-level clips, 81.71 hours at 16kHz mono, split by book rather than at random so no speaker or passage leaks between train and test. Whisper-small with LoRA on the attention projections — 30.41% WER on held-out books.',
+      'An ASR baseline for Kusaal, trained on a corpus assembled and cleaned from scratch: 30,820 verse-level clips, 81.71 hours at 16kHz mono, split by book rather than at random so no speaker or passage leaks between train and test. Whisper-small with LoRA on the attention projections — 30.41% WER on held-out books.',
     tags: ['ASR', 'Whisper', 'LoRA', 'Low-resource'],
     links: [
       { label: 'Dataset', href: 'https://kaggle.com/datasets/alhassanprince/kusaal-asr-dataset' },
@@ -226,7 +226,7 @@ export const experience = [
     org: null as string | null,
     period: '2025 – Present',
     description:
-      'Designed and released the first Kusaal-English MT system and ASR model, publishing both alongside a 34K-pair corpus on HuggingFace. Contributing corpora and models for low-resource Ghanaian languages with GhanaNLP, and presenting the work at their community sessions. Engineering a back-translation pipeline to scale the corpus to 100K+ pairs.',
+      'Designed and released open-source Kusaal-English MT and ASR models, publishing both alongside a 34K-pair corpus on HuggingFace. Contributing corpora and models for low-resource Ghanaian languages with GhanaNLP, and presenting the work at their community sessions. Engineering a back-translation pipeline to scale the corpus to 100K+ pairs.',
     current: true,
   },
   {
@@ -394,9 +394,9 @@ export const navLinks = [
 ]
 
 export const positioning = {
-  claim: 'Kusaal had no language technology. I built the first.',
+  claim: 'Building language technology for the languages of Northern Ghana.',
   support:
-    'A Mabia language of roughly one million speakers in northern Ghana and southern Burkina Faso, with no machine translation and no speech recognition until 2025. I built both, and released the corpus behind them.',
+    'Machine translation and speech recognition for Kusaal, a Mabia language of roughly a million speakers in northern Ghana and southern Burkina Faso, and across 42 Ghanaian language subsets. Open models, an open corpus, and results measured on held-out data.',
 }
 
 /** Animated counters on the home page. */

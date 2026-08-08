@@ -32,7 +32,7 @@ export default function Home() {
             <p className="section-label-dark">Results</p>
           </Reveal>
           <TextReveal
-            text="Numbers that did not exist before."
+            text="Measured, not estimated."
             as="h2"
             className="display-lg text-paper mt-5 max-w-[18ch]"
           />
