@@ -21,7 +21,7 @@ export default function CorpusBar() {
           Corpus provenance
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint num">
-          34,568 pairs
+          ~63,100 pairs
         </p>
       </div>
 

@@ -18,13 +18,18 @@ const METHOD = [
   },
   {
     n: '03',
-    title: 'Catching narrator leakage across 42 languages',
-    body: 'The Asante Twi Bible audio had one reader present on both sides of the split. The splits were rebuilt to be source-disjoint and both the leaked and honest word error rates were published, so the difference is visible rather than hidden.',
+    title: 'Testing narrator leakage across 42 languages',
+    body: 'Six languages in the corpus contain the same scripture read by different narrators, so a random split can put byte-identical text on both sides. The splits were rebuilt to be book-disjoint — and the cost of the leak was then measured directly and published as a negative result: on these weights, the difference sat within noise.',
   },
   {
     n: '04',
-    title: 'Back-translation to extend coverage',
-    body: 'A back-translation pipeline generates synthetic pairs from monolingual Kusaal text, pushing the corpus toward the 100,000-pair target without waiting on manual alignment.',
+    title: 'Mining Wikipedia for a second register',
+    body: 'A shared-anchor alignment pipeline, verified by the model and partially human-adjudicated, mined 13,659 encyclopedic sentence pairs from Kusaal Wikipedia — lifting the weaker direction by 12.8 BLEU on encyclopedic text, with no forgetting on the original test set.',
+  },
+  {
+    n: '05',
+    title: 'Freezing a public benchmark',
+    body: 'A 1,000-pair test set from the Wikipedia corpus is frozen and published with its evaluation protocol and reference results, so anyone can verify the numbers independently — and no one, including the author, trains on it.',
   },
 ]
 
@@ -45,9 +50,9 @@ export default function Research() {
         <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <p className="font-sans text-base leading-[1.75] text-ink-muted">
-              The corpus behind the translation system was assembled pair by pair from five separate
-              sources, then extended with a back-translation pipeline. All 34,568 pairs are published
-              under CC BY 4.0.
+              The corpus behind the translation system was assembled pair by pair from six separate
+              sources, then extended with back-translation and a sentence-aligned corpus mined from
+              Kusaal Wikipedia — roughly 63,100 pairs, published under CC BY 4.0 and CC BY-SA 4.0.
             </p>
             <p className="mt-5 font-sans text-base leading-[1.75] text-ink-muted">
               The speech corpus is separate: 30,820 verse-level clips totalling 81.71 hours at 16kHz
