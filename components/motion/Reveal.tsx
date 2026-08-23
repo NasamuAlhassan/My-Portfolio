@@ -8,7 +8,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export default function Reveal({
   children,
   delay = 0,
-  y = 26,
+  y = 14,
   className,
   once = true,
 }: {
@@ -24,9 +24,9 @@ export default function Reveal({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y, filter: 'blur(6px)' }}
-      animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : undefined}
-      transition={{ duration: 0.75, delay, ease: EASE }}
+      initial={{ opacity: 0, y }}
+      animate={inView ? { opacity: 1, y: 0 } : undefined}
+      transition={{ duration: 0.6, delay, ease: EASE }}
       className={className}
     >
       {children}

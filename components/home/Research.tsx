@@ -1,8 +1,6 @@
 ﻿'use client'
 
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
-import Waveform from '@/components/motion/Waveform'
 import CorpusBar from '@/components/CorpusBar'
 
 const METHOD = [
@@ -40,11 +38,11 @@ export default function Research() {
         <Reveal>
           <p className="section-label">Research</p>
         </Reveal>
-        <TextReveal
-          text="Built from scratch, released for everyone."
-          as="h2"
-          className="section-heading mt-5 max-w-[20ch]"
-        />
+        <Reveal delay={0.08}>
+          <h2 className="section-heading mt-5 max-w-[20ch]">
+            Built from scratch, released for everyone.
+          </h2>
+        </Reveal>
 
         {/* Corpus */}
         <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
@@ -58,9 +56,6 @@ export default function Research() {
               The speech corpus is separate: 30,820 verse-level clips totalling 81.71 hours at 16kHz
               mono, verified at zero integrity errors.
             </p>
-            <div className="mt-8">
-              <Waveform />
-            </div>
           </div>
 
           <Reveal delay={0.15} className="lg:pt-2">

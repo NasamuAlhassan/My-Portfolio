@@ -31,14 +31,14 @@ export default function AllProjects() {
               <button
                 key={f.key}
                 onClick={() => setFilter(f.key)}
-                className={`relative rounded-sm px-4 py-2 font-sans text-sm transition-colors duration-300 ${
+                className={`relative rounded-[2px] px-4 py-2 font-sans text-sm transition-colors duration-300 ${
                   on ? 'text-paper' : 'text-ink-muted hover:text-ink'
                 }`}
               >
                 {on && (
                   <motion.span
                     layoutId="filter-pill"
-                    className="absolute inset-0 rounded-sm bg-ink"
+                    className="absolute inset-0 rounded-[2px] bg-ink"
                     transition={{ duration: 0.45, ease: EASE }}
                   />
                 )}
@@ -69,8 +69,9 @@ export default function AllProjects() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.94, y: -12 }}
               transition={{ duration: 0.45, ease: EASE }}
+              className={p.featured ? 'md:col-span-2' : undefined}
             >
-              <ProjectCard project={p} />
+              <ProjectCard project={p} featured={p.featured} />
             </motion.div>
           ))}
         </AnimatePresence>

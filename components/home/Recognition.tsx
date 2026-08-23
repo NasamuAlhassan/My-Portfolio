@@ -1,7 +1,6 @@
 ﻿'use client'
 
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
 import { certifications, type Recognition as RecognitionEntry } from '@/lib/data'
 
 function List({ entries }: { entries: RecognitionEntry[] }) {
@@ -30,11 +29,10 @@ export default function Recognition() {
 
   return (
     <section id="recognition" className="rule veil-night text-paper">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label-dark">Recognition</p>
+          <p className="section-label-dark mb-14">Talks &amp; awards</p>
         </Reveal>
-        <TextReveal text="Talks and awards." as="h2" className="display-lg text-paper mt-5 mb-16" />
 
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">
           {talks.length > 0 && (

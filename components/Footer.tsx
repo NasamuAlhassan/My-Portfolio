@@ -10,8 +10,6 @@ const socials = [
 export default function Footer() {
   return (
     <footer className="relative veil-night text-paper overflow-hidden">
-      <div className="hairline-grid-dark absolute inset-0 opacity-60" aria-hidden />
-
       <div className="relative max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28">
         <p className="section-label-dark">Get in touch</p>
 
@@ -71,7 +69,7 @@ export default function Footer() {
           <p className="font-mono text-[11px] text-white/35">
             {personalInfo.name} · {personalInfo.university}
           </p>
-          <p className="font-mono text-[11px] text-white/35">Built with Next.js</p>
+          <p className="font-mono text-[11px] text-white/35">Accra · Bawku · the web</p>
         </div>
       </div>
     </footer>

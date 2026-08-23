@@ -1,7 +1,6 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
-import Glass from '@/components/glass/Glass'
 import type { Project } from '@/lib/data'
 
 export default function ProjectCard({
@@ -12,9 +11,9 @@ export default function ProjectCard({
   featured?: boolean
 }) {
   return (
-    <Glass className={`group flex h-full flex-col ${featured ? 'p-8 md:p-10' : 'p-6 md:p-7'}`}>
-      <div className="flex items-start justify-between gap-4">
-        <span className="rounded-full border border-forest/25 bg-white/40 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.18em] text-forest">
+    <article className={`card group flex h-full flex-col ${featured ? 'p-8 md:p-10' : 'p-6 md:p-7'}`}>
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-forest">
           {project.kind}
         </span>
         <span className="whitespace-nowrap font-mono text-[10px] text-ink-faint">{project.year}</span>
@@ -33,7 +32,7 @@ export default function ProjectCard({
       </p>
 
       {project.metrics && project.metrics.length > 0 && (
-        <div className="glass-inset mt-6 flex flex-wrap gap-x-8 gap-y-3 px-4 py-4">
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 border-t border-ink/10 pt-5">
           {project.metrics.map((m) => (
             <div key={m.label}>
               <p className="num font-serif text-2xl leading-none text-ink">
@@ -48,13 +47,7 @@ export default function ProjectCard({
         </div>
       )}
 
-      <div className="mt-6 flex flex-wrap gap-1.5">
-        {project.tags.map((tag) => (
-          <span key={tag} className="tag">
-            {tag}
-          </span>
-        ))}
-      </div>
+      <p className="tag-line mt-6 leading-relaxed">{project.tags.join(' · ')}</p>
 
       {project.links.length > 0 && (
         <div className="mt-auto flex flex-wrap gap-5 pt-6">
@@ -72,6 +65,6 @@ export default function ProjectCard({
           ))}
         </div>
       )}
-    </Glass>
+    </article>
   )
 }

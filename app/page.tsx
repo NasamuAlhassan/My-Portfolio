@@ -8,12 +8,10 @@ import Education from '@/components/home/Education'
 import Recognition from '@/components/home/Recognition'
 import Contact from '@/components/home/Contact'
 import Certifications from '@/components/sections/Certifications'
-import Marquee from '@/components/Marquee'
 import MetricStrip from '@/components/MetricStrip'
 import LivePreview from '@/components/LivePreview'
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
-import { projects, headlineMetrics, marqueeItems } from '@/lib/data'
+import { projects, headlineMetrics } from '@/lib/data'
 
 export default function Home() {
   const withPreview = projects.filter((p) => p.preview)
@@ -22,30 +20,25 @@ export default function Home() {
     <>
       <Hero />
 
-      <Marquee items={marqueeItems} />
-
       {/* Results */}
-      <section className="relative overflow-hidden veil-night text-paper">
-        <div className="hairline-grid-dark absolute inset-0 opacity-50" aria-hidden />
-        <div className="relative max-w-content mx-auto px-5 sm:px-6 pt-16 sm:pt-24 md:pt-32">
+      <section className="veil-night text-paper">
+        <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
           <Reveal>
             <p className="section-label-dark">Results</p>
           </Reveal>
-          <TextReveal
-            text="Measured, not estimated."
-            as="h2"
-            className="display-lg text-paper mt-5 max-w-[18ch]"
-          />
+          <Reveal delay={0.08}>
+            <h2 className="display-lg text-paper mt-5 max-w-[18ch]">Measured on held-out data.</h2>
+          </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-7 max-w-reading font-sans text-base leading-[1.7] text-white/55">
-              Every figure below is measured on held-out data with source-disjoint splits, so no
-              speaker or passage appears in both training and test.
+              Source-disjoint splits throughout: no speaker or passage appears in both training and
+              test.
             </p>
           </Reveal>
-        </div>
 
-        <div className="relative max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
-          <MetricStrip metrics={headlineMetrics} dark />
+          <div className="mt-16 sm:mt-20">
+            <MetricStrip metrics={headlineMetrics} dark />
+          </div>
         </div>
       </section>
 
@@ -59,11 +52,12 @@ export default function Home() {
           <Reveal>
             <p className="section-label">Work</p>
           </Reveal>
-          <TextReveal text="Everything I have built." as="h2" className="section-heading mt-5 mb-6" />
+          <Reveal delay={0.08}>
+            <h2 className="section-heading-sm mt-5 mb-6">Projects</h2>
+          </Reveal>
           <Reveal delay={0.12}>
             <p className="mb-12 max-w-reading font-sans text-base leading-[1.7] text-ink-muted">
-              Research systems, shipped products and the engineering underneath them. Filter to
-              narrow it down.
+              Research systems, shipped products and the engineering underneath them.
             </p>
           </Reveal>
 
@@ -73,20 +67,22 @@ export default function Home() {
 
       {/* Live previews */}
       <section className="rule">
-        <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+        <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
           <Reveal>
             <p className="section-label">Live</p>
           </Reveal>
-          <TextReveal text="Running in production right now." as="h2" className="section-heading mt-5 mb-6" />
+          <Reveal delay={0.08}>
+            <h2 className="section-heading-sm mt-5 mb-6">Running in production</h2>
+          </Reveal>
           <Reveal delay={0.12}>
             <p className="mb-14 max-w-reading font-sans text-base leading-[1.7] text-ink-muted">
-              These are the real sites, embedded as they are at this moment — not screenshots.
+              The real deployments, embedded as they are at this moment — not screenshots.
             </p>
           </Reveal>
 
           <div className="grid gap-10 md:grid-cols-2 md:gap-6">
             {withPreview.map((p, i) => (
-              <Reveal key={p.id} delay={i * 0.12}>
+              <Reveal key={p.id} delay={i * 0.1}>
                 <LivePreview url={p.preview as string} title={p.title} />
                 <div className="mt-6">
                   <div className="flex items-baseline justify-between gap-4">
@@ -109,6 +105,3 @@ export default function Home() {
     </>
   )
 }
-
-
-

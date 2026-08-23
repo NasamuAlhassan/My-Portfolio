@@ -3,10 +3,6 @@ import { DM_Serif_Display, Outfit, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ScrollProgress from '@/components/ScrollProgress'
-import SectionDots from '@/components/SectionDots'
-import Cursor from '@/components/motion/Cursor'
-import Aurora from '@/components/Aurora'
 
 const dmSerif = DM_Serif_Display({
   subsets: ['latin'],
@@ -52,11 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body
         className={`${dmSerif.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased text-ink`}
       >
-        <Aurora />
-        <ScrollProgress />
-        <Cursor />
         <Header />
-        <SectionDots />
         <main>{children}</main>
         <Footer />
       </body>

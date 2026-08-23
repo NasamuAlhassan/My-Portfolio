@@ -136,7 +136,7 @@ export default function Header() {
             })}
             <button
               onClick={openResume}
-              className="rounded-sm border border-forest/40 px-4 py-1.5 font-sans text-sm font-medium text-forest
+              className="rounded-[2px] border border-forest/40 px-4 py-1.5 font-sans text-sm font-medium text-forest
                          transition-all duration-300 hover:border-forest hover:bg-forest hover:text-paper"
             >
               CV

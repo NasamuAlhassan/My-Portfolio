@@ -69,7 +69,7 @@ export default function CertificateGallery({ cards }: { cards: CertCard[] }) {
                 className="group block w-full text-left focus-visible:outline-forest"
                 aria-label={`View ${card.title}`}
               >
-                <div className="relative w-full aspect-[4/3] bg-white/45 overflow-hidden">
+                <div className="relative w-full aspect-[4/3] bg-paper-warm overflow-hidden">
                   <Image
                     src={card.image.path}
                     alt={card.title}
@@ -81,13 +81,13 @@ export default function CertificateGallery({ cards }: { cards: CertCard[] }) {
               </button>
             ) : (
               /* PDF-only placeholder */
-              <div className="flex flex-col items-center justify-center gap-2 py-10 bg-white/35">
-                <FileText size={24} className="text-stone" />
+              <div className="flex flex-col items-center justify-center gap-2 py-10 bg-paper-warm">
+                <FileText size={24} className="text-ink-faint" />
               </div>
             )}
 
             {/* Title */}
-            <div className="px-4 py-3 border-t border-white/60">
+            <div className="px-4 py-3 border-t border-ink/10">
               <p className="font-sans text-xs font-medium text-ink leading-snug">
                 {card.title}
               </p>

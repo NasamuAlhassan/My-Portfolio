@@ -504,16 +504,3 @@ export const corpusSources = [
   { name: 'Wikipedia (original)', share: 1.8 },
 ]
 
-/** Marquee band under the hero. */
-export const marqueeItems = [
-  'Low-resource machine translation',
-  'Automatic speech recognition',
-  'Parallel corpus curation',
-  'Kusaal',
-  'NLLB-200',
-  'w2v-BERT 2.0',
-  'Whisper',
-  'Back-translation',
-  'GhanaNLP',
-  'Mabia languages',
-]

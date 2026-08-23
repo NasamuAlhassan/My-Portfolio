@@ -69,13 +69,8 @@ export default function LivePreview({
   return (
     <div ref={ref} className={className}>
       <div className="card overflow-hidden">
-        {/* Browser chrome */}
-        <div className="flex items-center gap-2.5 border-b border-white/55 bg-white/25 px-3 py-2.5 sm:gap-3 sm:px-4">
-          <div className="hidden gap-1.5 sm:flex">
-            <span className="h-2.5 w-2.5 rounded-full bg-ink/12" />
-            <span className="h-2.5 w-2.5 rounded-full bg-ink/12" />
-            <span className="h-2.5 w-2.5 rounded-full bg-ink/12" />
-          </div>
+        {/* Address bar */}
+        <div className="flex items-center gap-2.5 border-b border-ink/10 bg-paper px-3 py-2.5 sm:gap-3 sm:px-4">
           <div className="glass-inset flex min-w-0 flex-1 items-center gap-1.5 px-2.5 py-1">
             <Globe size={10} className="shrink-0 text-ink-faint" />
             <span className="truncate font-mono text-[10px] text-ink-faint">{host}</span>
@@ -93,7 +88,7 @@ export default function LivePreview({
         </div>
 
         {/* Viewport */}
-        <div ref={shellRef} className="relative aspect-[16/10] w-full overflow-hidden bg-white/55">
+        <div ref={shellRef} className="relative aspect-[16/10] w-full overflow-hidden bg-paper-warm">
           {allowEmbed ? (
             <>
               {!loaded && (

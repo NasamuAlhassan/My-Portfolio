@@ -3,7 +3,6 @@ import path from 'path'
 import { certifications } from '@/lib/data'
 import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
 
 const knownTitles: Record<string, string> = {
   'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
@@ -84,13 +83,12 @@ export default function Certifications() {
 
   return (
     <section className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label">Credentials</p>
+          <p className="section-label mb-12">Credentials</p>
         </Reveal>
-        <TextReveal text="Certifications." as="h2" className="section-heading mt-5 mb-14" />
 
-        <div className="space-y-px bg-stone mb-20">
+        <div className="space-y-px bg-stone mb-16">
           {certs.map((cert, i) => (
             <Reveal key={cert.title} delay={i * 0.06}>
               <div className="row flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-8">

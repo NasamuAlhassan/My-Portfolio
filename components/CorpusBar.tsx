@@ -6,8 +6,9 @@ import { corpusSources } from '@/lib/data'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
-// Ordered light→dark so adjacent bands stay distinguishable without labels.
-const SHADES = ['#1D4A2F', '#2A6B44', '#3E8C5C', '#6BAE87', '#A8CBB6']
+// One colour per source, in data order. Greens are collected text, darkest
+// first; back-translation is clay because it is synthetic, not collected.
+const SHADES = ['#1D4A2F', '#3E8C5C', '#B4643A', '#6BAE87', '#8FBFA3', '#A8CBB6', '#C7D9CC']
 
 export default function CorpusBar() {
   const ref = useRef<HTMLDivElement>(null)

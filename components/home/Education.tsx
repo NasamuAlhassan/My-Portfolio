@@ -1,41 +1,37 @@
-'use client'
-
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
-import Glass from '@/components/glass/Glass'
 import { education } from '@/lib/data'
 
 export default function Education() {
   return (
     <section id="education" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label">Background</p>
+          <p className="section-label mb-12">Education</p>
         </Reveal>
-        <TextReveal text="Education." as="h2" className="section-heading mt-5 mb-14" />
 
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="space-y-px bg-stone">
           {education.map((entry, i) => (
-            <Reveal key={entry.institution} delay={i * 0.1}>
-                <Glass className="h-full p-6 sm:p-7 md:p-9">
-                  <div className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
-                    <h3 className="font-serif text-2xl leading-snug text-ink md:text-3xl">
-                      {entry.institution}
-                    </h3>
-                    <span className="shrink-0 font-mono text-[11px] text-ink-faint">{entry.period}</span>
-                  </div>
+            <Reveal key={entry.institution} delay={i * 0.08}>
+              <div className="row grid gap-4 py-8 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] sm:gap-12 sm:px-2">
+                <div>
+                  <h3 className="font-serif text-2xl leading-snug text-ink md:text-3xl">
+                    {entry.institution}
+                  </h3>
+                  <p className="mt-2 font-mono text-[11px] text-ink-faint">{entry.period}</p>
+                </div>
 
-                  <p className="mt-3 font-sans text-sm text-ink-muted">{entry.degree}</p>
-                  <p className="mt-2 font-mono text-[11px] text-forest">{entry.grade}</p>
+                <div>
+                  <p className="font-sans text-[15px] text-ink">{entry.degree}</p>
+                  <p className="mt-1.5 font-mono text-[11px] text-forest">{entry.grade}</p>
 
                   {entry.details && (
-                    <p className="mt-5 max-w-reading font-sans text-sm leading-[1.7] text-ink-muted">
+                    <p className="mt-4 max-w-reading font-sans text-sm leading-[1.7] text-ink-muted">
                       {entry.details}
                     </p>
                   )}
 
                   {entry.highlights.length > 0 && (
-                    <ul className="mt-5 space-y-2">
+                    <ul className="mt-4 space-y-2">
                       {entry.highlights.map((h) => (
                         <li key={h} className="flex gap-3 font-sans text-sm text-ink-muted">
                           <span className="mt-0.5 shrink-0 text-forest" aria-hidden>
@@ -46,7 +42,8 @@ export default function Education() {
                       ))}
                     </ul>
                   )}
-                </Glass>
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -54,4 +51,3 @@ export default function Education() {
     </section>
   )
 }
-

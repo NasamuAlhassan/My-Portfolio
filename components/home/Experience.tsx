@@ -3,7 +3,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useSpring } from 'framer-motion'
 import Reveal from '@/components/motion/Reveal'
-import TextReveal from '@/components/motion/TextReveal'
 import { experience } from '@/lib/data'
 
 export default function Experience() {
@@ -17,11 +16,10 @@ export default function Experience() {
 
   return (
     <section id="experience" className="rule veil-night text-paper">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28">
         <Reveal>
-          <p className="section-label-dark">Journey</p>
+          <p className="section-label-dark mb-14">Experience</p>
         </Reveal>
-        <TextReveal text="Where the work happened." as="h2" className="display-lg text-paper mt-5 mb-16" />
 
         <div ref={ref} className="relative">
           <div className="absolute left-0 top-2 bottom-2 hidden w-px bg-white/12 sm:block" aria-hidden />
