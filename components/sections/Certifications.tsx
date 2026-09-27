@@ -9,6 +9,9 @@ const knownTitles: Record<string, string> = {
   'Claude 101': 'Claude 101 — Anthropic',
   'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
   'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
+  'british-airways-forage': 'British Airways Data Science Job Simulation — Forage',
+  'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp — Africa Climate Collaborative, UG',
+  'techcrush-data-science': 'TechCrush Data Science Bootcamp',
 }
 
 function cleanTitle(baseName: string): string {
@@ -53,11 +56,11 @@ function getCerts(): CertCard[] {
 
     const card: CertCard = {
       title: cleanTitle(base),
-      image: { filename: img, path: `/certificates/${encodeURIComponent(img)}` },
+      image: { filename: img, path: `/certificates/${encodeURI(img)}` },
     }
 
     if (matchedPdf) {
-      card.pdf = { filename: matchedPdf, path: `/certificates/${encodeURIComponent(matchedPdf)}` }
+      card.pdf = { filename: matchedPdf, path: `/certificates/${encodeURI(matchedPdf)}` }
       pairedPdfs.add(matchedPdf)
     }
 
@@ -69,7 +72,7 @@ function getCerts(): CertCard[] {
       const base = pdf.replace(/\.pdf$/i, '').trim()
       cards.push({
         title: cleanTitle(base),
-        pdf: { filename: pdf, path: `/certificates/${encodeURIComponent(pdf)}` },
+        pdf: { filename: pdf, path: `/certificates/${encodeURI(pdf)}` },
       })
     }
   }
@@ -95,6 +98,14 @@ export default function Certifications() {
                 <div className="flex-1">
                   <p className="font-sans text-[15px] font-medium text-ink">{cert.title}</p>
                   <p className="font-sans text-xs text-ink-muted mt-1">{cert.issuer}</p>
+                  {cert.description && (
+                    <p className="mt-2 max-w-reading font-sans text-[13px] leading-[1.65] text-ink-muted">
+                      {cert.description}
+                    </p>
+                  )}
+                  {cert.credential && (
+                    <p className="mt-2 font-mono text-[10px] text-ink-faint">{cert.credential}</p>
+                  )}
                 </div>
                 {cert.date && (
                   <span className="font-mono text-[11px] text-ink-faint shrink-0">{cert.date}</span>

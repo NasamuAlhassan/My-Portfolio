@@ -58,7 +58,7 @@ export default function AllProjects() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: EASE }}
-        className="grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-flow-row-dense gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         <AnimatePresence mode="popLayout">
           {shown.map((p) => (
