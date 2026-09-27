@@ -10,7 +10,7 @@ const knownTitles: Record<string, string> = {
   'techcrush-data-science': 'TechCrush Data Science Bootcamp',
   'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp — Africa Climate Collaborative, UG',
   'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
-  'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
+  'columbia-plus': 'Prompt Engineering & Programming with OpenAI — Columbia+',
   'Claude 101': 'Claude 101 — Anthropic',
   'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
 }
