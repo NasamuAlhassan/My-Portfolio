@@ -49,6 +49,18 @@ export default function Experience() {
                   <p className="max-w-reading font-sans text-[15px] leading-[1.7] text-white/55">
                     {item.description}
                   </p>
+                  {item.highlights && item.highlights.length > 0 && (
+                    <ul className="mt-3 max-w-reading space-y-1.5">
+                      {item.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="relative pl-4 font-sans text-[15px] leading-[1.7] text-white/55 before:absolute before:left-0 before:text-signal before:content-['–']"
+                        >
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </Reveal>
             ))}

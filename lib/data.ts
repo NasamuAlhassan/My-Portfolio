@@ -18,8 +18,8 @@ export const about =
   "Prince Nasamu Alhassan is an 18-year-old AI researcher and software engineer at the University of Ghana, Legon, maintaining a 4.0 CGPA. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he independently designed, trained, and publicly released an open-source Kusaal-English machine translation system — building the roughly 63,000-pair corpus that underlies it from scratch, most recently by mining 13,659 parallel sentences from Kusaal Wikipedia. His work has been presented at a GhanaNLP community session, where GhanaNLP co-founder Paul Azunre publicly engaged and requested access to the dataset. He builds full-stack products used by real students, contributes to the Kusaal Wikimedia Community, and taught himself programming during COVID-19 lockdowns before any formal CS instruction."
 
 export const skills: Record<string, string[]> = {
-  'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14'],
-  'ML / NLP': ['PyTorch', 'HuggingFace Transformers', 'NLLB-200', 'Whisper', 'w2v-BERT 2.0', 'scikit-learn', 'RAG Systems', 'BLEU Evaluation'],
+  'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14', 'Flutter'],
+  'ML / NLP': ['PyTorch', 'HuggingFace Transformers', 'NLLB-200', 'Whisper', 'w2v-BERT 2.0', 'scikit-learn', 'RAG Systems', 'Agentic AI', 'BLEU / chrF++ Evaluation'],
   'Infrastructure & Data': ['Supabase', 'Vercel', 'FastAPI', 'Flask', 'Git/GitHub', 'Kaggle', 'Jupyter', 'SQL', 'REST APIs', 'pandas'],
   'Research': ['Low-resource MT', 'Parallel Corpus Curation', 'Data Augmentation (Back-translation)', 'ASR Fine-tuning', 'Multilingual NLP'],
   'Human Languages': ['Kusaal (native)', 'English (professional)'],
@@ -77,6 +77,27 @@ export const projects: Project[] = [
     featured: true,
     bleu: { forward: 39.2, backward: 26.2 },
     githubRepo: 'kusaal-mt',
+  },
+  {
+    id: 16,
+    title: 'Kusaal Wikipedia Parallel Corpus & MT v5',
+    summary: 'Moving Kusaal-English translation beyond Bible text by mining Wikipedia for new parallel data.',
+    kind: 'research',
+    year: '2026',
+    metrics: [
+      { label: 'BLEU ks→en, Wikipedia Benchmark', value: '47.73' },
+      { label: 'BLEU en→ks, Wikipedia Benchmark', value: '32.26' },
+      { label: 'Verified pairs mined', value: '13,659' },
+    ],
+    description:
+      'The original Kusaal-English corpus was mostly scripture, which limited how well models handled everyday and factual language. A three-stage pipeline mines Kusaal Wikipedia: anchor-based alignment on shared numbers and proper names, an MT-bridged verification step scored with sentence embeddings and chrF++, and manual review of 503 borderline pairs. From 1,170 comparable article pairs it produced 13,659 verified sentence pairs (8,268 gold, 5,391 silver). Retraining NLLB-200 on the combined data raised scores on the frozen 1,000-sentence Kusaal Wikipedia Benchmark from 42.17 to 47.73 BLEU (Kusaal → English) and from 19.43 to 32.26 BLEU (English → Kusaal), while in-domain performance held steady. Corpus, code and the full pipeline are open source; three papers — dataset, MT and methodology — are in preparation with Dr. Anthony Agoswin Musah.',
+    tags: ['Low-resource NLP', 'Machine Translation', 'NLLB-200', 'Corpus Construction', 'Open Source'],
+    links: [
+      { label: 'Code', href: 'https://github.com/NasamuAlhassan/kusaal-mt' },
+      { label: 'Benchmark', href: 'https://huggingface.co/datasets/PrinceAlhassanNasamu/kusaal-wikipedia-benchmark' },
+      { label: 'Hugging Face', href: 'https://huggingface.co/PrinceAlhassanNasamu' },
+    ],
+    featured: true,
   },
   {
     id: 11,
@@ -137,14 +158,26 @@ export const projects: Project[] = [
     year: '2026',
     preview: 'https://mabia-ai.vercel.app',
     description:
-      "An offline-first voice platform for CHPS maternal health work in Northern Ghana, built for the UNICEF StartUp Lab AI for Nurturing Care Hackathon 2026. It calls pregnant women and caregivers in their own language over plain GSM — triaging danger signs, measuring dietary diversity, and dispatching community transport. The transport map is drawn on time-from-care rather than coordinates, because no village driver in the system has coordinates; the screen that matters shows the community with women enrolled and no vehicle that can carry them.",
-    tags: ['Voice', 'FastAPI', 'Health', 'Offline-first', 'Hackathon'],
+      "A voice-first maternal and child health IVR for CHPS work in Northern Ghana, built for UNICEF StartUp Lab's AI for Nurturing Care Hackathon 2026 with Joshua Akum Winyelsum and Dawuda Mardia. It calls pregnant women and caregivers in their own language over plain GSM — triaging danger signs, measuring dietary diversity, and dispatching community transport. Guidance comes from a deterministic rule engine, so it is safe and predictable, backed by 236+ automated tests. The transport map is drawn on time-from-care rather than coordinates, because no village driver in the system has coordinates; the screen that matters shows the community with women enrolled and no vehicle that can carry them.",
+    tags: ['Voice', 'IVR', 'FastAPI', 'Health', 'Offline-first', 'Hackathon'],
     links: [
       { label: 'GitHub', href: 'https://github.com/NasamuAlhassan/Mabia-AI' },
       { label: 'Live Demo', href: 'https://mabia-ai.vercel.app' },
     ],
     featured: true,
     githubRepo: 'Mabia-AI',
+  },
+  {
+    id: 17,
+    title: 'Tɛkyerɛma AI',
+    summary: 'A voice-first, agentic Android assistant that helps blind and low-vision users operate their phones in Ghanaian English and Asante Twi.',
+    kind: 'product',
+    year: '2026',
+    description:
+      'An accessibility assistant built for the Tɛkyerɛma Pa Hackathon, organised by MTN Ghana and the University of Ghana HCI Lab. Users speak naturally and the assistant carries out tasks on the phone for them, reading results back by voice so no screen interaction is needed. It grew out of the Zigi Voice prototype and reuses its agentic state-machine design, with the Khaya API powering speech and language. The language scope is deliberately narrowed to Ghanaian English and Asante Twi so the experience is solid rather than thin across many languages, and it is built and tested on a Samsung Galaxy A20e with under 3 GB of RAM, because that is the kind of phone many target users actually own.',
+    tags: ['Agentic AI', 'Accessibility', 'Speech & Language Tech', 'Android', 'Khaya API', 'Twi'],
+    links: [],
+    featured: true,
   },
   {
     id: 4,
@@ -158,15 +191,15 @@ export const projects: Project[] = [
       { label: 'Verse-level clips', value: '30,820' },
     ],
     description:
-      'An ASR baseline for Kusaal, trained on a corpus assembled and cleaned from scratch: 30,820 verse-level clips, 81.71 hours at 16kHz mono, split by book rather than at random so no speaker or passage leaks between train and test. Whisper-small with LoRA on the attention projections — 30.41% WER on held-out books.',
-    tags: ['ASR', 'Whisper', 'LoRA', 'Low-resource'],
+      'Open speech recognition for Kusaal, trained on a corpus assembled and cleaned from scratch: 30,820 verse-level clips, 81.71 hours at 16kHz mono, split by book rather than at random so no speaker or passage leaks between train and test. Whisper-small with LoRA on the attention projections reaches 30.41% WER on validation, on entirely held-out books. The model, the full dataset (with a working viewer on Hugging Face) and a live demo Space are all public.',
+    tags: ['ASR', 'Whisper', 'LoRA', 'Speech', 'Hugging Face'],
     links: [
       { label: 'Code', href: 'https://github.com/NasamuAlhassan/kusaal-asr' },
       { label: 'Model', href: 'https://huggingface.co/PrinceAlhassanNasamu/kusaal-whisper-small-lora' },
       { label: 'Dataset', href: 'https://huggingface.co/datasets/PrinceAlhassanNasamu/kusaal-asr-dataset' },
       { label: 'Live Demo', href: 'https://huggingface.co/spaces/PrinceAlhassanNasamu/kusaal-asr' },
     ],
-    featured: false,
+    featured: true,
   },
   {
     id: 13,
@@ -209,6 +242,18 @@ export const projects: Project[] = [
     links: [{ label: 'GitHub', href: 'https://github.com/NasamuAlhassan/EIC-Platform' }],
     featured: false,
     githubRepo: 'EIC-Platform',
+  },
+  {
+    id: 18,
+    title: 'Wake the Word',
+    summary: 'An alarm that won’t stop until you read a Scripture verse aloud and answer a reflection question.',
+    kind: 'product',
+    year: '2026',
+    description:
+      'An Android alarm app for the Gloo Hackathon (YouVersion Platform) that keeps ringing until you read a Scripture verse aloud, verified by speech recognition, and then answer an AI-generated reflection question. Built solo in Flutter as a native APK so the alarm rings through the lock screen, using the YouVersion Platform API for verses and Gloo AI Studio for reflection prompts.',
+    tags: ['Flutter', 'Android', 'Speech Recognition', 'YouVersion API', 'Gloo AI', 'In Development'],
+    links: [],
+    featured: false,
   },
   {
     id: 5,
@@ -294,12 +339,11 @@ export const experience = [
     current: true,
   },
   {
-    // TODO: switch role to 'Research Assistant' once full-time work starts next semester
-    role: 'Research Member, Human-Computer Interaction Lab',
-    org: 'University of Ghana, Legon' as string | null,
-    period: '2026 – Present',
+    role: 'Lead Researcher, Northern Languages',
+    org: 'HCI Lab, University of Ghana' as string | null,
+    period: 'Sept 2026 – Present',
     description:
-      'Speech and language technology for Ghanaian languages. Full-time research with Prof. Isaac Wiafe begins next semester.',
+      'Leading research on speech and language technology for Northern Ghanaian (Mabia) languages under the supervision of Prof. Isaac Wiafe.',
     current: true,
   },
   {
@@ -313,8 +357,12 @@ export const experience = [
     role: 'Technology & Digital Systems Intern',
     org: 'EGA Mentorship International' as string | null,
     period: '2026 – Present',
-    description:
-      "Ran a technical audit of the organisation's web properties and presented the findings and remediation plan to the team.",
+    description: "Technology and digital systems work across EGA's projects.",
+    highlights: [
+      'Leading the backend for the Dr. Kwame Nkrumah Political Youth Fun Club website: a blog platform with an admin portal built on Supabase (Postgres, auth, storage, REST API).',
+      "Conducted a technical audit of EGA's web properties and presented the findings and remediation plan in a formal deck.",
+      "Mentoring junior team members across EGA's digital systems projects.",
+    ],
     current: true,
   },
   {
@@ -395,6 +443,9 @@ export interface Recognition {
   issuer: string
   date: string | null
   type: RecognitionType
+  description?: string
+  /** Verification or certificate ID, printed on the certificate. */
+  credential?: string
 }
 
 export const certifications: Recognition[] = [
@@ -435,15 +486,33 @@ export const certifications: Recognition[] = [
 
   // Certifications
   {
+    title: 'British Airways Data Science Job Simulation',
+    issuer: 'British Airways via Forage',
+    date: 'September 2026',
+    type: 'certification',
+    description:
+      "Two practical tasks drawn from the airline's operations and customer strategy: modelling lounge eligibility to forecast lounge demand at Heathrow Terminal 3 for the Airport Planning team, then building and evaluating a predictive model to identify future holiday travellers, with the findings presented as a slide deck.",
+    credential: 'User verification code 69a77e35a15f285ab30b3589',
+  },
+  {
+    title: 'TechCrush Data Science Bootcamp',
+    issuer: '15-week scholarship programme (Beginners), accredited by the American Council of Training and Development, USA',
+    date: 'August 2026',
+    type: 'certification',
+    credential: 'Certificate ID TEC-5CBB1E22',
+  },
+  {
+    title: 'GreenRes Hackathon Virtual Bootcamp',
+    issuer: 'Africa Climate Collaborative, University of Ghana, with the Mastercard Foundation',
+    date: 'July 2026',
+    type: 'certification',
+    description:
+      'Three-day bootcamp preparing teams to build tech-driven climate solutions, under the theme "Transforming Climate Awareness into Climate Action through Technology". Modules: Gender Equality and Inclusive Climate Innovation, Innovation and Entrepreneurship, Data Analysis for Climate Solutions, Leadership and Team Collaboration, and Climate Resilience and Sustainability.',
+  },
+  {
     title: 'Prompt Engineering & Programming with OpenAI',
     issuer: 'Columbia University (Columbia+)',
     date: 'April 2026',
-    type: 'certification',
-  },
-  {
-    title: 'TechCrush Data Science Program',
-    issuer: '12-week applied data science curriculum',
-    date: null,
     type: 'certification',
   },
   {
@@ -474,7 +543,7 @@ export const navLinks = [
 ]
 
 export const positioning = {
-  claim: 'Building language technology for the languages of Northern Ghana.',
+  claim: 'Building language technology for African languages, starting with Northern Ghana.',
   support:
     'Machine translation and speech recognition for Kusaal, a Mabia language of roughly 400,000 speakers in northern Ghana and southern Burkina Faso, and across 42 Ghanaian language subsets. Open models, an open corpus, a public benchmark, and results measured on held-out data.',
 }
