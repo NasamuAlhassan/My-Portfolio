@@ -48,7 +48,7 @@ export default function Research() {
         <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <p className="font-sans text-base leading-[1.75] text-ink-muted">
-              The corpus behind the translation system was assembled pair by pair from six separate
+              The corpus behind the translation system was assembled pair by pair from five separate
               sources, then extended with back-translation and a sentence-aligned corpus mined from
               Kusaal Wikipedia — roughly 63,100 pairs, published under CC BY 4.0 and CC BY-SA 4.0.
             </p>

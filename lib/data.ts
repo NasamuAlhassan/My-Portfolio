@@ -474,7 +474,7 @@ export const navLinks = [
 ]
 
 export const positioning = {
-  claim: 'Building language technology for the languages of Northern Ghana.',
+  claim: 'Building language technology for African languages, starting with Northern Ghana.',
   support:
     'Machine translation and speech recognition for Kusaal, a Mabia language of roughly 400,000 speakers in northern Ghana and southern Burkina Faso, and across 42 Ghanaian language subsets. Open models, an open corpus, a public benchmark, and results measured on held-out data.',
 }
