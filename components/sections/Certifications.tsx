@@ -4,14 +4,21 @@ import { certifications } from '@/lib/data'
 import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
 import Reveal from '@/components/motion/Reveal'
 
+/** Gallery titles, newest first — the gallery follows this order. */
 const knownTitles: Record<string, string> = {
+  'british-airways-forage': 'British Airways Data Science Job Simulation — Forage',
+  'techcrush-data-science': 'TechCrush Data Science Bootcamp',
+  'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp — Africa Climate Collaborative, UG',
+  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
   'Columbia +': 'Prompt Engineering & Programming with OpenAI — Columbia+',
   'Claude 101': 'Claude 101 — Anthropic',
   'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
-  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
-  'british-airways-forage': 'British Airways Data Science Job Simulation — Forage',
-  'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp — Africa Climate Collaborative, UG',
-  'techcrush-data-science': 'TechCrush Data Science Bootcamp',
+}
+
+/** Position in knownTitles; files not listed there go last. */
+function galleryRank(title: string): number {
+  const i = Object.values(knownTitles).indexOf(title)
+  return i === -1 ? Infinity : i
 }
 
 function cleanTitle(baseName: string): string {
@@ -77,7 +84,7 @@ function getCerts(): CertCard[] {
     }
   }
 
-  return cards
+  return cards.sort((a, b) => galleryRank(a.title) - galleryRank(b.title))
 }
 
 export default function Certifications() {
