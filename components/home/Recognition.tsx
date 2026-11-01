@@ -26,6 +26,7 @@ function List({ entries }: { entries: RecognitionEntry[] }) {
 export default function Recognition() {
   const awards = certifications.filter((c) => c.type === 'award')
   const talks = certifications.filter((c) => c.type === 'talk')
+  const community = certifications.filter((c) => c.type === 'community')
 
   return (
     <section id="recognition" className="rule veil-night text-paper">
@@ -50,6 +51,15 @@ export default function Recognition() {
                 Awards & programmes
               </p>
               <List entries={awards} />
+            </div>
+          )}
+
+          {community.length > 0 && (
+            <div>
+              <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">
+                Leadership &amp; community
+              </p>
+              <List entries={community} />
             </div>
           )}
         </div>

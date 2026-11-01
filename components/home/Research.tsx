@@ -22,7 +22,7 @@ const METHOD = [
   {
     n: '04',
     title: 'Mining Wikipedia for a second register',
-    body: 'A shared-anchor alignment pipeline, verified by the model and partially human-adjudicated, mined 13,659 encyclopedic sentence pairs from Kusaal Wikipedia — lifting the weaker direction by 12.8 BLEU on encyclopedic text, with no forgetting on the original test set.',
+    body: 'A shared-anchor alignment pipeline, verified by the model and partially human-adjudicated, mined 13,659 encyclopedic sentence pairs from Kusaal Wikipedia — lifting the weaker direction by 12.8 BLEU on encyclopedic text, with in-domain performance held steady.',
   },
   {
     n: '05',
@@ -48,9 +48,10 @@ export default function Research() {
         <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <p className="font-sans text-base leading-[1.75] text-ink-muted">
-              The corpus behind the translation system was assembled pair by pair from five separate
-              sources, then extended with back-translation and a sentence-aligned corpus mined from
-              Kusaal Wikipedia — roughly 63,100 pairs, published under CC BY 4.0 and CC BY-SA 4.0.
+              The corpus behind the translation system was assembled pair by pair across scripture,
+              lexicographic and encyclopedic sources (32,589 pairs), then extended with 13,659 verified
+              pairs mined from Kusaal Wikipedia: roughly 48,000 pairs in all, published under CC BY 4.0
+              with the full construction pipeline.
             </p>
             <p className="mt-5 font-sans text-base leading-[1.75] text-ink-muted">
               The speech corpus is separate: 30,820 verse-level clips totalling 81.71 hours at 16kHz

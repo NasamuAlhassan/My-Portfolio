@@ -2,13 +2,12 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { corpusSources } from '@/lib/data'
+import { corpusSources, corpusTotalLabel } from '@/lib/data'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
-// One colour per source, in data order. Greens are collected text, darkest
-// first; back-translation is clay because it is synthetic, not collected.
-const SHADES = ['#1D4A2F', '#3E8C5C', '#B4643A', '#6BAE87', '#8FBFA3', '#A8CBB6', '#C7D9CC']
+// One colour per source, in data order, darkest first.
+const SHADES = ['#1D4A2F', '#3E8C5C', '#8FBFA3', '#6BAE87', '#A8CBB6', '#C7D9CC']
 
 export default function CorpusBar() {
   const ref = useRef<HTMLDivElement>(null)
@@ -22,7 +21,7 @@ export default function CorpusBar() {
           Corpus provenance
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint num">
-          ~63,100 pairs
+          {corpusTotalLabel}
         </p>
       </div>
 
