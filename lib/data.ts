@@ -15,14 +15,14 @@ export const personalInfo = {
 }
 
 export const about =
-  "Prince Nasamu Alhassan is an 18-year-old AI researcher and software engineer at the University of Ghana, Legon, maintaining a 4.0 CGPA. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he independently designed, trained, and publicly released an open-source Kusaal-English machine translation system — building the roughly 63,000-pair corpus that underlies it from scratch, most recently by mining 13,659 parallel sentences from Kusaal Wikipedia. His work has been presented at a GhanaNLP community session, where GhanaNLP co-founder Paul Azunre publicly engaged and requested access to the dataset. He builds full-stack products used by real students, contributes to the Kusaal Wikimedia Community, and taught himself programming during COVID-19 lockdowns before any formal CS instruction."
+  "Prince Nasamu Alhassan is an AI researcher and software engineer at the University of Ghana, Legon, where he studies Mathematical Sciences with Computer Science on a 4.0 CGPA. He leads research on Northern Ghanaian languages at the university's HCI Lab, and works as an independent researcher affiliated with GhanaNLP across low-resource NLP, speech modelling, data science, full-stack development and AI agent design. A native Kusaal speaker from Bawku in Ghana's Upper East Region, he started with his own language: he designed, trained and publicly released Kusaal translation and speech recognition models, a ~48,000-pair parallel corpus and an 81-hour speech dataset, with the full construction pipeline open-sourced. He also ships voice-first products for people mainstream tools leave out, including blind users, mothers and newborns in rural communities, and students. His research interests are multilingual representation learning, low-resource language modelling, speech technology for African languages, and equitable AI for African language communities. He taught himself programming and graphic design during the COVID-19 lockdowns, before any formal computer science instruction."
 
 export const skills: Record<string, string[]> = {
-  'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14', 'Flutter'],
-  'ML / NLP': ['PyTorch', 'HuggingFace Transformers', 'NLLB-200', 'Whisper', 'w2v-BERT 2.0', 'scikit-learn', 'RAG Systems', 'Agentic AI', 'BLEU / chrF++ Evaluation'],
-  'Infrastructure & Data': ['Supabase', 'Vercel', 'FastAPI', 'Flask', 'Git/GitHub', 'Kaggle', 'Jupyter', 'SQL', 'REST APIs', 'pandas'],
-  'Research': ['Low-resource MT', 'Parallel Corpus Curation', 'Data Augmentation (Back-translation)', 'ASR Fine-tuning', 'Multilingual NLP'],
-  'Human Languages': ['Kusaal (native)', 'English (professional)'],
+  'Languages & Frameworks': ['Python', 'JavaScript', 'TypeScript', 'React', 'Next.js 14', 'React Native / Expo', 'Android', 'Flutter', 'FastAPI', 'Flask', 'Node.js', 'SQL'],
+  'ML, NLP & Speech': ['PyTorch', 'Hugging Face Transformers', 'PEFT / LoRA', 'NLLB-200', 'Whisper', 'w2v-BERT 2.0', 'CTC with KenLM decoding', 'Meta MMS', 'sentence-transformers', 'scikit-learn', 'pandas', 'RAG Systems', 'Agentic AI', 'ONNX', 'Gradio', 'BLEU / chrF++ Evaluation'],
+  'Infrastructure & Data': ['Supabase', 'PostgreSQL', 'Vercel', 'Docker', 'Git/GitHub', 'Kaggle', 'Google Colab', 'Lightning AI', 'Jupyter', "Africa's Talking", 'Khaya API', 'REST APIs'],
+  'Research': ['Low-resource MT', 'Parallel Corpus Curation', 'Comparable-corpus Mining', 'ASR Fine-tuning', 'Text-to-Speech', 'Multilingual NLP'],
+  'Human Languages': ['Kusaal (native)', 'English (native)'],
 }
 
 export type ProjectLink = { label: string; href: string }
@@ -58,14 +58,14 @@ export const projects: Project[] = [
     title: 'Kusaal-English Machine Translation',
     summary: 'Open-source machine translation for a language of roughly 400,000 speakers.',
     kind: 'research',
-    year: '2025 – present',
+    year: '2024 – present',
     metrics: [
-      { label: 'BLEU ks→en', value: '39.2' },
-      { label: 'BLEU en→ks', value: '26.2' },
-      { label: 'Corpus pairs', value: '63,100' },
+      { label: 'BLEU ks→en, in-domain', value: '27.57' },
+      { label: 'BLEU en→ks, in-domain', value: '13.72' },
+      { label: 'Corpus pairs', value: '~48,000' },
     ],
     description:
-      "An open-source machine translation system for Kusaal, a Mabia language spoken by roughly 400,000 people in northern Ghana and southern Burkina Faso. Fine-tuned NLLB-200-distilled-600M with the kus_Latn token seeded from Dagbani rather than randomly. The corpus — now ~63,100 pairs across seven sources — was extended in August 2026 with 13,659 sentence pairs mined from Kusaal Wikipedia, lifting encyclopedic-text BLEU to 47.73 (ks→en) and 32.26 (en→ks), a +12.8 BLEU jump in the harder direction, with no forgetting on the original test set. Ships with a frozen, public 1,000-pair benchmark so the numbers are independently verifiable.",
+      "An open-source machine translation system for Kusaal, a Mabia language spoken by roughly 400,000 people in northern Ghana and southern Burkina Faso. Fine-tuned NLLB-200-distilled-600M with the kus_Latn token seeded from Dagbani rather than randomly. Fine-tuned in both directions, it reaches 27.57 BLEU (Kusaal → English) and 13.72 BLEU (English → Kusaal) on the in-domain held-out test set. The corpus has grown from 32,589 to roughly 48,000 sentence pairs across scripture, lexicographic and encyclopedic registers, most recently with 13,659 pairs mined from Kusaal Wikipedia in August 2026. That lifted encyclopedic-text BLEU to 47.73 (ks→en) and 32.26 (en→ks), a +12.8 BLEU jump in the harder direction, with in-domain performance held steady. The corpus is published under CC BY 4.0 with its full construction pipeline. Ships with a frozen, public 1,000-pair benchmark so the numbers are independently verifiable.",
     tags: ['NLP', 'HuggingFace', 'Low-resource MT', 'PyTorch', 'NLLB-200'],
     links: [
       { label: 'Code', href: 'https://github.com/NasamuAlhassan/kusaal-mt' },
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       { label: 'Benchmark', href: 'https://huggingface.co/datasets/PrinceAlhassanNasamu/kusaal-wikipedia-benchmark' },
     ],
     featured: true,
-    bleu: { forward: 39.2, backward: 26.2 },
+    bleu: { forward: 27.57, backward: 13.72 },
     githubRepo: 'kusaal-mt',
   },
   {
@@ -90,7 +90,7 @@ export const projects: Project[] = [
       { label: 'Verified pairs mined', value: '13,659' },
     ],
     description:
-      'The original Kusaal-English corpus was mostly scripture, which limited how well models handled everyday and factual language. A three-stage pipeline mines Kusaal Wikipedia: anchor-based alignment on shared numbers and proper names, an MT-bridged verification step scored with sentence embeddings and chrF++, and manual review of 503 borderline pairs. From 1,170 comparable article pairs it produced 13,659 verified sentence pairs (8,268 gold, 5,391 silver). Retraining NLLB-200 on the combined data raised scores on the frozen 1,000-sentence Kusaal Wikipedia Benchmark from 42.17 to 47.73 BLEU (Kusaal → English) and from 19.43 to 32.26 BLEU (English → Kusaal), while in-domain performance held steady. Corpus, code and the full pipeline are open source; three papers — dataset, MT and methodology — are in preparation with Dr. Anthony Agoswin Musah.',
+      'The original Kusaal-English corpus was mostly scripture, which limited how well models handled everyday and factual language. A three-stage pipeline mines Kusaal Wikipedia: anchor-based alignment on shared numbers and proper names, an MT-bridged verification step scored with sentence embeddings and chrF++, and manual review of 503 borderline pairs. From 1,170 comparable article pairs it produced 13,659 verified sentence pairs (8,268 gold, 5,391 silver). Retraining NLLB-200 on the combined 86,683-example set, with full replay of the earlier data, raised scores on the frozen 1,000-sentence Kusaal Wikipedia Benchmark from 42.17 to 47.73 BLEU (Kusaal → English) and from 19.43 to 32.26 BLEU (English → Kusaal), while in-domain performance held steady. Corpus, code and the full pipeline are open source; three papers — dataset, MT and methodology — are in preparation with Dr. Anthony Agoswin Musah.',
     tags: ['Low-resource NLP', 'Machine Translation', 'NLLB-200', 'Corpus Construction', 'Open Source'],
     links: [
       { label: 'Code', href: 'https://github.com/NasamuAlhassan/kusaal-mt' },
@@ -111,8 +111,8 @@ export const projects: Project[] = [
       { label: 'Language subsets', value: '42' },
     ],
     description:
-      "One speech model for 42 Ghanaian language subsets, trained in a 48-hour H200 window at the GhanaNLP TTS/ASR Hackathon. w2v-BERT 2.0 with a CTC head in bf16, building on GhanaNLP's DONDO baseline, plus a jointly trained language-ID head — speak, and it works out which of the 42 languages it heard, at 96.8% mean accuracy. Six languages contain the same scripture read by different narrators, so the splits were rebuilt to be book-disjoint; the cost of that leakage was then measured directly and published as a negative result rather than a scare number. 30.2% micro WER on a test set where no book appears in training.",
-    tags: ['ASR', 'w2v-BERT 2.0', 'CTC', 'Language ID', 'ONNX'],
+      "One speech model for 42 Ghanaian language subsets, prioritising northern Ghanaian languages, trained in a 48-hour H200 window at the GhanaNLP TTS/ASR Hackathon. w2v-BERT 2.0 with a CTC head in bf16, building on GhanaNLP's DONDO baseline, plus a jointly trained language-ID head — speak, and it works out which of the 42 languages it heard, at 96.8% mean accuracy. Six languages contain the same scripture read by different narrators, so the splits were rebuilt to be book-disjoint; the cost of that leakage was then measured directly and published as a negative result rather than a scare number. 30.2% micro WER on a test set where no book appears in training. A Kusaal text-to-speech model was trained in the same 48-hour window, delivered with ONNX exports and a Gradio demo, and contributed to the ghananlpcommunity Hugging Face organisation.",
+    tags: ['ASR', 'TTS', 'w2v-BERT 2.0', 'CTC', 'Language ID', 'ONNX'],
     links: [
       { label: 'Code', href: 'https://github.com/NasamuAlhassan/kasa42' },
       { label: 'Model', href: 'https://huggingface.co/PrinceAlhassanNasamu/kasa42-asr' },
@@ -125,11 +125,11 @@ export const projects: Project[] = [
     title: 'Forge — AI-Powered Academic Productivity Tool',
     summary: 'A voice-driven study scheduler, designed and shipped in 48 hours.',
     kind: 'product',
-    year: '2026',
+    year: 'May 2026',
     preview: 'https://forge-study-theta.vercel.app',
     description:
-      'Voice-driven study scheduler with Pomodoro focus sessions and usage analytics. Built and shipped within 48 hours at the DesignPxD Student AI Hackathon, UG Legon.',
-    tags: ['React', 'Vite', 'AI', 'Vercel', 'Hackathon'],
+      'Voice-driven study scheduler with Pomodoro focus sessions, usage analytics, PDF and ICS export, and a speech-to-speech assistant panel powered by Gemini 2.5 Flash. Built and shipped within 48 hours at the DesignPxD Student AI Hackathon, UG Legon.',
+    tags: ['React', 'Vite', 'Supabase', 'Gemini 2.5 Flash', 'Vercel', 'Hackathon'],
     links: [
       { label: 'GitHub', href: 'https://github.com/NasamuAlhassan/Forge_study' },
       { label: 'Live Demo', href: 'https://forge-study-theta.vercel.app' },
@@ -140,12 +140,12 @@ export const projects: Project[] = [
   {
     id: 3,
     title: 'CampusLink — Verified Student Connection Platform',
-    summary: 'Verified student identity, real-time messaging and campus mapping for UG Legon.',
+    summary: 'Verified student identity, real-time messaging and campus mapping for African university students.',
     kind: 'product',
-    year: '2026 – present',
+    year: '2025 – present',
     preview: 'https://campus-link-sigma.vercel.app',
     description:
-      'Full-stack platform with two-stage student identity verification, real-time messaging, and an interactive campus map. Built for UG Legon students. Also in development as CampusLink Pay for Moolre Startup Cup 2026.',
+      'Founded and built a full-stack platform for African university students, starting at UG Legon, with two-stage student identity verification, real-time messaging, and an interactive campus map. Also in development as CampusLink Pay for Moolre Startup Cup 2026.',
     tags: ['Next.js 14', 'Supabase', 'Gemini API', 'Full-stack'],
     links: [{ label: 'Live Demo', href: 'https://campus-link-sigma.vercel.app' }],
     featured: true,
@@ -158,8 +158,8 @@ export const projects: Project[] = [
     year: '2026',
     preview: 'https://mabia-ai.vercel.app',
     description:
-      "A voice-first maternal and child health IVR for CHPS work in Northern Ghana, built for UNICEF StartUp Lab's AI for Nurturing Care Hackathon 2026 with Joshua Akum Winyelsum and Dawuda Mardia. It calls pregnant women and caregivers in their own language over plain GSM — triaging danger signs, measuring dietary diversity, and dispatching community transport. Guidance comes from a deterministic rule engine, so it is safe and predictable, backed by 236+ automated tests. The transport map is drawn on time-from-care rather than coordinates, because no village driver in the system has coordinates; the screen that matters shows the community with women enrolled and no vehicle that can carry them.",
-    tags: ['Voice', 'IVR', 'FastAPI', 'Health', 'Offline-first', 'Hackathon'],
+      "A voice-first maternal and child health IVR for CHPS work in Northern Ghana, built for UNICEF StartUp Lab's AI for Nurturing Care Hackathon 2026 with Joshua Akum Winyelsum and Dawuda Mardia, as engineering and AI lead. It calls pregnant women and caregivers in their own language over IVR and USSD on plain GSM: proactive outreach on the WHO eight-contact schedule, danger-sign triage, keypad dietary-diversity screening filtered by season and affordability, and community transport dispatch with referral tracking until care is received. Triage comes from a deterministic, auditable rule engine that returns readable reason codes. The voice layer speaks Dagbani and Kusaal through the Khaya API and Meta MMS, with recorded and spoken-English fallbacks. Under the hood: a React PWA with IndexedDB offline capture, a FastAPI backend over an append-only event log with client-generated idempotency keys, PostgreSQL, Africa's Talking and Docker, backed by 236 automated tests. The transport map is drawn on time-from-care rather than coordinates, because no village driver in the system has coordinates; the screen that matters shows the community with women enrolled and no vehicle that can carry them.",
+    tags: ['Voice', 'IVR', 'USSD', 'FastAPI', 'PostgreSQL', 'Health', 'Offline-first', 'Hackathon'],
     links: [
       { label: 'GitHub', href: 'https://github.com/NasamuAlhassan/Mabia-AI' },
       { label: 'Live Demo', href: 'https://mabia-ai.vercel.app' },
@@ -174,8 +174,8 @@ export const projects: Project[] = [
     kind: 'product',
     year: '2026',
     description:
-      'An accessibility assistant built for the Tɛkyerɛma Pa Hackathon, organised by MTN Ghana and the University of Ghana HCI Lab. Users speak naturally and the assistant carries out tasks on the phone for them, reading results back by voice so no screen interaction is needed. It grew out of the Zigi Voice prototype and reuses its agentic state-machine design, with the Khaya API powering speech and language. The language scope is deliberately narrowed to Ghanaian English and Asante Twi so the experience is solid rather than thin across many languages, and it is built and tested on a Samsung Galaxy A20e with under 3 GB of RAM, because that is the kind of phone many target users actually own.',
-    tags: ['Agentic AI', 'Accessibility', 'Speech & Language Tech', 'Android', 'Khaya API', 'Twi'],
+      'An accessibility assistant built for the Tɛkyerɛma Pa Hackathon, organised by MTN Ghana and the University of Ghana HCI Lab, where it was a top five finalist. Users handle mobile money (including transfers to other networks), messaging and calling entirely by voice: they speak naturally and the assistant carries out the task, reading results back by voice so no screen interaction is needed. It grew out of the Zigi Voice prototype and reuses its finite-state agentic design, with Khaya API Twi speech recognition and synthesis running against MTN MoMo transaction flows. The language scope is deliberately narrowed to Ghanaian English and Asante Twi so the experience is solid rather than thin across many languages, and it is tuned and tested on a Samsung Galaxy A20e (Android 11, about 2.8 GB of RAM), because that is the kind of phone many target users actually own.',
+    tags: ['Agentic AI', 'Accessibility', 'Mobile Money', 'Android', 'Khaya API', 'Twi', 'Top 5 Finalist'],
     links: [],
     featured: true,
   },
@@ -256,6 +256,67 @@ export const projects: Project[] = [
     featured: false,
   },
   {
+    id: 19,
+    title: 'GreenReS — Climate Risk Education and Action Platform',
+    summary: 'District-level climate risk guidance for rural users over SMS and USSD.',
+    kind: 'product',
+    year: '2026',
+    preview: 'https://green-res.vercel.app',
+    description:
+      'Built for the GreenRes Hackathon 2026 (Africa Climate Collaborative and the Mastercard Foundation) as technical lead of a team of three. A React PWA and FastAPI backend deliver district-level climate risk guidance to rural users over SMS and USSD, with a three-tier proof model for verifying real-world climate action. 24 endpoints, 76 automated tests.',
+    tags: ['React', 'PWA', 'FastAPI', 'SMS', 'USSD', 'Climate', 'Hackathon'],
+    links: [{ label: 'Live Demo', href: 'https://green-res.vercel.app' }],
+    featured: false,
+  },
+  {
+    id: 20,
+    title: 'RBAS — Real-Time Biotech Regulatory Application System',
+    summary: "An online biosafety permit application system for Ghana's National Biosafety Authority.",
+    kind: 'engineering',
+    year: '2026',
+    description:
+      "A client project for Ghana's National Biosafety Authority (NBA), built as sole developer: an online biosafety permit application system proposed to the Authority and delivered end to end as a working system. The NBA has requested a demonstration.",
+    tags: ['Full-stack', 'Regulatory Tech', 'Client Project', 'In Development'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 21,
+    title: 'Kasa — Voice-First English and Twi Language Coaching',
+    summary: 'A voice-first coaching app for Twi speakers who need working English.',
+    kind: 'product',
+    year: '2026',
+    description:
+      'A voice-first language coaching app for Twi speakers who need working English, founded and specified with a full product and technical requirements document. Built on React Native and Expo with Supabase, using Azure Pronunciation Assessment to score spoken practice.',
+    tags: ['React Native', 'Expo', 'Supabase', 'Azure Speech', 'Twi', 'In Development'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 22,
+    title: 'Mabia Voice Line',
+    summary: 'A voice line submitted to SafeTech Africa HackLab 2026.',
+    kind: 'product',
+    year: '2026',
+    description:
+      'A voice-line project submitted to SafeTech Africa HackLab 2026, run with UNFPA and the Spotlight Initiative.',
+    tags: ['Voice', 'Hackathon'],
+    links: [],
+    featured: false,
+  },
+  {
+    id: 23,
+    title: 'Nasamu — Personal AI Workspace',
+    summary: 'A personal AI workspace over a self-hosted open-weight language model.',
+    kind: 'engineering',
+    year: '2025 – 2026',
+    description:
+      'A personal AI workspace built over a self-hosted open-weight language model, running on free GPU compute.',
+    tags: ['LLM', 'Self-hosted', 'Open-weight models'],
+    links: [],
+    featured: false,
+  },
+  {
     id: 5,
     title: 'FieldMind — RAG Document Intelligence',
     summary: 'Retrieval-augmented search over enterprise document collections.',
@@ -274,7 +335,7 @@ export const projects: Project[] = [
     kind: 'product',
     year: '2026',
     description:
-      'Multi-tier cybersecurity SaaS with AI-powered threat intelligence engine, mobile money payment integration, and emergency SMS infrastructure. Built with a team for Moolre Startup Cup 2026.',
+      'Multi-tier cybersecurity SaaS being architected with a team: an AI-powered threat intelligence engine, mobile money payment integration, and emergency SMS infrastructure. Built with a team for Moolre Startup Cup 2026.',
     tags: ['AI', 'Cybersecurity', 'SaaS', 'In Development'],
     links: [],
     featured: false,
@@ -331,19 +392,29 @@ export const projects: Project[] = [
 
 export const experience = [
   {
-    role: 'Independent NLP Researcher',
-    org: null as string | null,
-    period: '2025 – Present',
-    description:
-      'Designed and released open-source Kusaal-English MT and ASR models, publishing both alongside their corpora on HuggingFace. Scaled the corpus from 34K to roughly 63K pairs with a Wikipedia mining pipeline and back-translation, and froze a public 1,000-pair benchmark so results are independently verifiable. Contributing corpora and models for low-resource Ghanaian languages with GhanaNLP, and presenting the work at their community sessions.',
-    current: true,
-  },
-  {
     role: 'Lead Researcher, Northern Languages',
     org: 'HCI Lab, University of Ghana' as string | null,
     period: 'Sept 2026 – Present',
     description:
-      'Leading research on speech and language technology for Northern Ghanaian (Mabia) languages under the supervision of Prof. Isaac Wiafe.',
+      'Leading research on speech and language technology for the languages of Northern Ghana under the supervision of Prof. Isaac Wiafe.',
+    highlights: [
+      'Developing a research plan for a community-led wearable platform that collects consented, naturalistic everyday speech in African languages, with community-led transcription and validation, participant withdrawal and deletion rights, and community governance over data access.',
+    ],
+    current: true,
+  },
+  {
+    role: 'Independent NLP Researcher',
+    org: 'Affiliated with GhanaNLP' as string | null,
+    period: '2024 – Present',
+    description:
+      'Designed and released open-source Kusaal-English MT and ASR models, publishing them alongside their corpora on Hugging Face.',
+    highlights: [
+      'Grew the Kusaal-English parallel corpus from 32,589 to roughly 48,000 pairs, released under CC BY 4.0 with the full construction pipeline.',
+      'Fine-tuned NLLB-200-distilled-600M in both directions: 27.57 BLEU (Kusaal → English) and 13.72 BLEU (English → Kusaal) in-domain.',
+      'Mined 13,659 verified pairs from Kusaal Wikipedia, lifting the frozen 1,000-sentence benchmark to 47.73 and 32.26 BLEU.',
+      'Built an 81.7-hour Kusaal ASR dataset and a Whisper-small LoRA model at 30.41% WER on unseen books.',
+      'Preparing three papers (dataset, machine translation, corpus-construction methodology) with Dr. Anthony Agoswin Musah, University of Education, Winneba.',
+    ],
     current: true,
   },
   {
@@ -357,35 +428,60 @@ export const experience = [
     role: 'Technology & Digital Systems Intern',
     org: 'EGA Mentorship International' as string | null,
     period: '2026 – Present',
-    description: "Technology and digital systems work across EGA's projects.",
+    description: "Built and shipped projects across EGA's digital systems.",
     highlights: [
-      'Leading the backend for the Dr. Kwame Nkrumah Political Youth Fun Club website: a blog platform with an admin portal built on Supabase (Postgres, auth, storage, REST API).',
-      "Conducted a technical audit of EGA's web properties and presented the findings and remediation plan in a formal deck.",
-      "Mentoring junior team members across EGA's digital systems projects.",
+      'Led the backend for the Dr. Kwame Nkrumah Political Youth Fun Club website: a blog platform with an admin portal built on Supabase (Postgres, auth, storage, REST API), working with a frontend team.',
+      "Completed a technical audit of EGA's web properties and presented the findings in a PowerPoint deck.",
+      "Mentored junior team members across EGA's digital systems projects.",
     ],
     current: true,
+  },
+  {
+    role: 'Sole Developer, RBAS',
+    org: 'Client project for the National Biosafety Authority' as string | null,
+    period: '2026',
+    description:
+      'Building an online biosafety permit application system proposed to the NBA, delivered end to end as a working system, with a demonstration requested by the Authority.',
+    current: false,
   },
   {
     role: 'Data Science Intern',
     org: 'Decodelabs' as string | null,
     period: 'April – May 2026',
-    description: 'Built an end-to-end climate data pipeline across five Ghanaian cities using the Open-Meteo API.',
+    description:
+      'Built an end-to-end climate data pipeline ingesting multi-city meteorological time series from the Open-Meteo API across five Ghanaian cities, producing structured datasets for downstream analytics.',
     current: false,
   },
   {
     role: 'Data Science Intern',
     org: 'Codveda Technologies' as string | null,
+    period: '2025',
+    description:
+      'Ran a full data science pipeline: web-scraped 1,000+ records with BeautifulSoup, cleaned the data, built regression and classification models, applied ARIMA time-series forecasting, and developed NLP text classification systems.',
+    current: false,
+  },
+  {
+    role: 'MTN Ghana Tɛkyerɛma Pa Hackathon',
+    org: 'Top five finalist' as string | null,
     period: '2026',
     description:
-      'Web-scraped 1,000+ records, built regression/classification models, applied ARIMA forecasting, developed NLP text classification systems.',
+      'Built Tɛkyerɛma AI, a voice-first Android assistant that lets blind and low-vision users handle mobile money, messaging and calling in Ghanaian English and Asante Twi.',
     current: false,
   },
   {
     role: 'UNICEF StartUp Lab — AI for Nurturing Care Hackathon',
-    org: null as string | null,
+    org: 'Engineering and AI lead' as string | null,
     period: '2026',
     description:
-      'Built Mabia AI: an offline-first voice platform for CHPS maternal health outreach in Northern Ghana — danger-sign triage, dietary-diversity calls and community transport dispatch over plain GSM.',
+      'Built Mabia AI: an offline-first IVR and USSD platform for CHPS maternal and newborn care in Northern Ghana — danger-sign triage, dietary-diversity screening and community transport dispatch over plain GSM.',
+    current: false,
+  },
+  {
+    role: 'GreenRes Hackathon 2026',
+    org: 'Technical lead' as string | null,
+    period: '2026',
+    description:
+      'Built GreenReS, delivering district-level climate risk guidance to rural users over SMS and USSD, with the Africa Climate Collaborative and the Mastercard Foundation.',
     current: false,
   },
   {
@@ -393,14 +489,14 @@ export const experience = [
     org: null as string | null,
     period: '2026',
     description:
-      'Trained KASA-42, one speech model for 42 Ghanaian language subsets with automatic language ID, in a 48-hour H200 window — 30.2% WER on a book-disjoint test set.',
+      'Trained KASA-42, one speech model for 42 Ghanaian language subsets with automatic language ID, in a 48-hour H200 window from AI Skills and Compute Africa (AISCA), reaching 30.2% WER on a book-disjoint test set. Also trained a Kusaal text-to-speech model with ONNX exports and a Gradio demo.',
     current: false,
   },
   {
     role: 'DesignPxD Student AI Hackathon',
     org: null as string | null,
-    period: '2026',
-    description: 'Built and shipped FieldMind (RAG document intelligence) and Forge (AI study scheduler) in separate hackathon sprints.',
+    period: 'May 2026',
+    description: 'Built and shipped Forge, a voice-driven AI study scheduler, within 48 hours.',
     current: false,
   },
   {
@@ -430,13 +526,14 @@ export const education = [
     details: null as string | null,
     highlights: [
       'Ranked 1st in class, 5th school-wide',
+      'Highest Elective Mathematics score in cohort',
       'NSMQ national semi-finalist; team leader and primary organiser for school\'s national campaign',
       'Best Student award; top performance in Mathematics, Physics, Chemistry, and Biology',
     ],
   },
 ]
 
-export type RecognitionType = 'award' | 'talk' | 'certification'
+export type RecognitionType = 'award' | 'talk' | 'certification' | 'community'
 
 export interface Recognition {
   title: string
@@ -451,8 +548,20 @@ export interface Recognition {
 export const certifications: Recognition[] = [
   // Awards & recognition
   {
+    title: 'Top five finalist, Tɛkyerɛma Pa Hackathon',
+    issuer: 'MTN Ghana and the University of Ghana HCI Lab',
+    date: '2026',
+    type: 'award',
+  },
+  {
+    title: 'MTN Ghana Foundation Bright Scholarship',
+    issuer: 'MTN Ghana Foundation, 2026 cohort',
+    date: '2026',
+    type: 'award',
+  },
+  {
     title: 'Claude for Open Source Program',
-    issuer: 'Anthropic',
+    issuer: 'Anthropic — six months of Claude Max',
     date: '2026',
     type: 'award',
   },
@@ -460,6 +569,18 @@ export const certifications: Recognition[] = [
     title: 'Official Ambassador',
     issuer: 'International Organization of Youth',
     date: '2026 – 2027',
+    type: 'award',
+  },
+  {
+    title: 'TechCrush Data Science Bootcamp Scholarship',
+    issuer: 'TechCrush — 15-week applied curriculum with live instruction',
+    date: '2026',
+    type: 'award',
+  },
+  {
+    title: 'Goalpha Intern Mentorship Program (GIMP)',
+    issuer: 'Participant',
+    date: null,
     type: 'award',
   },
   {
@@ -473,8 +594,8 @@ export const certifications: Recognition[] = [
   {
     title:
       'Bridging the Gap: A Fine-Tuned NLLB-200 Model for Kusaal-English Machine Translation',
-    issuer: 'Monthly Tech-Talk — researchers from Google attended',
-    date: '2026',
+    issuer: 'Google Research Africa Monthly Student Tech-Talk, AICC Accra — positive feedback from Google researchers',
+    date: '31 July 2026',
     type: 'talk',
   },
   {
@@ -527,6 +648,32 @@ export const certifications: Recognition[] = [
     date: 'September 2026, Accra',
     type: 'certification',
   },
+
+  // Leadership & community
+  {
+    title: 'Campus Ambassador, WIWIK 100',
+    issuer: 'University of Ghana',
+    date: null,
+    type: 'community',
+  },
+  {
+    title: 'Contributor, GhanaNLP',
+    issuer: 'African NLP research network',
+    date: null,
+    type: 'community',
+  },
+  {
+    title: 'Member, COMPSSA',
+    issuer: "Computer Science Students' Association, University of Ghana",
+    date: null,
+    type: 'community',
+  },
+  {
+    title: 'Church leadership',
+    issuer: 'Drummer, sound engineer, choir member, event organiser and chaplain',
+    date: null,
+    type: 'community',
+  },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -550,26 +697,23 @@ export const positioning = {
 
 /** Animated counters on the home page. */
 export const headlineMetrics: Metric[] = [
-  { label: 'BLEU, Kusaal → English', value: '39.2' },
+  { label: 'BLEU, Kusaal → English (in-domain)', value: '27.57' },
   { label: 'Languages, one ASR model', value: '42' },
-  { label: 'Corpus pairs built', value: '63,100' },
+  { label: 'Corpus pairs built', value: '48,000' },
   { label: 'Hours of audio aligned', value: '81.71' },
 ]
 
 /**
- * Provenance of the ~63,100-pair corpus, for the stacked-bar visual.
- * Shares are percentages computed from the per-source pair counts on the
- * kusaal-nllb-600M model card (Aug 2026): Bible 29,257 · Wikipedia harvest
- * 13,659 · back-translation ~9,300 · Index 3,504 · GhanaNLP 3,489 ·
- * Lexique Pro 2,775 · Wikipedia original subset 1,136.
+ * Provenance of the ~48,000-pair corpus, for the stacked-bar visual.
+ * Shares are percentages of the two documented components: the original
+ * corpus (32,589 pairs across scripture, lexicographic and encyclopedic
+ * sources) and the Kusaal Wikipedia harvest (13,659 verified pairs:
+ * 8,268 gold, 5,391 silver).
  */
-export const corpusSources = [
-  { name: 'Bible text', share: 46.4 },
-  { name: 'Wikipedia harvest', share: 21.6 },
-  { name: 'Back-translation', share: 14.7 },
-  { name: 'English-Kusaal Index', share: 5.6 },
-  { name: 'GhanaNLP', share: 5.5 },
-  { name: 'Lexique Pro', share: 4.4 },
-  { name: 'Wikipedia (original)', share: 1.8 },
-]
+export const corpusTotalLabel = '~48,000 pairs'
 
+export const corpusSources = [
+  { name: 'Original corpus', share: 70.5 },
+  { name: 'Wikipedia harvest (gold)', share: 17.9 },
+  { name: 'Wikipedia harvest (silver)', share: 11.7 },
+]
