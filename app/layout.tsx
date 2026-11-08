@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
-import { DM_Serif_Display, Outfit, JetBrains_Mono } from 'next/font/google'
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
-const dmSerif = DM_Serif_Display({
-  subsets: ['latin'],
-  variable: '--font-dm-serif',
+const display = Instrument_Serif({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-display',
   weight: '400',
   style: ['normal', 'italic'],
   display: 'swap',
 })
 
-const outfit = Outfit({
-  subsets: ['latin'],
-  variable: '--font-outfit',
-  weight: ['300', '400', '500', '600', '700'],
+const text = Inter_Tight({
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-text',
+  weight: ['400', '500', '600', '700', '800'],
   display: 'swap',
 })
 
@@ -46,7 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${dmSerif.variable} ${outfit.variable} ${jetbrains.variable} font-sans antialiased text-ink`}
+        className={`${display.variable} ${text.variable} ${jetbrains.variable} font-sans antialiased text-ink`}
       >
         <Header />
         <main>{children}</main>

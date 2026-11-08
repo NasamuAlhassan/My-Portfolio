@@ -95,7 +95,7 @@ export default function Certifications() {
     <section className="rule">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label mb-12">Credentials</p>
+          <p className="section-label mb-12">14 · Credentials</p>
         </Reveal>
 
         <div className="space-y-px bg-stone mb-16">

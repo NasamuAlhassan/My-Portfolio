@@ -6,7 +6,7 @@ export default function Skills() {
     <section id="skills" className="rule veil-warm">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label mb-12">Stack</p>
+          <p className="section-label mb-12">10 · Stack</p>
         </Reveal>
 
         <div className="space-y-px bg-stone">

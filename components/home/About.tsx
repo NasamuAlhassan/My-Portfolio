@@ -8,7 +8,7 @@ export default function About() {
     <section id="about" className="rule">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
         <Reveal>
-          <p className="section-label">About</p>
+          <p className="section-label">08 · About</p>
         </Reveal>
 
         <div className="mt-8 grid gap-12 lg:grid-cols-[1.35fr_0.65fr] lg:gap-20">

@@ -7,7 +7,7 @@ export default function OpenResources() {
     <section id="open" className="rule">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
         <Reveal>
-          <p className="section-label">Open resources</p>
+          <p className="section-label">07 · Open resources</p>
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="section-heading-sm mt-5 mb-6">Models, data and demos</h2>

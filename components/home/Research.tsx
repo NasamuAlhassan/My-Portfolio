@@ -42,7 +42,7 @@ export default function Research() {
     <section id="research" className="rule">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
         <Reveal>
-          <p className="section-label">Research</p>
+          <p className="section-label">05 · Research</p>
         </Reveal>
         <Reveal delay={0.08}>
           <h2 className="section-heading mt-5 max-w-[20ch]">

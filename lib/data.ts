@@ -727,7 +727,7 @@ export const experience = [
   },
   {
     role: 'Technology and Digital Systems Intern',
-    org: 'EGA Mentorship International' as string | null,
+    org: 'Emerging Global Academy (EGA)' as string | null,
     period: '2026',
     description: "Built and shipped projects across EGA's digital systems.",
     highlights: [
@@ -959,20 +959,53 @@ export const certifications: Recognition[] = [
 /* ------------------------------------------------------------------ */
 
 export const navLinks = [
-  { label: 'About', href: '#about' },
   { label: 'Nexus', href: '#nexus' },
+  { label: 'Work', href: '#work' },
   { label: 'Research', href: '#research' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Vision', href: '#vision' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Partner', href: '#partner' },
 ]
 
 export const positioning = {
   eyebrow: 'Independent researcher · Accra, Ghana',
-  claim: 'Accessibility and language technology for Africa.',
+  claim: 'AI that works for the people it usually leaves out.',
+  /** Words of the claim set in the accent colour. */
+  accent: 'usually leaves out.',
   support:
-    'Speech, translation and assistive AI for African languages and the people mainstream technology leaves out: blind and low-vision users, basic-phone owners, and communities whose languages most AI ignores. Open models, open data, and results measured on held-out test sets.',
+    'I build accessibility tools and language technology for Africa: a voice-first phone assistant for blind users, open speech and translation models, and voice systems for health and farming that work on a basic phone.',
+  photo: '/moments/tekyerema-pa-pitch.jpg',
+  photoAlt: 'Prince presenting Nexus at the Tɛkyerɛma Pa Hackathon grand finale, University of Ghana',
+}
+
+/** Credibility strip under the hero. */
+export const proof = [
+  { title: 'Top-five finalist', note: 'MTN Ghana × UG HCI Lab hackathon, 2026' },
+  { title: 'Google Research Africa', note: 'Student Tech-Talk speaker, Accra' },
+  { title: 'Anthropic', note: 'Claude for Open Source Program' },
+  { title: 'HCI Lab, University of Ghana', note: 'Lead Researcher, Northern Languages' },
+]
+
+/** "At a glance" report grid. Each figure says what it measures. */
+export const glance: Metric[] = [
+  { label: 'Automated tests behind Nexus', value: '2,000', unit: '+' },
+  { label: 'Hours of Kusaal speech, released openly', value: '81.7', unit: 'h' },
+  { label: 'Parallel sentence pairs built', value: '48,000', unit: '+' },
+  { label: 'BLEU gained, English to Kusaal, on the Wikipedia benchmark', value: '12.8' },
+  { label: 'Ghanaian languages in one ASR model', value: '42' },
+  { label: 'Languages in the live speech service', value: '6' },
+  { label: 'Tests on Mabia AI (backend and frontend)', value: '297' },
+  { label: 'Tests on Farm to Market', value: '170' },
+]
+
+/** The partner call to action. */
+export const partner = {
+  heading: 'Help take this from working prototypes to the people they are built for.',
+  asks: [
+    { title: 'Fund', body: 'Field testing of Nexus with blind and low-vision users, with honoraria for testers.' },
+    { title: 'Pilot', body: 'Mabia AI with a CHPS zone or health NGO, or Nexus with a disability organisation.' },
+    { title: 'Collaborate', body: 'Community-owned speech data and models for the Mabia languages of Northern Ghana.' },
+  ],
 }
 
 /** Figures on the home page. Each label names what it was measured on. */

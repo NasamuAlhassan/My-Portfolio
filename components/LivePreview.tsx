@@ -21,13 +21,17 @@ const FRAME_HEIGHT = 900
  */
 export default function LivePreview({
   url,
+  href,
   title,
   className,
 }: {
   url: string
+  /** Where "Open" goes, if different from the embedded URL. */
+  href?: string
   title: string
   className?: string
 }) {
+  const openUrl = href ?? url
   const ref = useRef<HTMLDivElement>(null)
   const shellRef = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: 0.2 })
@@ -71,12 +75,17 @@ export default function LivePreview({
       <div className="card overflow-hidden">
         {/* Address bar */}
         <div className="flex items-center gap-2.5 border-b border-ink/10 bg-paper px-3 py-2.5 sm:gap-3 sm:px-4">
-          <div className="glass-inset flex min-w-0 flex-1 items-center gap-1.5 px-2.5 py-1">
+          <span className="flex gap-1.5" aria-hidden>
+            <i className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+            <i className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+            <i className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+          </span>
+          <div className="flex min-w-0 flex-1 items-center gap-1.5 rounded-full bg-paper-warm px-3 py-1">
             <Globe size={10} className="shrink-0 text-ink-faint" />
             <span className="truncate font-mono text-[10px] text-ink-faint">{host}</span>
           </div>
           <a
-            href={url}
+            href={openUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center gap-1 font-mono text-[10px] uppercase
@@ -134,7 +143,7 @@ export default function LivePreview({
           )}
 
           <a
-            href={url}
+            href={openUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="absolute inset-0 z-10"

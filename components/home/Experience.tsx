@@ -18,7 +18,7 @@ export default function Experience() {
     <section id="experience" className="rule veil-night text-paper">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28">
         <Reveal>
-          <p className="section-label-dark mb-14">Experience</p>
+          <p className="section-label-dark mb-14">09 · Experience</p>
         </Reveal>
 
         <div ref={ref} className="relative">

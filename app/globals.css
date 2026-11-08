@@ -7,29 +7,30 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 72px;
     scrollbar-width: thin;
-    scrollbar-color: #D6D5CC transparent;
+    scrollbar-color: #C9CCD1 transparent;
   }
 
-  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #D6D5CC; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb { background: #C9CCD1; border-radius: 6px; }
 
   body {
-    background-color: #FAFAF7;
-    color: #0B0C0B;
+    background-color: #FFFFFF;
+    color: #0A0A0A;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
   :focus-visible {
-    outline: 2px solid #1D4A2F;
+    outline: 2px solid #0E9F6E;
     outline-offset: 3px;
-    border-radius: 2px;
+    border-radius: 6px;
   }
 
-  ::selection { background: #4FD18B; color: #0B0C0B; }
+  ::selection { background: #5EE39A; color: #07090A; }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -42,127 +43,129 @@
 }
 
 @layer utilities {
-  /* ---- Typography ---- */
+  /* ---- Typography: serif display (cinematic) over a tight grotesk (report) ---- */
   .display-xl {
-    @apply font-serif leading-[0.95] tracking-tightest;
-    font-size: clamp(2.5rem, 8.5vw, 8rem);
+    @apply font-serif leading-[0.92] tracking-[-0.02em];
+    font-size: clamp(3rem, 9vw, 8.5rem);
   }
 
   .display-lg {
-    @apply font-serif leading-[1] tracking-tightest;
-    font-size: clamp(2rem, 6vw, 5rem);
+    @apply font-serif leading-[0.98] tracking-[-0.015em];
+    font-size: clamp(2.4rem, 6vw, 4.75rem);
   }
 
   .section-label {
-    @apply font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.22em] uppercase text-forest;
+    @apply font-mono text-[11px] font-medium tracking-[0.2em] uppercase text-kred;
   }
 
   .section-label-dark {
-    @apply font-mono text-[10px] sm:text-[11px] font-medium tracking-[0.22em] uppercase text-signal;
+    @apply font-mono text-[11px] font-medium tracking-[0.2em] uppercase text-signal;
   }
 
   .section-heading {
-    @apply font-serif text-3xl sm:text-5xl md:text-6xl text-ink leading-[1.04] tracking-tightest;
+    @apply font-serif text-[2.6rem] sm:text-6xl md:text-7xl text-ink leading-[0.98] tracking-[-0.015em];
   }
 
-  /* Quieter serif heading for sections that don't need a statement. */
   .section-heading-sm {
-    @apply font-serif text-2xl sm:text-3xl md:text-4xl text-ink leading-[1.08] tracking-tight;
+    @apply font-serif text-4xl sm:text-5xl text-ink leading-[1] tracking-[-0.01em];
   }
 
   .lede {
-    @apply font-sans text-base sm:text-lg md:text-xl leading-[1.6] text-ink-muted;
+    @apply font-sans text-base sm:text-lg md:text-xl leading-[1.55] text-ink-muted;
   }
 
-  /* ================================================================
-     SURFACES — flat, printed, bordered.
-
-     One material: a white plate on paper, ruled with a hairline.
-     No blur, no specular layer, no lift on hover — the border simply
-     darkens, the way ink sits up on good stock.
-     ================================================================ */
-
-  .glass, .card {
+  /* ---- Surfaces ---- */
+  .card {
     position: relative;
-    border-radius: 2px;
+    border-radius: 18px;
     background: #FFFFFF;
-    border: 1px solid rgba(11, 12, 11, 0.12);
-    transition: border-color 0.3s ease;
+    border: 1px solid #E6E7EA;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .glass:hover, .card:hover {
-    border-color: rgba(11, 12, 11, 0.32);
+  .card:hover {
+    border-color: #C9CCD1;
+    box-shadow: 0 18px 40px -28px rgba(10, 10, 10, 0.35);
   }
 
-  .glass-dark, .card-dark {
+  .card-dark {
     position: relative;
-    border-radius: 2px;
-    background: #141814;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
     border: 1px solid rgba(255, 255, 255, 0.12);
     transition: border-color 0.3s ease;
   }
 
-  .glass-dark:hover, .card-dark:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-  }
+  .card-dark:hover { border-color: rgba(94, 227, 154, 0.45); }
 
-  .glass-inset {
-    border-radius: 2px;
-    background: transparent;
-    border: 1px solid rgba(11, 12, 11, 0.12);
-  }
-
-  /* Sticky header: solid paper with a hairline base. */
   .glass-bar {
-    background: rgba(250, 250, 247, 0.96);
-    border-bottom: 1px solid rgba(11, 12, 11, 0.1);
+    background: rgba(7, 9, 10, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  /* Hairline-separated table rows (used with `space-y-px bg-stone`). */
-  .row { background: #FAFAF7; }
-  .row-dark { background: #0F120F; }
+  /* Hairline-separated rows (used with `space-y-px bg-stone`). */
+  .row { background: #FFFFFF; }
+  .row-dark { background: #07090A; }
 
-  .veil { background: #FCFCFA; }
-  .veil-warm { background: #F2F1EA; }
-  .veil-night { background: #0C0F0D; }
+  .veil { background: #FFFFFF; }
+  .veil-warm { background: #FBF6EA; }
+  .veil-night { background: #07090A; }
 
   /* ---- Controls ---- */
+  /* Chunky, pressable buttons on light surfaces (from the Kente direction). */
   .btn-primary {
-    @apply relative inline-flex items-center gap-2 bg-ink text-paper font-sans font-medium text-sm
-           px-5 py-3 sm:px-6 overflow-hidden;
-    border-radius: 2px;
-    transition: color 0.35s ease;
+    @apply relative inline-flex items-center gap-2 rounded-[14px] bg-kgreen px-5 py-3 font-sans text-sm font-bold
+           text-paper sm:px-6;
+    box-shadow: 0 5px 0 #08321f;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
 
-  .btn-primary::after {
-    content: '';
-    @apply absolute inset-0 bg-forest -z-0;
-    transform: translateY(101%);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  .btn-primary:hover { transform: translateY(2px); box-shadow: 0 3px 0 #08321f; }
+
+  .btn-signal {
+    @apply relative inline-flex items-center gap-2.5 rounded-full bg-signal px-5 py-3 font-sans text-sm font-semibold
+           text-night sm:px-6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .btn-primary:hover::after { transform: translateY(0); }
-  .btn-primary > * { @apply relative z-10; }
+  .btn-signal:hover { box-shadow: 0 0 0 6px rgba(94, 227, 154, 0.18); }
 
   .btn-outline {
-    @apply relative inline-flex items-center gap-2 border border-ink/25 bg-transparent text-ink font-sans
-           font-medium text-sm px-5 py-3 sm:px-6;
-    border-radius: 2px;
-    transition: border-color 0.35s ease, color 0.35s ease;
+    @apply relative inline-flex items-center gap-2 rounded-full border border-stone bg-transparent px-5 py-3 font-sans
+           text-sm font-semibold text-ink sm:px-6;
+    transition: border-color 0.3s ease, color 0.3s ease;
   }
 
   .btn-outline:hover { @apply border-ink text-forest; }
 
   .btn-outline-dark {
-    @apply relative inline-flex items-center gap-2 border border-white/25 bg-transparent text-paper font-sans
-           font-medium text-sm px-5 py-3 sm:px-6;
-    border-radius: 2px;
-    transition: border-color 0.35s ease, color 0.35s ease;
+    @apply relative inline-flex items-center gap-2 rounded-full border border-white/25 bg-transparent px-5 py-3
+           font-sans text-sm font-semibold text-paper sm:px-6;
+    transition: border-color 0.3s ease, color 0.3s ease;
   }
 
   .btn-outline-dark:hover { @apply border-signal text-signal; }
 
-  /* Tags are set as plain small caps, not chips — content, not UI. */
+  /* Small play glyph used inside buttons. */
+  .play-dot {
+    @apply grid h-6 w-6 place-items-center rounded-full bg-night;
+  }
+
+  .play-dot::before {
+    content: '';
+    margin-left: 2px;
+    border-left: 8px solid #5EE39A;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+
+  /* Status badges, report style. */
+  .badge {
+    @apply inline-flex w-max items-center rounded-md px-2 py-1 font-sans text-[11.5px] font-semibold;
+  }
+
   .tag-line {
     @apply font-mono text-[10px] sm:text-[10.5px] uppercase tracking-[0.14em] text-ink-faint;
   }
@@ -183,16 +186,27 @@
 
   .link-underline:hover { background-size: 100% 1px; }
 
-  /* ---- Rules & texture ---- */
-  .rule { @apply border-t border-ink/[0.07]; }
-  .rule-dark { @apply border-t border-white/10; }
-
-  .hairline-grid {
-    background-image:
-      linear-gradient(to right, rgba(11, 12, 11, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(11, 12, 11, 0.04) 1px, transparent 1px);
-    background-size: 64px 64px;
+  /* Kente stripe: gold, green, red and black, as a woven band. */
+  .kente {
+    background: repeating-linear-gradient(90deg, #D99A1E 0 28px, #0F5132 28px 40px, #B5361F 40px 48px,
+      #D99A1E 48px 56px, #0A0A0A 56px 60px);
   }
+
+  /* Gold badge with a pressed edge. */
+  .gold-badge {
+    @apply rounded-[16px] bg-gold px-4 py-3 font-sans font-bold text-ink;
+    box-shadow: 0 5px 0 #9b6d10;
+  }
+
+  /* White-framed photo, as in a printed album. */
+  .framed {
+    border: 6px solid #FFFFFF;
+    box-shadow: 0 22px 40px -22px rgba(27, 23, 18, 0.5);
+  }
+
+  /* ---- Rules & texture ---- */
+  .rule { @apply border-t border-stone; }
+  .rule-dark { @apply border-t border-white/10; }
 
   .num { font-variant-numeric: tabular-nums; }
 }
