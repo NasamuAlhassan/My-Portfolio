@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { certifications } from '@/lib/data'
 import CertificateGallery, { type CertCard } from '@/components/CertificateGallery'
+import Disclosure from '@/components/Disclosure'
 import Reveal from '@/components/motion/Reveal'
 
 /** Gallery titles, newest first — the gallery follows this order. */
@@ -93,10 +94,12 @@ export default function Certifications() {
 
   return (
     <section className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
-          <p className="section-label mb-12">14 · Credentials</p>
+          <p className="section-label mb-8">14 · Credentials</p>
         </Reveal>
+
+        <Disclosure label={`Show ${certs.length} credentials and the certificate gallery`} openLabel="Hide credentials">
 
         <div className="space-y-px bg-stone mb-16">
           {certs.map((cert, i) => (
@@ -132,6 +135,7 @@ export default function Certifications() {
             <CertificateGallery cards={cards} />
           </>
         )}
+        </Disclosure>
       </div>
     </section>
   )

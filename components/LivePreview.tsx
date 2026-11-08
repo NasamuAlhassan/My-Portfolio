@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
-import { ArrowUpRight, Globe, MonitorPlay } from 'lucide-react'
+import { ArrowUpRight, Globe } from 'lucide-react'
 
 const FRAME_WIDTH = 1440
 const FRAME_HEIGHT = 900
@@ -15,20 +15,24 @@ const FRAME_HEIGHT = 900
  * `scale(0.35)` assumed a fixed card width and overflowed badly once the
  * card got narrow.
  *
- * On small screens the iframe is not mounted at all: embedding two full
- * applications is far too expensive on a phone, so a static panel with a
- * direct link takes its place.
+ * On small screens the iframe is not mounted at all: embedding full
+ * applications is far too expensive on a phone, so a screenshot that links
+ * to the live site takes its place. The same screenshot sits under the iframe
+ * on desktop while the live site loads.
  */
 export default function LivePreview({
   url,
   href,
   title,
+  image,
   className,
 }: {
   url: string
   /** Where "Open" goes, if different from the embedded URL. */
   href?: string
   title: string
+  /** Screenshot of the site, used on phones and while the live site loads. */
+  image?: string
   className?: string
 }) {
   const openUrl = href ?? url
@@ -98,22 +102,20 @@ export default function LivePreview({
 
         {/* Viewport */}
         <div ref={shellRef} className="relative aspect-[16/10] w-full overflow-hidden bg-paper-warm">
-          {allowEmbed ? (
+          {image && (
+            <img
+              src={image}
+              alt={allowEmbed ? '' : `Screenshot of ${title}. Opens the live site.`}
+              aria-hidden={allowEmbed || undefined}
+              width={1200}
+              height={750}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            />
+          )}
+          {allowEmbed && (
             <>
-              {!loaded && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div
-                      className="mx-auto mb-3 h-6 w-6 animate-spin rounded-full border-2 border-ink/10 border-t-forest"
-                      aria-hidden
-                    />
-                    <p className="font-mono text-[10px] uppercase tracking-widest text-ink-faint">
-                      Loading live site
-                    </p>
-                  </div>
-                </div>
-              )}
-
               {inView && scale > 0 && (
                 <iframe
                   src={url}
@@ -133,20 +135,19 @@ export default function LivePreview({
                 />
               )}
             </>
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-              <MonitorPlay size={22} className="text-forest/60" aria-hidden />
-              <p className="font-sans text-sm text-ink-muted">
-                Live preview available on a larger screen
-              </p>
-            </div>
+          )}
+
+          {!allowEmbed && (
+            <span className="absolute bottom-2 right-2 z-20 rounded-full bg-night/80 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-white">
+              Screenshot · tap to open
+            </span>
           )}
 
           <a
             href={openUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute inset-0 z-10"
+            className="absolute inset-0 z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-forest"
             aria-label={`Open ${title} in a new tab`}
           />
         </div>

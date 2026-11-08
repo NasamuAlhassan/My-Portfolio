@@ -6,7 +6,7 @@ export default function About() {
 
   return (
     <section id="about" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
           <p className="section-label">08 · About</p>
         </Reveal>
@@ -26,7 +26,7 @@ export default function About() {
           </div>
 
           <Reveal delay={0.18}>
-            <dl className="space-y-px bg-stone">
+            <dl className="grid grid-cols-2 gap-3 lg:grid-cols-1">
               {[
                 ['Based in', 'Accra, Ghana'],
                 ['From', 'Bawku, Upper East'],
@@ -34,7 +34,7 @@ export default function About() {
                 ['CGPA', `${personalInfo.gpa} / 4.0`],
                 ['Languages', 'Kusaal, English (native); project work in Twi, Dagbani, Ewe, Hausa'],
               ].map(([k, v]) => (
-                <div key={k} className="row py-3.5">
+                <div key={k} className="card p-4 last:col-span-2 lg:last:col-span-1">
                   <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">
                     {k}
                   </dt>

@@ -24,8 +24,8 @@ const KIND_COLOUR: Record<ProjectKind, string> = {
 /** Badge colour by how far along a project is. */
 function badgeClass(status = ''): string {
   const s = status.toLowerCase()
-  if (/released|live|deployed|built ·/.test(s)) return 'bg-[#E7F7EF] text-forest'
-  if (/concept|progress|research|hackathon|submission|personal/.test(s)) return 'bg-[#FDF3E1] text-clay'
+  if (/released|live|deployed|built ·/.test(s)) return 'bg-forest/10 text-forest'
+  if (/concept|progress|research|hackathon|submission|personal/.test(s)) return 'bg-clay/10 text-clay'
   return 'bg-paper-warm text-ink-muted'
 }
 

@@ -4,7 +4,7 @@ import { glance } from '@/lib/data'
 
 export default function Glance() {
   return (
-    <section id="glance" className="relative bg-kgreen text-paper">
+    <section id="glance" className="relative bg-kgreen text-white">
       <div className="kente h-2.5 w-full" aria-hidden />
       <div className="mx-auto max-w-content px-5 py-20 sm:px-6 sm:py-24">
         <div className="grid gap-4 md:grid-cols-[280px_1fr] md:gap-10">
@@ -12,7 +12,7 @@ export default function Glance() {
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-gold">02 · At a glance</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="font-serif text-4xl leading-[1] text-paper sm:text-5xl max-w-[20ch]">
+            <h2 className="font-serif text-4xl leading-[1] text-white sm:text-5xl max-w-[20ch]">
               Built and measured. Every figure says what it measures.
             </h2>
           </Reveal>
@@ -29,7 +29,7 @@ export default function Glance() {
             >
               <p className="num font-sans text-[2.1rem] font-extrabold leading-none tracking-[-0.04em] text-gold sm:text-5xl">
                 <Counter value={m.value} />
-                {m.unit && <span className="ml-0.5 text-paper/80">{m.unit}</span>}
+                {m.unit && <span className="ml-0.5 text-white/80">{m.unit}</span>}
               </p>
               <p className="mt-3 font-sans text-[13px] leading-snug text-white/75">{m.label}</p>
             </Reveal>

@@ -1,5 +1,6 @@
 ﻿'use client'
 
+import Disclosure from '@/components/Disclosure'
 import Reveal from '@/components/motion/Reveal'
 import CorpusBar from '@/components/CorpusBar'
 import { papers } from '@/lib/data'
@@ -40,7 +41,7 @@ const METHOD = [
 export default function Research() {
   return (
     <section id="research" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
           <p className="section-label">05 · Research</p>
         </Reveal>
@@ -51,7 +52,7 @@ export default function Research() {
         </Reveal>
 
         {/* Corpus */}
-        <div className="mt-16 grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div>
             <p className="font-sans text-base leading-[1.75] text-ink-muted">
               The Kusaal-English corpus was assembled pair by pair from scripture, dictionaries, GhanaNLP
@@ -71,35 +72,25 @@ export default function Research() {
           </Reveal>
         </div>
 
-        {/* Method */}
-        <div className="mt-24">
-          <Reveal>
-            <p className="mb-10 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint">
-              Decisions that changed the numbers
-            </p>
-          </Reveal>
-
-          <ol className="space-y-px bg-stone">
-            {METHOD.map((step, i) => (
-              <Reveal key={step.n} delay={i * 0.06}>
-                <li className="group grid gap-4 row py-8 transition-colors duration-300 hover:bg-paper-warm/60 sm:grid-cols-[auto_1fr] sm:gap-10 sm:px-2">
-                  <span className="pt-1.5 font-mono text-[11px] text-forest transition-transform duration-300 group-hover:translate-x-1">
-                    {step.n}
-                  </span>
+        {/* Method, on request */}
+        <div className="mt-12">
+          <Disclosure label="Six decisions that changed the numbers" openLabel="Hide the decisions">
+            <ol className="grid gap-4 md:grid-cols-2">
+              {METHOD.map((step) => (
+                <li key={step.n} className="card flex gap-4 p-6">
+                  <span className="pt-1.5 font-mono text-[11px] text-forest">{step.n}</span>
                   <div>
                     <h3 className="font-serif text-2xl leading-snug text-ink">{step.title}</h3>
-                    <p className="mt-3 max-w-reading font-sans text-[15px] leading-[1.7] text-ink-muted">
-                      {step.body}
-                    </p>
+                    <p className="mt-3 max-w-reading font-sans text-[15px] leading-[1.7] text-ink-muted">{step.body}</p>
                   </div>
                 </li>
-              </Reveal>
-            ))}
-          </ol>
+              ))}
+            </ol>
+          </Disclosure>
         </div>
 
         {/* Papers */}
-        <div className="mt-24 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div className="mt-16 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-faint">Papers in preparation</p>
             <p className="mt-4 max-w-reading font-sans text-[15px] leading-[1.7] text-ink-muted">{papers.status}</p>
@@ -109,10 +100,10 @@ export default function Research() {
               AICC Accra, 31 July 2026, and at a GhanaNLP community session.
             </p>
           </Reveal>
-          <ol className="space-y-px bg-stone">
+          <ol className="grid gap-3">
             {papers.titles.map((t, i) => (
               <Reveal key={t} delay={i * 0.06}>
-                <li className="row flex gap-5 py-5 sm:px-2">
+                <li className="card flex gap-5 p-5">
                   <span className="pt-1 font-mono text-[11px] text-forest">P{i + 1}</span>
                   <span className="font-serif text-xl leading-snug text-ink">{t}</span>
                 </li>

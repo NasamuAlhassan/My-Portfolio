@@ -4,7 +4,7 @@ import { moments } from '@/lib/data'
 export default function Moments() {
   return (
     <section id="moments" className="veil-warm">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
           <p className="section-label">12 · Moments</p>
         </Reveal>
@@ -17,7 +17,7 @@ export default function Moments() {
             <Reveal
               key={m.src}
               delay={(i % 3) * 0.06}
-              className={`h-full ${m.wide ? 'sm:col-span-2' : ''} ${m.tall ? 'row-span-2' : ''}`}
+              className={`h-full ${i >= 4 ? 'hidden sm:block' : ''} ${m.wide ? 'sm:col-span-2' : ''} ${m.tall ? 'row-span-2' : ''}`}
             >
               <figure className={`framed group relative h-full w-full overflow-hidden rounded-[18px] bg-stone transition-transform duration-500 hover:-translate-y-1 ${i % 3 === 1 ? 'hover:rotate-1' : 'hover:-rotate-1'}`}>
                 <img

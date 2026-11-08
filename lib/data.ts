@@ -103,6 +103,8 @@ export interface Project {
   metrics?: Metric[]
   /** Live URL that can be embedded as an in-page preview. */
   preview?: string
+  /** Screenshot shown on phones and while the live site loads. */
+  previewImage?: string
   githubRepo?: string
 }
 
@@ -140,22 +142,42 @@ export const nexus = {
     { label: 'PIN appearances in logs', value: '0' },
   ] as Metric[],
   next: 'Next: real-world testing with blind and low-vision users, and exploring an official Mobile Money integration. Nexus is an independent project, not an MTN product.',
-  videos: [
+  /** The one video shown inline: a blind user running Nexus. */
+  video: {
+    title: 'A blind user running Nexus',
+    caption: 'Real use, with the kind of person Nexus is built for.',
+    tag: 'Real use',
+    src: 'https://drive.google.com/file/d/1w4fU-1mnp789gmVBlWaZALNAinRliDP1/preview',
+    href: 'https://drive.google.com/file/d/1w4fU-1mnp789gmVBlWaZALNAinRliDP1/view',
+    poster: '/nexus/poster-user.jpg',
+    posterAlt: 'A woman at night holding a phone and a cedi note while Nexus reads the note aloud on a phone screen beside her',
+    posterFit: 'cover' as const,
+  },
+  /** Short silent loop cut from the real-use video (no audio, about 1 MB). */
+  clip: {
+    mp4: '/nexus/nexus-loop.mp4',
+    webm: '/nexus/nexus-loop.webm',
+  },
+  /** Everything else lives in the Nexus Drive folder. */
+  folder: 'https://drive.google.com/drive/folders/1uWW_7YI9a2t2MqFuEmpVtRde-Ns-HC-6',
+  more: [
     {
-      title: 'A blind user running Nexus',
-      caption: 'Real use, with the kind of person Nexus is built for.',
-      src: 'https://drive.google.com/file/d/1w4fU-1mnp789gmVBlWaZALNAinRliDP1/preview',
+      kind: 'Video',
+      title: 'More features at work',
+      note: 'Reading, calling, messaging and working inside other apps.',
+      cta: 'Watch on Drive',
+      href: 'https://drive.google.com/file/d/171L07fyBxVv_R757-_4WdEzF0Mk-RmL9/view',
     },
     {
-      title: 'More features at work',
-      caption: 'Reading, calling, messaging and working inside other apps.',
-      src: 'https://drive.google.com/file/d/171L07fyBxVv_R757-_4WdEzF0Mk-RmL9/preview',
+      kind: 'Android app',
+      title: 'Try the APK',
+      note: 'Nexus for Android, 1.1 GB. An independent build, not an MTN product.',
+      cta: 'Download the APK',
+      href: 'https://drive.google.com/file/d/1m0UvroYYty5xisGbC0HXehdJRM1nNftS/view',
     },
   ],
-  deck: 'https://drive.google.com/file/d/18Mg26BPhnCt0uMFbQw0WpwqDbJgpAU-x/preview',
   links: [
     { label: 'Download the Android APK (1.1 GB)', href: 'https://drive.google.com/file/d/1m0UvroYYty5xisGbC0HXehdJRM1nNftS/view' },
-    { label: 'Pitch deck', href: 'https://drive.google.com/file/d/18Mg26BPhnCt0uMFbQw0WpwqDbJgpAU-x/view' },
   ] as ProjectLink[],
   photo: '/moments/tekyerema-pa-pitch.jpg',
   photoAlt: 'Prince presenting Nexus at the Tɛkyerɛma Pa Hackathon grand finale, University of Ghana',
@@ -273,6 +295,7 @@ export const projects: Project[] = [
     year: '2026',
     status: 'Live demo',
     preview: 'https://princealhassannasamu-tekyerema-lang.hf.space',
+    previewImage: '/previews/tek.jpg',
     metrics: [
       { label: 'Languages', value: '6' },
       { label: 'WER Twi, fine-tuned', value: '22.7', unit: '%' },
@@ -344,6 +367,7 @@ export const projects: Project[] = [
     year: '2026',
     status: 'Working prototype',
     preview: 'https://mabia-ai.vercel.app',
+    previewImage: '/previews/mabia.jpg',
     metrics: [
       { label: 'Backend tests', value: '285' },
       { label: 'Frontend tests', value: '12' },
@@ -384,6 +408,7 @@ export const projects: Project[] = [
     year: '2026',
     status: 'Deployed prototype · no pilot yet',
     preview: 'https://green-res.vercel.app',
+    previewImage: '/previews/green.jpg',
     description:
       'Built for the GreenRes Hackathon 2026 (University of Ghana and the Africa Climate Collaborative, with the Mastercard Foundation). It follows one chain: what the climate is doing where you live, what that means for your health, work or crops today, one action you can take, and evidence that it happened. Heat, UV, air quality, rain and dryness come from Open-Meteo and Copernicus CAMS, compared against standards such as Ghana Standard GS 1236:2019 and WHO UV guidance. Actions are recorded as self-reported, confirmed or independently verified, and it degrades honestly when AI, SMS or connectivity are unavailable. It runs on live data, but no pilot has run yet, and it makes no emissions-reduction claim.',
     tags: ['React', 'PWA', 'FastAPI', 'SMS', 'USSD', 'Climate'],
@@ -446,6 +471,7 @@ export const projects: Project[] = [
     year: '2025 – present',
     status: 'Live pilot',
     preview: 'https://campus-link-sigma.vercel.app',
+    previewImage: '/previews/campus.jpg',
     description:
       'A platform for African university students with two-stage student identity verification, real-time messaging and an interactive campus map, piloting at the University of Ghana. Founded and built solo, it has been through a full redesign, and a CampusLink Pay extension is in development.',
     tags: ['Next.js 14', 'Supabase', 'Gemini API', 'Full-stack'],
@@ -473,6 +499,7 @@ export const projects: Project[] = [
     year: 'May 2026',
     status: 'Live demo',
     preview: 'https://forge-study-theta.vercel.app',
+    previewImage: '/previews/forge.jpg',
     description:
       'Plans study around work, church, projects and sleep, with Pomodoro focus sessions, analytics, streaks, a focus mode, PDF and ICS export, and an "Ask Forge" voice mode on Gemini 2.5 Flash. Built and shipped in 48 hours at the DesignPxD Student AI Hackathon, University of Ghana. An earlier smart-timetable prototype lives in a separate repository.',
     tags: ['React', 'Vite', 'Supabase', 'Gemini 2.5 Flash', 'Hackathon'],
@@ -495,6 +522,7 @@ export const projects: Project[] = [
       'Built for the Scripture in New Frontiers hackathon (YouVersion and Gloo AI). Say or type how you feel, get a relevant verse in English and a local language, hear it read aloud, and share it as a voice note and image card that opens in a browser with no app or account. Where a published local-language Bible exists it is used; otherwise translated text is clearly labelled as a translation. Speech and translation come from GhanaNLP Khaya, and language support varies by modality.',
     tags: ['Next.js', 'YouVersion', 'Gloo AI', 'Khaya API', 'Voice'],
     preview: 'https://dawuro.vercel.app',
+    previewImage: '/previews/dawuro.jpg',
     links: [
       { label: 'GitHub', href: 'https://github.com/NasamuAlhassan/dawuro' },
       { label: 'Live demo', href: 'https://dawuro.vercel.app' },
