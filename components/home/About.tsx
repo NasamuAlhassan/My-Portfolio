@@ -26,14 +26,19 @@ export default function About() {
           </div>
 
           <Reveal delay={0.18}>
+            <img
+              src="/moments/portrait.jpg"
+              alt="Portrait of Prince Nasamu Alhassan"
+              loading="lazy"
+              className="mb-8 aspect-square w-40 rounded-full object-cover sm:w-48"
+            />
             <dl className="space-y-px bg-stone">
               {[
                 ['Based in', 'Accra, Ghana'],
                 ['From', 'Bawku, Upper East'],
                 ['Studying', personalInfo.degree],
                 ['CGPA', `${personalInfo.gpa} / 4.0`],
-                ['Graduating', personalInfo.graduationYear],
-                ['Languages', 'Kusaal, English'],
+                ['Languages', 'Kusaal, English (native); project work in Twi, Dagbani, Ewe, Hausa'],
               ].map(([k, v]) => (
                 <div key={k} className="row py-3.5">
                   <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-ink-faint">

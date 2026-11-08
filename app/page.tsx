@@ -7,6 +7,10 @@ import Experience from '@/components/home/Experience'
 import Education from '@/components/home/Education'
 import Recognition from '@/components/home/Recognition'
 import Contact from '@/components/home/Contact'
+import Nexus from '@/components/home/Nexus'
+import Vision from '@/components/home/Vision'
+import OpenResources from '@/components/home/OpenResources'
+import Moments from '@/components/home/Moments'
 import Certifications from '@/components/sections/Certifications'
 import MetricStrip from '@/components/MetricStrip'
 import LivePreview from '@/components/LivePreview'
@@ -27,12 +31,12 @@ export default function Home() {
             <p className="section-label-dark">Results</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="display-lg text-paper mt-5 max-w-[18ch]">Measured on held-out data.</h2>
+            <h2 className="display-lg text-paper mt-5 max-w-[18ch]">Measured, and labelled.</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-7 max-w-reading font-sans text-base leading-[1.7] text-white/55">
-              Source-disjoint splits throughout: no speaker or passage appears in both training and
-              test.
+              Every figure names the test set it was measured on. Speech splits hold out whole books, so
+              no passage appears in both training and test.
             </p>
           </Reveal>
 
@@ -43,7 +47,7 @@ export default function Home() {
       </section>
 
       <About />
-      <Skills />
+      <Nexus />
       <Research />
 
       {/* All projects */}
@@ -57,7 +61,8 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mb-12 max-w-reading font-sans text-base leading-[1.7] text-ink-muted">
-              Research systems, shipped products and the engineering underneath them.
+              Accessibility, language technology, health and civic systems, and products. Each card says
+              whether it is released, a working prototype, or still a concept.
             </p>
           </Reveal>
 
@@ -72,11 +77,12 @@ export default function Home() {
             <p className="section-label">Live</p>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className="section-heading-sm mt-5 mb-6">Running in production</h2>
+            <h2 className="section-heading-sm mt-5 mb-6">Live demos</h2>
           </Reveal>
           <Reveal delay={0.12}>
             <p className="mb-14 max-w-reading font-sans text-base leading-[1.7] text-ink-muted">
-              The real deployments, embedded as they are at this moment — not screenshots.
+              The running apps, embedded as they are right now rather than as screenshots. Mabia AI
+              runs on seeded demonstration data.
             </p>
           </Reveal>
 
@@ -97,9 +103,13 @@ export default function Home() {
         </div>
       </section>
 
+      <Vision />
+      <OpenResources />
       <Experience />
+      <Skills />
       <Education />
       <Recognition />
+      <Moments />
       <Certifications />
       <Contact />
     </>

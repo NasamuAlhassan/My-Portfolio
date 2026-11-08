@@ -19,13 +19,14 @@ export default function Contact() {
           <p className="section-label">Contact</p>
         </Reveal>
         <Reveal delay={0.08}>
-          <h2 className="section-heading mt-5 max-w-[16ch]">Open to research collaboration.</h2>
+          <h2 className="section-heading mt-5 max-w-[16ch]">Collaborate, fund or pilot.</h2>
         </Reveal>
 
         <Reveal delay={0.15}>
           <p className="mt-7 max-w-reading font-sans text-base leading-[1.75] text-ink-muted">
-            Working on low-resource language technology, or funding people who do? I would like to
-            hear from you.
+            Working on accessibility or African-language technology, funding people who do, or looking
+            for a pilot partner for Nexus, Mabia AI or community speech data? I would like to hear from
+            you.
           </p>
         </Reveal>
 

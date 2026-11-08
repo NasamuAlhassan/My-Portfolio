@@ -35,7 +35,7 @@ export default function Education() {
                       {entry.highlights.map((h) => (
                         <li key={h} className="flex gap-3 font-sans text-sm text-ink-muted">
                           <span className="mt-0.5 shrink-0 text-forest" aria-hidden>
-                            —
+                            –
                           </span>
                           {h}
                         </li>

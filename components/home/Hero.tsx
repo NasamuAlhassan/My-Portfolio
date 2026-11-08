@@ -24,14 +24,15 @@ export default function Hero() {
     >
       <div className="hairline-grid absolute inset-0 opacity-60" aria-hidden />
 
-      <motion.div style={{ y, opacity }} className="relative max-w-content mx-auto w-full">
+      <motion.div style={{ y, opacity }} className="relative max-w-content mx-auto w-full lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-center lg:gap-14">
+        <div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="section-label"
         >
-          AI researcher · University of Ghana, Legon
+          {positioning.eyebrow}
         </motion.p>
 
         <TextReveal
@@ -56,9 +57,13 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.7, ease: EASE }}
           className="mt-9 sm:mt-11 flex flex-wrap items-center gap-3 sm:gap-4"
         >
-          <a href="#research" className="btn-primary">
-            <span>See the research</span>
+          <a href="#nexus" className="btn-primary">
+            <span>See Nexus</span>
             <ArrowUpRight size={15} />
+          </a>
+
+          <a href="#research" className="btn-outline">
+            <span>The research</span>
           </a>
 
           <a
@@ -71,6 +76,23 @@ export default function Hero() {
             <ArrowUpRight size={15} />
           </a>
         </motion.div>
+        </div>
+
+        <motion.figure
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
+          className="mt-12 hidden lg:mt-0 lg:block"
+        >
+          <img
+            src="/moments/hero.jpg"
+            alt="Prince Nasamu Alhassan at the Google Research Africa Student Tech-Talk in Accra"
+            className="aspect-[3/4] w-full rounded-sm object-cover object-top"
+          />
+          <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-faint">
+            Google Research Africa Student Tech-Talk · Accra
+          </figcaption>
+        </motion.figure>
       </motion.div>
 
       <motion.div

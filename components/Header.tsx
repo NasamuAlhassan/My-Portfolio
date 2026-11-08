@@ -27,7 +27,7 @@ function ResumeModal({ onClose }: { onClose: () => void }) {
         onClick={(e) => e.stopPropagation()}
       >
         <span className="font-mono text-[11px] uppercase tracking-widest text-ink-muted">
-          Resume — Prince Nasamu Alhassan
+          Resume · Prince Nasamu Alhassan
         </span>
         <div className="flex items-center gap-3">
           <a

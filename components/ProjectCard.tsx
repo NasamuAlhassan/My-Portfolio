@@ -1,7 +1,7 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
-import type { Project } from '@/lib/data'
+import { projectKindLabels, type Project } from '@/lib/data'
 
 export default function ProjectCard({
   project,
@@ -14,7 +14,7 @@ export default function ProjectCard({
     <article className={`card group flex h-full flex-col ${featured ? 'p-8 md:p-10' : 'p-6 md:p-7'}`}>
       <div className="flex items-baseline justify-between gap-4">
         <span className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-forest">
-          {project.kind}
+          {projectKindLabels[project.kind]}
         </span>
         <span className="whitespace-nowrap font-mono text-[10px] text-ink-faint">{project.year}</span>
       </div>
@@ -26,6 +26,10 @@ export default function ProjectCard({
       >
         {project.title}
       </h3>
+
+      {project.status && (
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-clay">{project.status}</p>
+      )}
 
       <p className="mt-3 font-sans text-[15px] leading-[1.65] text-ink-muted">
         {featured ? project.description : project.summary}

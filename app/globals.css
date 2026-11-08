@@ -153,6 +153,15 @@
 
   .btn-outline:hover { @apply border-ink text-forest; }
 
+  .btn-outline-dark {
+    @apply relative inline-flex items-center gap-2 border border-white/25 bg-transparent text-paper font-sans
+           font-medium text-sm px-5 py-3 sm:px-6;
+    border-radius: 2px;
+    transition: border-color 0.35s ease, color 0.35s ease;
+  }
+
+  .btn-outline-dark:hover { @apply border-signal text-signal; }
+
   /* Tags are set as plain small caps, not chips — content, not UI. */
   .tag-line {
     @apply font-mono text-[10px] sm:text-[10.5px] uppercase tracking-[0.14em] text-ink-faint;

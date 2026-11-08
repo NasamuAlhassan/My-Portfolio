@@ -28,16 +28,16 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Prince Nasamu Alhassan — AI Researcher · Low-Resource NLP',
-    template: '%s — Prince Nasamu Alhassan',
+    default: 'Prince Nasamu Alhassan · Accessibility and language technology for Africa',
+    template: '%s · Prince Nasamu Alhassan',
   },
   description:
-    "Portfolio of Prince Nasamu Alhassan — AI researcher at the University of Ghana, building open machine translation and speech recognition for African languages, starting with Northern Ghana.",
-  keywords: ['AI research', 'NLP', 'Kusaal', 'machine translation', 'African languages', 'low-resource MT'],
+    'Prince Nasamu Alhassan is an independent researcher in Ghana building accessibility tools and language technology for African languages: Nexus, a voice-first assistant for blind users, open Kusaal translation and speech models, and voice-first systems for health and agriculture.',
+  keywords: ['accessibility', 'assistive technology', 'speech recognition', 'machine translation', 'African languages', 'Kusaal', 'Twi', 'Ghana'],
   authors: [{ name: 'Prince Nasamu Alhassan' }],
   openGraph: {
-    title: 'Prince Nasamu Alhassan — AI Researcher',
-    description: "Building language technology for Africa's most ignored languages.",
+    title: 'Prince Nasamu Alhassan · Independent researcher',
+    description: 'Speech, translation and assistive AI for African languages and the people mainstream technology leaves out.',
     type: 'website',
   },
 }

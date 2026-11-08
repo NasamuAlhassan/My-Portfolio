@@ -3,15 +3,13 @@
 import { useState } from 'react'
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion'
 import ProjectCard from '@/components/ProjectCard'
-import { projects, type ProjectKind } from '@/lib/data'
+import { projects, projectKindLabels, type ProjectKind } from '@/lib/data'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
 const FILTERS: { key: ProjectKind | 'all'; label: string }[] = [
   { key: 'all', label: 'Everything' },
-  { key: 'research', label: 'Research' },
-  { key: 'product', label: 'Products' },
-  { key: 'engineering', label: 'Engineering' },
+  ...(Object.entries(projectKindLabels) as [ProjectKind, string][]).map(([key, label]) => ({ key, label })),
 ]
 
 export default function AllProjects() {

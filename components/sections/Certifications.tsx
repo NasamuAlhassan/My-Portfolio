@@ -6,13 +6,13 @@ import Reveal from '@/components/motion/Reveal'
 
 /** Gallery titles, newest first — the gallery follows this order. */
 const knownTitles: Record<string, string> = {
-  'british-airways-forage': 'British Airways Data Science Job Simulation — Forage',
+  'british-airways-forage': 'British Airways Data Science Job Simulation (Forage)',
   'techcrush-data-science': 'TechCrush Data Science Bootcamp',
-  'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp — Africa Climate Collaborative, UG',
-  'DecodeLabs Cert': 'DecodeLabs Virtual Internship — Data Science',
-  'columbia-plus': 'Prompt Engineering & Programming with OpenAI — Columbia+',
-  'Claude 101': 'Claude 101 — Anthropic',
-  'Coursera': 'Foundations: Data, Data, Everywhere — Google / Coursera',
+  'greenres-bootcamp': 'GreenRes Hackathon Virtual Bootcamp (Africa Climate Collaborative, UG)',
+  'DecodeLabs Cert': 'DecodeLabs Virtual Internship: Data Science',
+  'columbia-plus': 'Prompt Engineering & Programming with OpenAI (Columbia+)',
+  'Claude 101': 'Claude 101 (Anthropic)',
+  'Coursera': 'Foundations: Data, Data, Everywhere (Google / Coursera)',
 }
 
 /** Position in knownTitles; files not listed there go last. */
