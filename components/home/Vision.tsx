@@ -19,7 +19,7 @@ export default function Vision() {
           </p>
         </Reveal>
 
-        <Disclosure label="Read the research agenda" openLabel="Hide the agenda">
+        <Disclosure label="Read the research agenda" hint="Where this work is going next" openLabel="Hide the agenda">
         <div className="grid gap-4 md:grid-cols-2">
           {researchAgenda.map((item, i) => (
             <Reveal key={item.title} delay={(i % 2) * 0.05} className="h-full">

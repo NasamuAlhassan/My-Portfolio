@@ -24,7 +24,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap gap-x-6 gap-y-2">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="link-underline font-sans text-sm text-ink-muted hover:text-ink">
+            <a key={l.href} href={l.href} className="link-underline font-sans text-sm font-semibold text-ink-muted hover:text-ink">
               {l.label}
             </a>
           ))}
@@ -34,7 +34,7 @@ export default function Footer() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="link-underline font-sans text-sm text-ink-muted hover:text-ink"
+              className="inline-flex items-center gap-1 rounded-full border-2 border-ink px-3.5 py-1.5 font-sans text-sm font-bold text-ink transition-colors hover:bg-ink hover:text-paper"
             >
               {s.label}
               <ArrowUpRight size={12} />

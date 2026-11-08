@@ -74,7 +74,7 @@ export default function Research() {
 
         {/* Method, on request */}
         <div className="mt-12">
-          <Disclosure label="Six decisions that changed the numbers" openLabel="Hide the decisions">
+          <Disclosure label="Six decisions that changed the numbers" hint="Why the scores moved, step by step" openLabel="Hide the decisions">
             <ol className="grid gap-4 md:grid-cols-2">
               {METHOD.map((step) => (
                 <li key={step.n} className="card flex gap-4 p-6">

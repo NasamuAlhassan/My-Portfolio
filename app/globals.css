@@ -4,13 +4,13 @@
 
 @layer base {
   :root {
-    --c-paper: 253 251 246;
-    --c-surface: 255 255 255;
-    --c-warm: 246 239 224;
+    --c-paper: 243 237 225;
+    --c-surface: 251 248 241;
+    --c-warm: 234 226 208;
     --c-ink: 22 22 20;
-    --c-muted: 84 87 93;
-    --c-faint: 118 122 128;
-    --c-stone: 229 224 213;
+    --c-muted: 74 76 80;
+    --c-faint: 108 106 100;
+    --c-stone: 213 205 187;
     --c-forest: 11 107 71;
     --c-kred: 181 54 31;
     --c-clay: 160 90 0;
@@ -239,4 +239,24 @@
   .rule-dark { @apply border-t border-white/10; }
 
   .num { font-variant-numeric: tabular-nums; }
+
+  /* Big "there is more here" bars (see components/Disclosure.tsx). */
+  .disc-summary {
+    background: #0F5132;
+    color: #FFFFFF;
+    box-shadow: 0 6px 0 #08321f;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .disc-summary:hover { transform: translateY(2px); box-shadow: 0 4px 0 #08321f; }
+  :root[data-theme='dark'] .disc-summary { background: #5EE39A; color: #07090A; box-shadow: 0 6px 0 #2d8a5a; }
+  :root[data-theme='dark'] .disc-summary:hover { box-shadow: 0 4px 0 #2d8a5a; }
+
+  /* Hero card motion. Disabled by the global reduced-motion rule. */
+  @keyframes float-y { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-10px) rotate(var(--r, 0deg)); } }
+  @keyframes eq { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+  @keyframes ping-ring { 0% { transform: scale(1); opacity: 0.55; } 100% { transform: scale(1.9); opacity: 0; } }
+  .float-a { animation: float-y 5s ease-in-out infinite; }
+  .float-b { animation: float-y 6.5s ease-in-out -2s infinite; }
+  .eq-bar { display: inline-block; width: 3px; height: 14px; border-radius: 2px; background: currentColor; transform-origin: bottom; animation: eq 0.9s ease-in-out infinite; }
+  .ping-ring { animation: ping-ring 1.8s ease-out infinite; }
 }

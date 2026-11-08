@@ -59,7 +59,7 @@ export default function Home() {
           </div>
 
           <div className="mt-16">
-            <Disclosure label={`See all ${projects.length} projects, with status and numbers`} openLabel="Hide the full list">
+            <Disclosure label={`See all ${projects.length} projects`} hint="Status, numbers and links for every build" openLabel="Hide the full list">
               <p className="mb-6 max-w-reading font-sans text-base leading-[1.65] text-ink-muted">
                 Accessibility, language technology, health and civic systems, and products. Open any row for the full
                 story, the numbers and the links.

@@ -99,7 +99,7 @@ export default function Certifications() {
           <p className="section-label mb-8">14 · Credentials</p>
         </Reveal>
 
-        <Disclosure label={`Show ${certs.length} credentials and the certificate gallery`} openLabel="Hide credentials">
+        <Disclosure label={`${certs.length} credentials and certificates`} hint="Courses, bootcamps and the certificate gallery" openLabel="Hide credentials">
 
         <div className="space-y-px bg-stone mb-16">
           {certs.map((cert, i) => (
