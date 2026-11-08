@@ -32,7 +32,7 @@ export default function Recognition() {
     <section id="recognition" className="rule veil-night text-paper">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label-dark mb-14">Talks &amp; awards</p>
+          <p className="section-label-dark mb-14">11 · Talks &amp; awards</p>
         </Reveal>
 
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">

@@ -6,7 +6,7 @@ export default function Education() {
     <section id="education" className="rule">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
         <Reveal>
-          <p className="section-label mb-12">Education</p>
+          <p className="section-label mb-12">13 · Education</p>
         </Reveal>
 
         <div className="space-y-px bg-stone">
@@ -35,7 +35,7 @@ export default function Education() {
                       {entry.highlights.map((h) => (
                         <li key={h} className="flex gap-3 font-sans text-sm text-ink-muted">
                           <span className="mt-0.5 shrink-0 text-forest" aria-hidden>
-                            —
+                            –
                           </span>
                           {h}
                         </li>

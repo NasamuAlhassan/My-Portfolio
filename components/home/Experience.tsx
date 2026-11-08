@@ -18,7 +18,7 @@ export default function Experience() {
     <section id="experience" className="rule veil-night text-paper">
       <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-28">
         <Reveal>
-          <p className="section-label-dark mb-14">Experience</p>
+          <p className="section-label-dark mb-14">09 · Experience</p>
         </Reveal>
 
         <div ref={ref} className="relative">
@@ -42,7 +42,7 @@ export default function Experience() {
                   <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-8">
                     <h3 className="font-serif text-xl leading-snug text-paper sm:text-2xl">
                       {item.role}
-                      {item.org && <span className="text-signal"> — {item.org}</span>}
+                      {item.org && <span className="text-signal">, {item.org}</span>}
                     </h3>
                     <span className="shrink-0 font-mono text-[11px] text-white/40">{item.period}</span>
                   </div>
