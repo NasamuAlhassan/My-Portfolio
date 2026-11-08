@@ -6,7 +6,7 @@ export default function About() {
 
   return (
     <section id="about" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-32">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
           <p className="section-label">08 · About</p>
         </Reveal>

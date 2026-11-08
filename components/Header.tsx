@@ -1,5 +1,6 @@
 'use client'
 
+import ThemeToggle from '@/components/ThemeToggle'
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, X, Download } from 'lucide-react'
@@ -109,7 +110,7 @@ export default function Header() {
       >
         <div className="kente h-1 w-full" aria-hidden />
         <div className="max-w-content mx-auto flex h-16 items-center justify-between px-5 sm:px-6">
-          <a href="#hero" className="font-serif text-[22px] text-paper transition-colors duration-200 hover:text-signal">
+          <a href="#hero" className="font-serif text-[22px] text-ink transition-colors duration-200 hover:text-forest">
             Prince N. Alhassan
           </a>
 
@@ -121,14 +122,14 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={`relative py-1 font-sans text-sm transition-colors duration-200 ${
-                    on ? 'text-paper' : 'text-white/60 hover:text-paper'
+                    on ? 'text-ink' : 'text-ink-muted hover:text-ink'
                   }`}
                 >
                   {link.label}
                   {on && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute -bottom-0.5 left-0 right-0 h-px bg-signal"
+                      className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gold"
                       transition={{ duration: 0.4, ease: EASE }}
                     />
                   )}
@@ -137,21 +138,25 @@ export default function Header() {
             })}
             <button
               onClick={openResume}
-              className="rounded-full border border-white/30 px-4 py-1.5 font-sans text-sm font-semibold text-paper
-                         transition-all duration-300 hover:border-signal hover:bg-signal hover:text-night"
+              className="rounded-full border border-ink/25 px-4 py-1.5 font-sans text-sm font-semibold text-ink
+                         transition-all duration-300 hover:border-ink hover:bg-ink hover:text-paper"
             >
               CV
             </button>
+            <ThemeToggle />
           </nav>
 
+          <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
           <button
-            className="text-white/70 transition-colors hover:text-paper lg:hidden"
+            className="grid h-9 w-9 place-items-center text-ink-muted transition-colors hover:text-ink"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -161,7 +166,7 @@ export default function Header() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.32, ease: EASE }}
-              className="overflow-hidden border-t border-white/10 lg:hidden"
+              className="overflow-hidden border-t border-stone lg:hidden"
             >
               <nav className="flex flex-col gap-1 px-6 py-6">
                 {navLinks.map((link, i) => (
@@ -171,13 +176,13 @@ export default function Header() {
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.06 + i * 0.05, duration: 0.4, ease: EASE }}
-                    className="py-1.5 font-serif text-4xl text-paper"
+                    className="py-1.5 font-serif text-4xl text-ink"
                     onClick={() => setMenuOpen(false)}
                   >
                     {link.label}
                   </motion.a>
                 ))}
-                <button onClick={openResume} className="w-fit py-1.5 text-left font-serif text-4xl text-signal">
+                <button onClick={openResume} className="w-fit py-1.5 text-left font-serif text-4xl text-forest">
                   CV
                 </button>
               </nav>

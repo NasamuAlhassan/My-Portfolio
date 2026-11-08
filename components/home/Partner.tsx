@@ -14,7 +14,7 @@ export default function Partner() {
   return (
     <section id="partner" className="bg-paper px-3 pb-3 pt-3 sm:px-5 sm:pb-5">
       <div
-        className="mx-auto max-w-[1280px] overflow-hidden rounded-[28px] border border-signal/25 text-paper"
+        className="mx-auto max-w-[1280px] overflow-hidden rounded-[28px] border border-signal/25 text-white"
         style={{ background: 'radial-gradient(120% 140% at 0% 0%, #164a30 0%, #0b2117 45%, #07090A 100%)' }}
       >
         <div className="kente h-2.5 w-full" aria-hidden />

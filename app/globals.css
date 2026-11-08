@@ -3,22 +3,49 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --c-paper: 253 251 246;
+    --c-surface: 255 255 255;
+    --c-warm: 246 239 224;
+    --c-ink: 22 22 20;
+    --c-muted: 84 87 93;
+    --c-faint: 118 122 128;
+    --c-stone: 229 224 213;
+    --c-forest: 11 107 71;
+    --c-kred: 181 54 31;
+    --c-clay: 160 90 0;
+    color-scheme: light;
+  }
+  :root[data-theme='dark'] {
+    --c-paper: 13 17 16;
+    --c-surface: 21 27 25;
+    --c-warm: 24 31 28;
+    --c-ink: 242 238 228;
+    --c-muted: 177 182 178;
+    --c-faint: 128 134 130;
+    --c-stone: 40 49 46;
+    --c-forest: 94 227 154;
+    --c-kred: 244 128 102;
+    --c-clay: 242 184 75;
+    color-scheme: dark;
+  }
+
   * { box-sizing: border-box; }
 
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 72px;
     scrollbar-width: thin;
-    scrollbar-color: #C9CCD1 transparent;
+    scrollbar-color: rgb(var(--c-stone)) transparent;
   }
 
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #C9CCD1; border-radius: 6px; }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--c-stone)); border-radius: 6px; }
 
   body {
-    background-color: #FFFFFF;
-    color: #0A0A0A;
+    background-color: rgb(var(--c-paper));
+    color: rgb(var(--c-ink));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -78,13 +105,13 @@
   .card {
     position: relative;
     border-radius: 18px;
-    background: #FFFFFF;
-    border: 1px solid #E6E7EA;
+    background: rgb(var(--c-surface));
+    border: 1px solid rgb(var(--c-stone));
     transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
 
   .card:hover {
-    border-color: #C9CCD1;
+    border-color: rgb(var(--c-faint) / 0.5);
     box-shadow: 0 18px 40px -28px rgba(10, 10, 10, 0.35);
   }
 
@@ -99,18 +126,18 @@
   .card-dark:hover { border-color: rgba(94, 227, 154, 0.45); }
 
   .glass-bar {
-    background: rgba(7, 9, 10, 0.78);
+    background: rgb(var(--c-paper) / 0.82);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgb(var(--c-stone));
   }
 
   /* Hairline-separated rows (used with `space-y-px bg-stone`). */
-  .row { background: #FFFFFF; }
+  .row { background: rgb(var(--c-paper)); }
   .row-dark { background: #07090A; }
 
-  .veil { background: #FFFFFF; }
-  .veil-warm { background: #FBF6EA; }
+  .veil { background: rgb(var(--c-paper)); }
+  .veil-warm { background: rgb(var(--c-warm)); }
   .veil-night { background: #07090A; }
 
   /* ---- Controls ---- */
@@ -121,6 +148,9 @@
     box-shadow: 0 5px 0 #08321f;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
+
+  :root[data-theme='dark'] .btn-primary { background: #5EE39A; color: #07090A; box-shadow: 0 5px 0 #2d8a5a; }
+  :root[data-theme='dark'] .btn-primary .play-dot { background: #07090A; }
 
   .btn-primary:hover { transform: translateY(2px); box-shadow: 0 3px 0 #08321f; }
 
@@ -200,7 +230,7 @@
 
   /* White-framed photo, as in a printed album. */
   .framed {
-    border: 6px solid #FFFFFF;
+    border: 6px solid rgb(var(--c-surface));
     box-shadow: 0 22px 40px -22px rgba(27, 23, 18, 0.5);
   }
 

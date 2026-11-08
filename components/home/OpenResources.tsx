@@ -5,7 +5,7 @@ import { openResources, personalInfo } from '@/lib/data'
 export default function OpenResources() {
   return (
     <section id="open" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-24 md:py-28">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
           <p className="section-label">07 · Open resources</p>
         </Reveal>
