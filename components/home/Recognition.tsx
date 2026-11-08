@@ -6,12 +6,12 @@ import { certifications, type Recognition as RecognitionEntry } from '@/lib/data
 
 function List({ entries }: { entries: RecognitionEntry[] }) {
   return (
-    <div className="space-y-px bg-stone">
+    <div className="grid gap-3">
       {entries.map((e, i) => (
         <Reveal key={e.title} delay={i * 0.06}>
-          <div className="group flex flex-col gap-2 row py-7 sm:flex-row sm:items-baseline sm:gap-8">
+          <div className="card group flex flex-col gap-2 p-5 sm:flex-row sm:items-baseline sm:gap-8">
             <div className="flex-1">
-              <p className="font-serif text-xl leading-snug text-ink transition-colors duration-300 group-hover:text-forest sm:text-2xl">
+              <p className="font-serif text-xl leading-snug text-ink transition-colors duration-300 group-hover:text-forest">
                 {e.title}
               </p>
               <p className="mt-2 font-sans text-sm text-ink-faint">{e.issuer}</p>

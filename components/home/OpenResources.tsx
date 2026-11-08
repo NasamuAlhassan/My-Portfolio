@@ -28,14 +28,14 @@ export default function OpenResources() {
           </p>
         </Reveal>
 
-        <div className="grid gap-px bg-stone sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {openResources.map((r, i) => (
             <Reveal key={r.href} delay={(i % 3) * 0.05} className="h-full">
               <a
                 href={r.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="row group flex h-full flex-col gap-1.5 px-5 py-5"
+                className="card group flex h-full flex-col gap-1.5 p-5"
               >
                 <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-forest">{r.type}</span>
                 <span className="flex items-center gap-1.5 break-all font-mono text-[13px] text-ink transition-colors duration-300 group-hover:text-forest">

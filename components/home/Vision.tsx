@@ -20,10 +20,10 @@ export default function Vision() {
         </Reveal>
 
         <Disclosure label="Read the research agenda" openLabel="Hide the agenda">
-        <div className="space-y-px bg-stone">
+        <div className="grid gap-4 md:grid-cols-2">
           {researchAgenda.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.05}>
-              <div className="row grid gap-3 py-7 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] sm:gap-10 sm:px-2">
+            <Reveal key={item.title} delay={(i % 2) * 0.05} className="h-full">
+              <div className="card flex h-full flex-col gap-3 p-6">
                 <div>
                   <h3 className="font-serif text-2xl leading-snug text-ink">{item.title}</h3>
                   <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-clay">{item.stage}</p>

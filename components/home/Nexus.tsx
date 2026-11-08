@@ -113,32 +113,32 @@ export default function Nexus() {
 
         {/* More, in the Drive folder */}
         <Reveal delay={0.1}>
-          <div className="relative mt-16 overflow-hidden rounded-[24px] bg-night text-white">
+          <div className="relative mt-16 overflow-hidden rounded-[24px] border border-stone bg-surface">
             <div className="kente h-1.5 w-full" aria-hidden />
             <div className="p-6 sm:p-8">
               <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/50">More in the Nexus folder</p>
-                  <h3 className="mt-3 font-serif text-2xl text-white sm:text-3xl">The deck, more features and the app</h3>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-faint">More in the Nexus folder</p>
+                  <h3 className="mt-3 font-serif text-2xl text-ink sm:text-3xl">More features and the app</h3>
                 </div>
-                <a href={nexus.folder} target="_blank" rel="noopener noreferrer" className="btn-signal self-start">
+                <a href={nexus.folder} target="_blank" rel="noopener noreferrer" className="btn-primary self-start">
                   <span>Open the Nexus folder</span>
                   <ArrowUpRight size={15} />
                 </a>
               </div>
-              <ul className="mt-8 grid gap-3 md:grid-cols-3">
+              <ul className="mt-8 grid gap-3 md:grid-cols-2">
                 {nexus.more.map((m) => (
                   <li key={m.href}>
                     <a
                       href={m.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-colors hover:border-signal/60"
+                      className="card group flex h-full flex-col p-5"
                     >
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-signal">{m.kind}</span>
-                      <span className="mt-3 font-serif text-xl leading-snug text-white">{m.title}</span>
-                      <span className="mt-2 flex-1 font-sans text-[14px] leading-relaxed text-white/65">{m.note}</span>
-                      <span className="mt-5 inline-flex items-center gap-1.5 font-sans text-sm font-medium text-white">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-kred">{m.kind}</span>
+                      <span className="mt-3 font-serif text-xl leading-snug text-ink">{m.title}</span>
+                      <span className="mt-2 flex-1 font-sans text-[14px] leading-relaxed text-ink-muted">{m.note}</span>
+                      <span className="mt-5 inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-forest">
                         {m.cta}
                         <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                       </span>

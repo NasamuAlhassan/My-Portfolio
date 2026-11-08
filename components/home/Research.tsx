@@ -75,9 +75,9 @@ export default function Research() {
         {/* Method, on request */}
         <div className="mt-12">
           <Disclosure label="Six decisions that changed the numbers" openLabel="Hide the decisions">
-            <ol className="space-y-px bg-stone">
+            <ol className="grid gap-4 md:grid-cols-2">
               {METHOD.map((step) => (
-                <li key={step.n} className="row grid gap-4 py-7 sm:grid-cols-[auto_1fr] sm:gap-10 sm:px-2">
+                <li key={step.n} className="card flex gap-4 p-6">
                   <span className="pt-1.5 font-mono text-[11px] text-forest">{step.n}</span>
                   <div>
                     <h3 className="font-serif text-2xl leading-snug text-ink">{step.title}</h3>
@@ -100,10 +100,10 @@ export default function Research() {
               AICC Accra, 31 July 2026, and at a GhanaNLP community session.
             </p>
           </Reveal>
-          <ol className="space-y-px bg-stone">
+          <ol className="grid gap-3">
             {papers.titles.map((t, i) => (
               <Reveal key={t} delay={i * 0.06}>
-                <li className="row flex gap-5 py-5 sm:px-2">
+                <li className="card flex gap-5 p-5">
                   <span className="pt-1 font-mono text-[11px] text-forest">P{i + 1}</span>
                   <span className="font-serif text-xl leading-snug text-ink">{t}</span>
                 </li>

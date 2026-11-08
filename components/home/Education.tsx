@@ -4,15 +4,15 @@ import { education } from '@/lib/data'
 export default function Education() {
   return (
     <section id="education" className="rule">
-      <div className="max-w-content mx-auto px-5 sm:px-6 py-16 sm:py-20 md:py-24">
+      <div className="max-w-content mx-auto px-5 sm:px-6 py-20 sm:py-24">
         <Reveal>
-          <p className="section-label mb-12">13 · Education</p>
+          <p className="section-label mb-8">13 · Education</p>
         </Reveal>
 
-        <div className="space-y-px bg-stone">
+        <div className="grid gap-5 md:grid-cols-2">
           {education.map((entry, i) => (
-            <Reveal key={entry.institution} delay={i * 0.08}>
-              <div className="row grid gap-4 py-8 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)] sm:gap-12 sm:px-2">
+            <Reveal key={entry.institution} delay={i * 0.08} className="h-full">
+              <div className="card flex h-full flex-col gap-5 p-6 sm:p-8" style={{ borderTop: '4px solid #D99A1E' }}>
                 <div>
                   <h3 className="font-serif text-2xl leading-snug text-ink md:text-3xl">
                     {entry.institution}

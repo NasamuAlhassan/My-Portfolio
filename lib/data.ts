@@ -169,13 +169,6 @@ export const nexus = {
       href: 'https://drive.google.com/file/d/171L07fyBxVv_R757-_4WdEzF0Mk-RmL9/view',
     },
     {
-      kind: 'Pitch deck',
-      title: 'The grand-finale pitch deck',
-      note: 'Open it on Drive and press the slideshow button (Present) to see the slides as the judges did.',
-      cta: 'Open the deck',
-      href: 'https://drive.google.com/file/d/18Mg26BPhnCt0uMFbQw0WpwqDbJgpAU-x/view',
-    },
-    {
       kind: 'Android app',
       title: 'Try the APK',
       note: 'Nexus for Android, 1.1 GB. An independent build, not an MTN product.',
@@ -185,7 +178,6 @@ export const nexus = {
   ],
   links: [
     { label: 'Download the Android APK (1.1 GB)', href: 'https://drive.google.com/file/d/1m0UvroYYty5xisGbC0HXehdJRM1nNftS/view' },
-    { label: 'Pitch deck', href: 'https://drive.google.com/file/d/18Mg26BPhnCt0uMFbQw0WpwqDbJgpAU-x/view' },
   ] as ProjectLink[],
   photo: '/moments/tekyerema-pa-pitch.jpg',
   photoAlt: 'Prince presenting Nexus at the Tɛkyerɛma Pa Hackathon grand finale, University of Ghana',

@@ -1,8 +1,6 @@
-import { ArrowUpRight, FileText, Github, Linkedin, Mail, Presentation, Layers, Play } from 'lucide-react'
+import { ArrowUpRight, FileText, Github, Linkedin, Mail, Layers, Play } from 'lucide-react'
 import Reveal from '@/components/motion/Reveal'
 import { nexus, personalInfo } from '@/lib/data'
-
-const deck = nexus.more.find((m) => m.kind === 'Pitch deck')!
 
 /**
  * The quickest way in. Everything a founder or funder usually hunts for,
@@ -31,16 +29,6 @@ export default function StartHere() {
       tone: 'text-white',
     },
     {
-      href: deck.href,
-      external: true,
-      label: 'Slideshow',
-      title: 'The grand-finale pitch deck',
-      note: 'Open on Drive, then press Present.',
-      icon: <Presentation size={18} />,
-      bg: 'linear-gradient(135deg,#0F5132 0%,#0B2A1E 100%)',
-      tone: 'text-white',
-    },
-    {
       href: personalInfo.huggingface,
       external: true,
       label: 'Open',
@@ -57,16 +45,16 @@ export default function StartHere() {
       <div className="mx-auto max-w-content px-5 py-16 sm:px-6 sm:py-20">
         <Reveal>
           <p className="section-label">Start here</p>
-          <h2 className="section-heading-sm mt-3 max-w-[22ch]">Short on time? These four say it best.</h2>
+          <h2 className="section-heading-sm mt-3 max-w-[22ch]">Short on time? These three say it best.</h2>
         </Reveal>
 
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {tiles.map((t, i) => (
             <Reveal key={t.title} delay={i * 0.06} className="h-full">
               <a
                 href={t.href}
                 {...(t.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="group relative flex aspect-[4/5] h-full w-full flex-col justify-end overflow-hidden rounded-[22px] border border-stone p-4 sm:aspect-[5/6] sm:p-5"
+                className="group relative flex aspect-[4/5] h-full w-full flex-col justify-end overflow-hidden rounded-[22px] border border-stone p-4 sm:aspect-[4/3] lg:aspect-[5/4] sm:p-5"
                 style={t.bg ? { background: t.bg } : undefined}
               >
                 {t.image && (
