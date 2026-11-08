@@ -26,12 +26,6 @@ export default function About() {
           </div>
 
           <Reveal delay={0.18}>
-            <img
-              src="/moments/portrait.jpg"
-              alt="Portrait of Prince Nasamu Alhassan"
-              loading="lazy"
-              className="mb-8 aspect-square w-40 rounded-full object-cover sm:w-48"
-            />
             <dl className="space-y-px bg-stone">
               {[
                 ['Based in', 'Accra, Ghana'],
