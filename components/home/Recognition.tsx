@@ -1,6 +1,5 @@
 ﻿'use client'
 
-import Disclosure from '@/components/Disclosure'
 import Reveal from '@/components/motion/Reveal'
 import { certifications, type Recognition as RecognitionEntry } from '@/lib/data'
 
@@ -36,7 +35,6 @@ export default function Recognition() {
           <p className="section-label mb-8">11 · Talks &amp; awards</p>
         </Reveal>
 
-        <Disclosure label="Show talks, awards and community roles" openLabel="Hide talks and awards">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-12">
           {talks.length > 0 && (
             <div>
@@ -65,7 +63,6 @@ export default function Recognition() {
             </div>
           )}
         </div>
-        </Disclosure>
       </div>
     </section>
   )

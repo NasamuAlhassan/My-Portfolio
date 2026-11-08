@@ -48,17 +48,17 @@ export default function Partner() {
                 <ArrowUpRight size={15} />
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+            <div className="mt-6 flex flex-wrap gap-3">
               {channels.map((c) => (
                 <a
                   key={c.label}
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link-underline font-sans text-sm text-white/65 hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-5 py-2.5 font-sans text-[15px] font-bold text-white transition-colors hover:border-gold hover:bg-gold hover:text-night focus-visible:outline focus-visible:outline-2 focus-visible:outline-gold"
                 >
                   {c.label}
-                  <ArrowUpRight size={13} />
+                  <ArrowUpRight size={16} />
                 </a>
               ))}
             </div>

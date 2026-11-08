@@ -41,7 +41,7 @@ function Row({ project, open, onToggle }: { project: Project; open: boolean; onT
       <button
         onClick={onToggle}
         aria-expanded={open}
-        className="group grid w-full gap-3 py-6 text-left transition-colors duration-300 hover:bg-paper-warm/70 md:grid-cols-[190px_minmax(0,1fr)_150px_110px_28px] md:items-center md:gap-6 md:pl-6 md:pr-3"
+        className="group grid w-full gap-3 py-6 text-left transition-colors duration-300 hover:bg-paper-warm/70 md:grid-cols-[190px_minmax(0,1fr)_150px_70px_112px] md:items-center md:gap-6 md:pl-6 md:pr-3"
       >
         <span className={`badge ${badgeClass(project.status)}`}>{project.status ?? projectKindLabels[project.kind]}</span>
         <span>
@@ -64,11 +64,10 @@ function Row({ project, open, onToggle }: { project: Project; open: boolean; onT
           )}
         </span>
         <span className="hidden font-mono text-[11px] text-ink-faint md:block">{project.year}</span>
-        <Plus
-          size={18}
-          className={`hidden text-ink-faint transition-transform duration-300 group-hover:text-ink md:block ${open ? 'rotate-45' : ''}`}
-          aria-hidden
-        />
+        <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-gold px-3.5 py-2 font-sans text-[13px] font-bold text-night transition-transform group-hover:scale-105">
+          <Plus size={16} strokeWidth={2.8} className={`transition-transform duration-300 ${open ? 'rotate-45' : ''}`} aria-hidden />
+          {open ? 'Close' : 'Details'}
+        </span>
       </button>
 
       <AnimatePresence initial={false}>

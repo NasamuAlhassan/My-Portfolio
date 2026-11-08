@@ -79,7 +79,7 @@ export default function Nexus() {
 
         {/* Detail, on request */}
         <div className="mt-10">
-          <Disclosure label="Read the full case: privacy, capabilities and what is next">
+          <Disclosure label="Read the full case" hint="Privacy, capabilities and what is next">
             <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
               <dl className="divide-y divide-stone border-y border-stone">
                 {[

@@ -84,18 +84,20 @@ export default function StartHere() {
         </div>
 
         <Reveal delay={0.1}>
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 font-sans text-sm">
-            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="link-underline font-semibold text-ink">
-              <FileText size={15} /> CV (PDF)
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="/Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-ink px-5 py-2.5 font-sans text-[15px] font-bold text-paper transition-transform hover:-translate-y-0.5">
+              <FileText size={17} /> CV (PDF)
             </a>
-            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="link-underline text-ink-muted hover:text-ink">
-              <Github size={15} /> GitHub
-            </a>
-            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="link-underline text-ink-muted hover:text-ink">
-              <Linkedin size={15} /> LinkedIn
-            </a>
-            <a href={`mailto:${personalInfo.email}`} className="link-underline text-ink-muted hover:text-ink">
-              <Mail size={15} /> {personalInfo.email}
+            {[
+              { href: personalInfo.github, label: 'GitHub', icon: <Github size={17} /> },
+              { href: personalInfo.linkedin, label: 'LinkedIn', icon: <Linkedin size={17} /> },
+            ].map((l) => (
+              <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-ink px-5 py-2.5 font-sans text-[15px] font-bold text-ink transition-colors hover:bg-ink hover:text-paper">
+                {l.icon} {l.label}
+              </a>
+            ))}
+            <a href={`mailto:${personalInfo.email}`} className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 font-sans text-[15px] font-bold text-night transition-transform hover:-translate-y-0.5">
+              <Mail size={17} /> {personalInfo.email}
             </a>
           </div>
         </Reveal>

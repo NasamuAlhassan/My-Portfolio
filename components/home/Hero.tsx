@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, ShieldCheck } from 'lucide-react'
 import { nexus, personalInfo, positioning, proof } from '@/lib/data'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -133,20 +133,39 @@ export default function Hero() {
               )}
               <span className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" aria-hidden />
               <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-black/55 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white backdrop-blur">
-                <i className="h-1.5 w-1.5 animate-pulse rounded-full bg-signal" aria-hidden />
+                <span className="flex h-3 items-end gap-[3px] text-signal" aria-hidden>
+                  <i className="eq-bar" style={{ animationDelay: '0s' }} />
+                  <i className="eq-bar" style={{ animationDelay: '-0.3s' }} />
+                  <i className="eq-bar" style={{ animationDelay: '-0.6s' }} />
+                  <i className="eq-bar" style={{ animationDelay: '-0.15s' }} />
+                </span>
                 Real use
               </span>
               <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-4 sm:p-5">
                 <span className="font-serif text-xl leading-tight text-white sm:text-2xl">
                   Nexus, in a blind user’s hands
                 </span>
-                <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-signal px-4 py-2 font-sans text-sm font-semibold text-night transition-transform group-hover:scale-105">
-                  Watch
-                  <ArrowRight size={14} />
+                <span className="relative inline-flex shrink-0">
+                  <span className="ping-ring absolute inset-0 rounded-full bg-signal" aria-hidden />
+                  <span className="relative inline-flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 font-sans text-sm font-bold text-night transition-transform group-hover:scale-105">
+                    Watch
+                    <ArrowRight size={15} />
+                  </span>
                 </span>
               </span>
             </div>
           </a>
+
+          {/* What the user says, and what Nexus keeps safe */}
+          <div className="float-a absolute -top-9 left-4 z-20 hidden max-w-[230px] rounded-2xl rounded-bl-sm border border-stone bg-surface px-4 py-3 shadow-[0_18px_40px_-20px_rgba(20,16,10,.5)] sm:block lg:-left-6" style={{ ['--r' as string]: '-3deg' }}>
+            <p className="font-mono text-[9.5px] uppercase tracking-[0.18em] text-kred">She says, in Twi</p>
+            <p className="mt-1 font-serif text-lg leading-snug text-ink">“Soma sidi anum ma me yere”</p>
+            <p className="mt-0.5 font-sans text-[12px] text-ink-muted">Send five cedis to my wife</p>
+          </div>
+          <div className="float-b absolute -bottom-8 left-[24%] z-20 inline-flex items-center gap-2 rounded-full bg-kgreen px-4 py-2.5 font-sans text-[13px] font-bold text-white shadow-[0_14px_30px_-14px_rgba(0,0,0,.6)]" style={{ ['--r' as string]: '2deg' }}>
+            <ShieldCheck size={16} className="text-signal" aria-hidden />
+            The PIN never leaves the phone
+          </div>
 
           <div className="gold-badge absolute -right-2 -top-7 max-w-[200px] rotate-3 text-[13px] leading-snug sm:-right-5">
             <span className="block font-serif text-3xl font-normal leading-none">Top 5</span>
