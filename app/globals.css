@@ -247,6 +247,10 @@
     box-shadow: 0 6px 0 #08321f;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
+  @keyframes disc-glow { 0%, 100% { outline-color: rgba(217,154,30,0.0); outline-offset: 4px; } 50% { outline-color: rgba(217,154,30,0.9); outline-offset: 8px; } }
+  @keyframes disc-bob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+  .disc-summary { outline: 3px solid transparent; animation: disc-glow 2.4s ease-in-out infinite; }
+  .disc-bob { animation: disc-bob 1.1s ease-in-out infinite; }
   .disc-summary:hover { transform: translateY(2px); box-shadow: 0 4px 0 #08321f; }
   :root[data-theme='dark'] .disc-summary { background: #5EE39A; color: #07090A; box-shadow: 0 6px 0 #2d8a5a; }
   :root[data-theme='dark'] .disc-summary:hover { box-shadow: 0 4px 0 #2d8a5a; }
