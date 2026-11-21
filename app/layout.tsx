@@ -52,6 +52,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               "try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=t==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}",
           }}
         />
+        <script
+          defer
+          src="https://analify.dev/a/analify-43241105a910.js"
+          integrity="sha384-2dso0ih/pYGlTpl+TApNV7zBIupk1cFNgCIPg21Vx+85NJM81mPNdHM1T2cZJ1ff"
+          crossOrigin="anonymous"
+          data-site="AN-73JNDS"
+          data-clicks=""
+        />
       </head>
       <body
         className={`${display.variable} ${text.variable} ${jetbrains.variable} font-sans antialiased text-ink`}
