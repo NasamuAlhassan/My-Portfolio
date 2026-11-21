@@ -40,6 +40,9 @@ export const metadata: Metadata = {
     description: 'Speech, translation and assistive AI for African languages and the people mainstream technology leaves out.',
     type: 'website',
   },
+  verification: {
+    other: { 'analify-verification': 'rH0NrP9_bxmIpO0TCXK1Sx3u' },
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
